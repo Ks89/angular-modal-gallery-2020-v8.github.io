@@ -1,0 +1,738 @@
+<div class="container">
+
+  <!-- TODO Add link to github sources -->
+  <h1 id="ModalGallery" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ModalGallery</a>
+  </h1>
+  <p>ModalGallery component is the main component of this library. It contains the collection of <code><a [routerLink]="['/features/common']">Images</a></code>
+    and many other config objects.
+    It displays images as thumbnails (thanks to <code><a [routerLink]="['/features/plain-gallery']">PlainGalleryComponent</a></code>).
+    Clicking on one of them, the image will be shown in full screen in a modal way using
+    many other inner components: BackgroundComponent, <code><a [routerLink]="['/features/upper-buttons']">UpperButtonsComponent</a></code>,
+    CurrentImageComponent, LoadingSpinnerComponent, DotsComponent and <code><a [routerLink]="['/features/previews']">PreviewsComponent</a></code>.</p>
+  <p>All these components together provide navigation between images with both mouse and keyboard, it
+    can enable/disable download features and other advanced behaviours.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td>Template (HTML) selector</td>
+        <td><code>ks-modal-gallery</code></td>
+      </tr>
+      <tr>
+        <td>Exported as</td>
+        <td><code>ksModalGallery</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <section>
+    <h2>Inputs</h2>
+    <table class="table table-hover table-sm">
+      <tbody>
+        <tr>
+          <td class="big-tds"><small><code>id</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>number</code>
+            </div>
+            <div>
+              A mandatory unique id >= 0 of the current modal gallery, used by <a href="#GalleryService"><code>GalleryService</code></a>.
+<!--              A mandatory unique id >= 0 of the current modal gallery, used by <a pageScroll href="#GalleryService"><code>GalleryService</code></a>.-->
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds"><small><code>modalImages</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/common']">Image[]</a></code>
+            </div>
+            <div>
+              The mandatory array of <code><a [routerLink]="['/features/common']">Image</a></code> objects, that represent both the thumb gallery and the
+              modal images. In fact, an <code><a [routerLink]="['/features/common']">Image</a></code> is an object with both thumb and
+              image source paths with other additional configuration parameters. For more info check <code><a [routerLink]="['/features/common']">Image</a></code>.
+              Please don't use <code>this.images.push(img)</code>, when you want to modify this array, instead re-assign it to trigger change detection.
+              For instance: <code>this.images = [...this.images, newImage]</code> to create a new array from the original with a new image at the end.
+            </div>
+            <div>
+              <b class="text-success">Attention: if you need to add the same image (same url) multiple times in the same modal gallery, you must append to the url a random but unique query param to prevent caching issues.
+                For more info, please read <a href="https://github.com/Ks89/angular-modal-gallery/issues/171">this issue</a>.</b>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>buttonsConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/upper-buttons']">ButtonsConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to choose which buttons to show and handle their behaviour. ModalGalleryComponent passes this object straight to UpperButtonsComponent,
+                so if you want to know how to use it, please check <a [routerLink]="['/features/upper-buttons']">UpperButtonsComponent</a>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>enableCloseOutside</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>If true, you can click on the semi-transparent background of modal images to close it. <code>true</code> by default.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>dotsConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/common']">DotsConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to configure dots.</p>
+              <p>For more information, please see the <code><a [routerLink]="['/features/common']">DotsConfig</a></code>'s section</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>currentImageConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a href="#CurrentImageConfig">CurrentImageConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+<!--              <i>Type: </i><code><a pageScroll href="#CurrentImageConfig">CurrentImageConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+            </div>
+            <div>
+              <p>Interface to configure current image in modal-gallery. For instance you can either disable navigation when you click on the current image (enabled by default),
+                or change descriptions, loading spinners or enable download features.</p>
+              <p>For more information, please see the <a href="#CurrentImageConfig">CurrentImageConfig</a>'s section</p>
+<!--              <p>For more information, please see the <a pageScroll href="#CurrentImageConfig">CurrentImageConfig</a>'s section</p>-->
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>previewConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/previews']">PreviewConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to configure previews, for instance to choose either the number, visibility, arrows, sizes.
+                ModalGalleryComponent pass this object straight to PreviewsComponent,
+                so if you want to know how to use it, please check <a [routerLink]="['/features/previews']">PreviewsComponent</a>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>slideConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a href="#SlideConfig">SlideConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+<!--              <i>Type: </i><code><a pageScroll href="#SlideConfig">SlideConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+            </div>
+            <div>
+              <p>Interface to enable infinite-sliding (you won't be able to navigate before both the first and after the last images) and to configure both side-previews and autoPlay.
+                By default, infinite sliding is disabled, side-previews are visible with <code>width: 100px</code> and <code>height: auto</code> and autoPlay is disabled.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>accessibilityConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/accessibility']">AccessibilityConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to customize accessibility features, like alt, titles, aria-labels and so on. ModalGalleryComponent applies a default value with english texts.
+                This default config object is exported as <small><code><a [routerLink]="['/features/default-values']">KS_DEFAULT_ACCESSIBILITY_CONFIG</a></code></small>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>keyboardConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a href="#KeyboardConfig">KeyboardConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+<!--              <i>Type: </i><code><a pageScroll href="#KeyboardConfig">KeyboardConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+            </div>
+            <div>
+              <p>Interface to configure keyboard's buttons. All properties are optional and with default values. Check <code><a href="#KeyboardConfig">KeyboardConfig</a></code> for more information.</p>
+<!--              <p>Interface to configure keyboard's buttons. All properties are optional and with default values. Check <code><a pageScroll href="#KeyboardConfig">KeyboardConfig</a></code> for more information.</p>-->
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>plainGalleryConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/plain-gallery']">PlainGalleryConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to configure thumbnails, for instance to change the layout. Furthermore, it's useful to write full custom layouts (for more info see official demos).
+                ModalGalleryComponent pass this object to PlainGalleryComponent, so if you want to know how to use it, please check <a [routerLink]="['/features/plain-gallery']">PlainGalleryComponent</a>.</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Outputs</h2>
+    <table class="table table-hover table-sm">
+      <tbody>
+        <tr>
+          <td><small><code>close</code></small></td>
+          <td>
+            <p>An <code><a pageScroll href="#ImageModalEvent">ImageModalEvent</a></code> right <b>before</b> that the modal view closes.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
+            <ul>
+              <li>action: <code><a [routerLink]="['/features/common']">Action</a></code> that can be <code>NORMAL</code>, <code>KEYBOARD</code> or <code>CLICK</code></li>
+              <li>result: <code>true</code></li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>show</code></small></td>
+          <td>
+            <p>An <code><a pageScroll href="#ImageModalEvent">ImageModalEvent</a></code> right <b>before</b> that the modal image will be visible.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number).</p>
+            <p>Everytime the current image changes, a new <code><a pageScroll href="#ImageModalEvent">ImageModalEvent</a></code> will be emitted.</p>
+            <ul>
+              <li>action: either <code><a [routerLink]="['/features/common']">Action.NORMAL</a></code>, <code><a [routerLink]="['/features/common']">Action.CLICK</a></code>, <code><a [routerLink]="['/features/common']">Action.KEYBOARD</a></code>, <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code>, <code><a [routerLink]="['/features/common']">Action.AUTOPLAY</a></code> or <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code></li>
+              <li>result: <code>number</code> (index of an image. Not the index of the array, but incremented by 1)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>firstImage</code></small></td>
+          <td>
+            <p>An <code><a pageScroll href="#ImageModalEvent">ImageModalEvent</a></code> right <b>before</b> that the FIRST image in
+              <code>modalImages</code> is visible.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
+            <ul>
+              <li>action: either <code><a [routerLink]="['/features/common']">Action.NORMAL</a></code>, <code><a [routerLink]="['/features/common']">Action.CLICK</a></code>, <code><a [routerLink]="['/features/common']">Action.KEYBOARD</a></code>, <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code>, <code><a [routerLink]="['/features/common']">Action.AUTOPLAY</a></code> or <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code></li>
+              <li>result: <code>true</code></li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>lastImage</code></small></td>
+          <td>
+            <p>An <code><a pageScroll href="#ImageModalEvent">ImageModalEvent</a></code> right <b>before</b> that the LAST image in
+              <code>modalImages</code> is visible.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
+            <ul>
+              <li>action: either <code><a [routerLink]="['/features/common']">Action.NORMAL</a></code>, <code><a [routerLink]="['/features/common']">Action.CLICK</a></code>, <code><a [routerLink]="['/features/common']">Action.KEYBOARD</a></code>, <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code>, <code><a [routerLink]="['/features/common']">Action.AUTOPLAY</a></code> or <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code></li>
+              <li>result: <code>true</code></li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>hasData</code></small></td>
+          <td>
+            <p>An <code><a pageScroll href="#ImageModalEvent">ImageModalEvent</a></code> right <b>after</b> the initialization of <code>modalImages</code>.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
+            <p>This event is useful to know when angular-modal-gallery is ready.</p>
+            <ul>
+              <li>action: <code><a [routerLink]="['/features/common']">Action.LOAD</a></code></li>
+              <li>result: <code>true</code></li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>buttonBeforeHook</code></small></td>
+          <td>
+            <p>A <code><a [routerLink]="['/features/upper-buttons']">ButtonEvent</a></code> right <b>before</b> the action related to an upper button.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum, the current <code><a [routerLink]="['/features/common']">Image</a></code> and the <code><a [routerLink]="['/features/upper-buttons']">ButtonConfig</a></code> that triggered this event</p>
+            <p>This event is a 'before hook', because you can execute your code before every action triggered by buttons. Also, since you have the full
+              <code><a [routerLink]="['/features/upper-buttons']">ButtonConfig</a></code> in the payload, you can run different code based on button's type</p>
+            <ul>
+              <li>action: <code><a [routerLink]="['/features/common']">Action.LOAD</a></code></li>
+              <li>button: <code><code><a [routerLink]="['/features/upper-buttons']">ButtonConfig</a></code></code></li>
+              <li>image: <code><code><a [routerLink]="['/features/common']">Image</a></code></code></li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>buttonAfterHook</code></small></td>
+          <td>
+            <p>A <code><a [routerLink]="['/features/upper-buttons']">ButtonEvent</a></code> right <b>after</b> the action related to an upper button.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum, the current <code><a [routerLink]="['/features/common']">Image</a></code> and the <code><a [routerLink]="['/features/upper-buttons']">ButtonConfig</a></code> that triggered this event</p>
+            <p>This event is an 'after hook', because you can execute your code after every action triggered by buttons. Also, since you have the full
+              <code><a [routerLink]="['/features/upper-buttons']">ButtonConfig</a></code> in the payload, you can run different code based on button's type</p>
+            <ul>
+              <li>action: <code><a [routerLink]="['/features/common']">Action.LOAD</a></code></li>
+              <li>button: <code><code><a [routerLink]="['/features/upper-buttons']">ButtonConfig</a></code></code></li>
+              <li>image: <code><code><a [routerLink]="['/features/common']">Image</a></code></code></li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <br>
+
+  <h2 id="ModalImage" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ModalImage</a>
+  </h2>
+  <p>Interface that represent the modal image.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td><small><code>img</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string | SafeResourceUrl</code>
+          </div>
+          <div>
+            <p>Mandatory source path of the modal image. To support base64 images, check the official example.</p>
+            <p>If you need multiple non-base64 images with the same image path, to prevent caching issues you have to append something like '?index', for instance '?0', '?1'.
+            For more information, please check the official example called 'Same images'.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>description</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional description text.
+              Attention: this is not the full description, but only the last part, after image numbers.
+              For instance: `Image 2/12 - <code>description</code>`. To ignore this feature, don't add this property.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>extUrl</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional external URL path. You must use a valid URL, because <code>angular-modal-gallery</code>
+              will simply navigate to this URL. To ignore this feature, don't add this property.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>title</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional title text. It sets 'title' html's attribute, useful for accessibility purposes.
+              To ignore this feature, don't add this property.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>alt</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional alt text. It sets 'alt' html's attribute, useful for accessibility purposes.
+              To ignore this feature, don't add this property.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>arialLabel</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional aria label text. It sets 'aria-label' html's attribute, useful for accessibility purposes.
+              To ignore this feature, don't add this property.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>invertSwipe</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional boolean property to invert the default swipe direction on devices with touchscreen.</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="ImageModalEvent" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ImageModalEvent</a>
+  </h2>
+  <p>The payload of events related to action, emitted by this library.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td><small><code>action</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>Action</code>
+          </div>
+          <div>
+            <p>It's the enum <code><a [routerLink]="['/features/common']">Action</a></code></p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>result</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>number | boolean</code>
+          </div>
+          <div>
+            <p>The result/data of the emitted event. For example, it could be the index of the current image
+              or a boolean to say if images are ready to display and so on.</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="CurrentImageConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">CurrentImageConfig</a>
+  </h2>
+  <p>Interface to customize current image in modal gallery.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td class="big-tds"><small><code>downloadable</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If true, you'll be able to download the current modal image always with keyboard shortcut (<kbd>ctrl</kbd>+<kbd>s</kbd>
+              or <kbd>cmd</kbd>+<kbd>s</kbd>),
+              but the download button will be visible only when <code>showDownloadButton=true</code>. Otherwise,
+              all download features will be disabled. <code>downloadable=false</code> by default</p>
+            <p>Please be careful: on SmartPhones and Tablets you can't use keyboard shortcuts, so to download images, please enable <code>downloadable</code> and use
+              <a [routerLink]="['/features/upper-buttons']"><code>ButtonsStrategy.SIMPLE</code></a> or higher to add the download button.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="big-tds">
+          <div>
+            <small><code>loadingConfig</code></small>
+          </div>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code><a pageScroll href="#LoadingConfig">LoadingConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Interface to hide/show and to configure the modal loading spinner. <code>&#123; enable: true, type: 1 &#125;</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>description</code></small></td>
+        <td class="big-tds">
+          <div>
+            <i>Type: </i><code><a [routerLink]="['/features/description']">Description</a></code> interface<span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Interface to specify a custom description either a full string or an object with string properties.
+              The first one is the entire string (for instance 'Description of Image 1/2 - My family - bla bla'),
+              the second one is an object with these properties <code>imageText</code> (default is 'Image'),
+              <code>numberSeparator</code> (default is '/'), <code>beforeTextDescription</code> (default is ' - ').
+              You can also use HTML descriptions, but remember that Angular will sanitize dangerous code, so for
+              instance you cannot add input fields and so on, but only simple and secure HTML.
+            </p>
+            <p>
+              To customize part of the description, you can refer to this example: <small>`<code>imageText</code> <i>2</i> <code>numberSeparator</code> <i>12</i> <code>beforeTextDescription</code> <i>bla bla</i>`</small>.
+              As you can see, "red" parts are customizable using the three properties described above. Furthermore, `<i>2</i>` is the index of the visible image, `<i>12</i>` the total number of images and `<i>bla bla</i>`
+              the description passed thanks to the input <code><a [routerLink]="['/features/common']">Image</a></code> object.
+            </p>
+            <p>Attention please! There aren't spaces between values. So if you want a 'text - text' you have to specify exactly ' - ', with the two spaces</p>
+            <p>Also, from version 5.4.0, you can use this interface to change description's style.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>navigateOnClick</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If false, click events on the current image will be ignored, otherwise will navigate to the next image.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>navigateOnClick</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If false, click events on the current image will be ignored, otherwise will navigate to the next image.</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="KeyboardConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">KeyboardConfig</a>
+  </h2>
+  <p>Interface to customize keyboard's buttons.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>esc</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>Javascript keycode to use instead of the default <kbd>esc</kbd></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>right</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>Javascript keycode to use instead of the default  <kbd>&rarr;</kbd></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>left</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>Javascript keycode to use instead of the default <kbd>&larr;</kbd></p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="LoadingConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">LoadingConfig</a>
+  </h2>
+  <p>Interface to customize loading spinner.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>enable</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>If true, spinner is visible, otherwise not. <code>true</code> by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>type</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>LoadingType</code>
+        </div>
+        <div>
+          <p>Enum to choose a loading spinner (already bundled in angular-modal-gallery in pure css). <code>LoadingType.STANDARD</code> by default</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="SlideConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">SlideConfig</a>
+  </h2>
+  <p>Interface to customize sliding features of modal gallery (both current image and side-previews).</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td><small><code>infinite</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If <code>false</code>, infinite sliding is visible, otherwise not</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>sidePreviews</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>SidePreviewsConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>With this property, you can hide/show side-previews or change sizes.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>playConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code><a [routerLink]="['/features/common']">PlayConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>With this property, you can enable autoPlay, change default interval and enable pauseOnHover.</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="GalleryService" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">GalleryService</a>
+  </h2>
+  <p>Service to interact with modal gallery without clicking on plain-gallery. For instance, you can open modal gallery from your Component's code instead of clicking on a thumb in plain gallery.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>openGallery ( galleryId, index )</code></small></td>
+      <td>
+        <div>
+          <i>Input types: </i><code>galleryId: number | undefined</code>&nbsp;&nbsp;and&nbsp;&nbsp;<code>index: number</code>
+        </div>
+        <div>
+          <p>Method to open an image (index) of modal gallery (id). You have to provide both an index >= 0 and a galleryId >= 0.
+            Also, remember that ids must be unique across your web page,
+            so every instance of modal gallery must have a different id.</p>
+        </div>
+      </td>
+      <tr>
+        <td><small><code>closeGallery ( galleryId )</code></small></td>
+        <td>
+          <div>
+            <i>Input types: </i><code>galleryId: number | undefined</code>
+          </div>
+          <div>
+            <p>Method to close the modal gallery with id equals to the input parameter galleryId.
+              You have to provide a galleryId >= 0. Also, remember that ids must be unique across your web page,
+              so every instance of modal gallery must have a different id.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>update ( galleryId, index, newImage )</code></small></td>
+        <td>
+          <div>
+            <i>Input types: </i><code>galleryId: number | undefined</code> &nbsp;, &nbsp;&nbsp;<code>index: number</code> and&nbsp;&nbsp;<code>newImage: Image</code>
+          </div>
+          <div>
+            <p>Method to update the images array at position <code>index</code> with <code>newImage</code> passed as parameter.
+              You have to provide a galleryId >= 0. Also, remember that ids must be unique across your web page,
+              so every instance of modal gallery must have a different id.</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="LoadingType" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">LoadingType</a>
+  </h2>
+  <p>Enum that represents the type of the loading spinner. It can be one of these enum values:</p>
+  <br>
+  <ul>
+    <li><code>STANDARD</code>: the default spinner</li>
+    <li><code>CIRCULAR</code>: a circular spinner</li>
+    <li><code>BARS</code>: spinner built with some animated vertical bars</li>
+    <li><code>DOTS</code>: spinner composed by animated dots</li>
+    <li><code>CUBE_FLIPPING</code>: flipping cube spinner</li>
+    <li><code>CIRCLES</code>: spinner composed by multiple circles</li>
+    <li><code>EXPLOSING_SQUARES</code>: spinner composed by 4 squares moving outside</li>
+  </ul>
+
+  <br>
+
+  <h2 id="KeyboardEnum" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">KeyboardEnum</a>
+  </h2>
+  <p>Enum that represents keyboard's keycodes. It can be one of these enum values:</p>
+  <br>
+  <ul>
+    <li><code>ESC</code>: 27</li>
+    <li><code>LEFT_ARROW</code>: 37</li>
+    <li><code>RIGHT_ARROW</code>: 39</li>
+    <li><code>UP_ARROW</code>: 38</li>
+    <li><code>DOWN_ARROW</code>: 40</li>
+  </ul>
+</div>

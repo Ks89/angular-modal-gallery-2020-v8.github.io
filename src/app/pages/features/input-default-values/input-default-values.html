@@ -1,0 +1,234 @@
+<div class="container">
+
+  <h1 id="InputDefaultValues" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Default input values</a>
+  </h1>
+
+  <p>When undefined, <b>carousel</b>'s inputs have these default values:</p>
+  <br>
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Input (.html)</th>
+        <th>Default value (.ts)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><small><code>id</code></small></td>
+        <td>
+          <div>Mandatory field, without a default value</div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>images</code></small></td>
+        <td>
+          <div>Mandatory field, without a default value</div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>carouselConfig</code></small></td>
+        <td>
+          <div><small>&#123; maxWidth: '100%', maxHeight: '400px, showArrows: true, objectFit: 'cover',
+            keyboardEnable: true, modalGalleryEnable: false &#125;</small></div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>playConfig</code></small></td>
+        <td>
+          <div><small>&#123; autoPlay: true, interval: 5000, pauseOnHover: true &#125;</small></div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>carouselImageConfig</code></small></td>
+        <td>
+          <div><small>&#123; invertSwipe: false, description: &#123; strategy: DescriptionStrategy.ALWAYS_HIDDEN, imageText: 'Image ', numberSeparator: '/', beforeTextDescription: ' - ',
+            style: &#123; bgColor: 'rgba(0,0,0,.5)', textColor: 'white', marginTop: '0px', marginBottom: '0px', marginLeft: '0px', marginRight: '0px' &#125; &#125; &#125;</small></div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>dotsConfig</code></small></td>
+        <td>
+          <div><small>&#123; visible: true &#125;</small></div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>previewConfig</code></small></td>
+        <td>
+          <div><small>&#123; visible: true, number: 4, arrows: true, clickable: true, size: &#123; height: '200px', width: 100 / 4 + '%' &#125; &#125;</small></div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>infinite</code></small></td>
+        <td>
+          <div><small>true</small></div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>accessibilityConfig</code></small></td>
+        <td>
+          <div><small>an object with all default english accessibility values. Check below for the complete object.</small></div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <p>When undefined, <b>modal gallery</b>'s inputs have these default values:</p>
+  <br>
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th>Input (.html)</th>
+          <th>Default value (.ts)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><small><code>id</code></small></td>
+          <td>
+            <div>Mandatory field, without a default value</div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>modalImages</code></small></td>
+          <td>
+            <div>Mandatory field, without a default value</div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>currentImageConfig</code></small></td>
+          <td>
+            <div><small>&#123; invertSwipe: false, navigateOnClick: true, downloadable: false, loadingConfig: &#123;enable: true, type: LoadingType.STANDARD&#125;, description: &#123; strategy: DescriptionStrategy.ALWAYS_VISIBLE, imageText: 'Image ', numberSeparator: '/', beforeTextDescription: ' - ',
+              style: &#123; bgColor: 'rgba(0,0,0,.5)', textColor: 'white', marginTop: '0px', marginBottom: '0px', marginLeft: '0px', marginRight: '0px' &#125; &#125; &#125;</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>buttonsConfig</code></small></td>
+          <td>
+            <div><small>&#123; visible: true, strategy: ButtonsStrategy.DEFAULT &#125;</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>enableCloseOutside</code></small></td>
+          <td>
+            <div><small>true</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>previewConfig</code></small></td>
+          <td>
+            <div><small>&#123; visible: true, number: 3, arrows: true, clickable: true, size: &#123; height: '50px', width: 'auto' &#125;&#125;</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>slideConfig</code></small></td>
+          <td>
+            <div><small>&#123; infinite: false, playConfig: &#123; autoPlay: true, interval: 5000, pauseOnHover: true &#125;, sidePreviews: &#123; show: true, size: &#123; width: '100px', height: 'auto' &#125; &#125; &#125;</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>accessibilityConfig</code></small></td>
+          <td>
+            <div><small>an object with all default english accessibility values. Check below for the complete object.</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>keyboardConfig</code></small></td>
+          <td>
+            <div><kbd>esc</kbd>, <kbd>&rarr;</kbd>, <kbd>&larr;</kbd></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>plainGalleryConfig</code></small></td>
+          <td>
+            <div><small>&#123; strategy: PlainGalleryStrategy.ROW, layout: this.defaultLayout, advanced: &#123; aTags: false, additionalBackground: '50% 50%/cover' &#125; &#125;</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>dotsConfig</code></small></td>
+          <td>
+            <div><small>&#123; visible: true &#125;</small></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <p>Default <code>AccessibilityConfig</code> exported as <code>KS_DEFAULT_ACCESSIBILITY_CONFIG</code></p>
+  <ul>
+    <li>Background
+      <ul>
+        <li><code>backgroundAriaLabel</code> 'Modal gallery full screen background'</li>
+        <li><code>backgroundTitle</code> ''</li>
+      </ul>
+    </li>
+    <li>Plain gallery
+      <ul>
+        <li><code>plainGalleryContentAriaLabel</code> 'Plain gallery content'</li>
+        <li><code>plainGalleryContentTitle</code> ''</li>
+      </ul>
+    </li>
+    <li>Modal gallery
+      <ul>
+        <li><code>modalGalleryContentAriaLabel</code> 'Modal gallery content'</li>
+        <li><code>modalGalleryContentTitle</code> ''</li>
+      </ul>
+    </li>
+    <li>Loading spinner
+      <ul>
+        <li><code>loadingSpinnerAriaLabel</code> 'The current image is loading. Please be patient.'</li>
+        <li><code>loadingSpinnerTitle</code> 'The current image is loading. Please be patient.'</li>
+      </ul>
+    </li>
+    <li>Current image
+      <ul>
+        <li><code>mainContainerAriaLabel</code> 'Current image and navigation'</li>
+        <li><code>mainContainerTitle</code> ''</li>
+        <li><code>mainPrevImageAriaLabel</code> 'Previous image'</li>
+        <li><code>mainPrevImageTitle</code> 'Previous image'</li>
+        <li><code>mainNextImageAriaLabel</code> 'Next image'</li>
+        <li><code>mainNextImageTitle</code> 'Next image'</li>
+      </ul>
+    </li>
+    <li>Dots
+      <ul>
+        <li><code>dotsContainerAriaLabel</code> 'Image navigation dots'</li>
+        <li><code>dotsContainerTitle</code> ''</li>
+        <li><code>dotAriaLabel</code> 'Navigate to image number'</li>
+      </ul>
+    </li>
+    <li>Previews
+      <ul>
+        <li><code>previewsContainerAriaLabel</code> 'Image previews'</li>
+        <li><code>previewsContainerTitle</code> ''</li>
+        <li><code>previewScrollPrevAriaLabel</code> 'Scroll previous previews'</li>
+        <li><code>previewScrollPrevTitle</code> 'Scroll previous previews'</li>
+        <li><code>previewScrollNextAriaLabel</code> 'Scroll next previews'</li>
+        <li><code>previewScrollNextTitle</code> 'Scroll next previews'</li>
+      </ul>
+    </li>
+    <li>Carousel
+      <ul>
+        <li><code>carouselContainerAriaLabel</code> 'Current image and navigation'</li>
+        <li><code>carouselContainerTitle</code> ''</li>
+        <li><code>carouselPrevImageAriaLabel</code> 'Previous image'</li>
+        <li><code>carouselPrevImageTitle</code> 'Previous image'</li>
+        <li><code>carouselNextImageAriaLabel</code> 'Next image'</li>
+        <li><code>carouselNextImageTitle</code> 'Next image'</li>
+        <li><code>carouselPreviewsContainerAriaLabel</code> 'Image previews'</li>
+        <li><code>carouselPreviewsContainerTitle</code> ''</li>
+        <li><code>carouselPreviewScrollPrevAriaLabel</code> 'Scroll previous previews'</li>
+        <li><code>carouselPreviewScrollPrevTitle</code> 'Scroll previous previews'</li>
+        <li><code>carouselPreviewScrollNextAriaLabel</code> 'Scroll next previews'</li>
+        <li><code>carouselPreviewScrollNextTitle</code> 'Scroll next previews'</li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,258 @@
+<div class="container">
+
+  <!-- TODO Add link to github sources -->
+  <h1 id="Previews" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Previews</a>
+  </h1>
+  <p>Previews component contains previews with navigation arrows.</p>
+  <br>
+
+  <section>
+    <h2 id="PreviewConfig" class="link clickable">
+      <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PreviewConfig</a>
+    </h2>
+    <p>Interface to configure previews (not 'side-previews', but those at the bottom) in modal gallery.</p>
+    <br>
+    <table class="table table-hover table-sm">
+      <tbody>
+      <tr>
+        <td>
+          <small><code>visible</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code>
+          </div>
+          <div>
+            <p>If false, previews will be hidden, otherwise not. <code>true</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>number</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Number of previews to show. <code>3</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>arrows</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If false, preview's navigation arrows are visible, otherwise not. <code>false</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>clickable</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If false, previous won't be clickable, otherwise not. <code>true</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>size</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>Size</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>You can change the default size of previews. <code>width: 50px</code> and <code>height: auto</code> by
+              default.</p>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 id="CarouselPreviewConfig" class="link clickable">
+      <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">CarouselPreviewConfig</a>
+    </h2>
+    <p>Interface to configure carousel's previews.</p>
+    <br>
+    <table class="table table-hover table-sm">
+      <tbody>
+      <tr>
+        <td>
+          <small><code>visible</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code>
+          </div>
+          <div>
+            <p>If false, previews will be hidden, otherwise not. <code>true</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>number</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Number of previews to show. <code>3</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>arrows</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If false, preview's navigation arrows are visible, otherwise not. <code>false</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>clickable</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If false, previous won't be clickable, otherwise not. <code>true</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>width</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>You can change the width of previews. <code>auto</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>maxHeight</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>You can change the maximum height of previews ignoring higher values if specified in breakpoints. <code>200px</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <small><code>breakpoints</code></small>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><a href="#BreakpointsConfig"><code>BreakpointsConfig</code></a><span class="badge badge-pill badge-secondary float-right">optional</span>
+<!--            <i>Type: </i><a pageScroll href="#BreakpointsConfig"><code>BreakpointsConfig</code></a><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+          </div>
+          <div>
+            <p>You can change the heights at different window's width. <code>xSmall: 100, small: 100, medium: 150, large: 200, xLarge: 200</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <br>
+
+  <h2 id="BreakpointsConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">BreakpointsConfig</a>
+  </h2>
+  <p>Interface to customize carousel previews heights at different window's sizes.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td><small><code>xSmall</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Number of pixels to be used as height for extra-small screen (defined in @angular/cdk)</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>small</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Number of pixels to be used as height for small screen (defined in @angular/cdk)</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>medium</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Number of pixels to be used as height for medium screen (defined in @angular/cdk)</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>large</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Number of pixels to be used as height for large screen (defined in @angular/cdk)</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>xLarge</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Number of pixels to be used as height for extra-large screen (defined in @angular/cdk)</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

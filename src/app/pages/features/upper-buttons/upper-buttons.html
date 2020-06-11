@@ -1,0 +1,239 @@
+<div class="container">
+
+  <!-- TODO Add link to github sources -->
+  <h1 id="UpperButtons" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">UpperButtons</a>
+  </h1>
+  <p>UpperButtons component contains buttons receiving a <code><a href="#ButtonsConfig">ButtonsConfig</a></code> as input</p>
+<!--  <p>UpperButtons component contains buttons receiving a <code><a pageScroll href="#ButtonsConfig">ButtonsConfig</a></code> as input</p>-->
+
+  <br>
+
+  <h2 id="ButtonsConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ButtonsConfig</a>
+  </h2>
+  <p>Interface to customize modal upper buttons.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td><small><code>visible</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code>
+          </div>
+          <div>
+            <p>If <code>false</code>, all buttons are hidden, otherwise not.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>strategy</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>ButtonsStrategy</code>
+          </div>
+          <div>
+            <p>Enum to decide which buttons are visible, based on some patterns (default, simple, advanced...)</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>buttons</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>ButtonConfig[]</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>If you choose <code>ButtonsStrategy.CUSTOM</code> you can add your buttons to this array</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="ButtonEvent" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ButtonEvent</a>
+  </h2>
+  <p>Interface that represent a button event.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>button</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>ButtonConfig</code>
+        </div>
+        <div>
+          <p>The button configuration / representation</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>image</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>Image | null</code>
+        </div>
+        <div>
+          <p>The current <code><a [routerLink]="['/features/common']">Image</a></code> object</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>action</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>Action</code>
+        </div>
+        <div>
+          <p>It's the enum <code><a [routerLink]="['/features/common']">Action</a></code></p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="ButtonConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ButtonConfig</a>
+  </h2>
+  <p>Interface that represent a button.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr>
+        <td><small><code>className</code></small></td>
+        <td>
+          <div>
+           <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+           <p>To specify the css class name with the icon (for instance, with Font Awesome, you can use 'fa fa-close')</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>size</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>Size</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+           <p>To choose the size of the button (if you are using fonts as icons please check 'fontSize').
+             <code>width: 30px</code> and <code>height auto</code> by default</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>fontSize</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>To specify the size of the font ('font-size' css property) if you are using a font as icon (for instance, with Font Awesome)</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>type</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>ButtonType</code>
+          </div>
+          <div>
+            <p>Enum to specify the type of the button. If you want to create a custom button, use <code>ButtonType.CUSTOM</code></p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>title</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional title text. It sets 'title' html's attribute, useful for accessibility purposes.
+              To ignore this feature, don't add this property</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>arialLabel</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional aria label text. It sets 'aria-label' html's attribute, useful for accessibility purposes.
+              To ignore this feature, don't add this property</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><small><code>extUrlInNewTab</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>To open in a new tab (instead of the current one) the url specified in extUrl property</p>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="ButtonsStrategy" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ButtonsStrategy</a>
+  </h2>
+  <p>Enum to decide which buttons are visible or not. It can be one of these enum values:</p>
+  <br>
+  <ul>
+    <li><code>DEFAULT</code>: only close button</li>
+    <li><code>SIMPLE</code>: close and download button</li>
+    <li><code>ADVANCED</code>: close, download and exturl (to open a link in the current tab)</li>
+    <li><code>FULL</code>: close, download, exturl (to open a link in the current tab), delete and full-screen</li>
+    <li><code>CUSTOM</code>: to add an array of <code><a href="#ButtonsConfig">ButtonsConfig</a></code></li>
+<!--    <li><code>CUSTOM</code>: to add an array of <code><a pageScroll href="#ButtonsConfig">ButtonsConfig</a></code></li>-->
+  </ul>
+
+  <br>
+
+  <h2 id="ButtonType" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ButtonType</a>
+  </h2>
+  <p>Enum that represent the button's type. It can be one of these enum values:</p>
+  <br>
+  <ul>
+    <li><code>DELETE</code>: delete button</li>
+    <li><code>EXTURL</code>: extUrl button (to open a link in the current tab)</li>
+    <li><code>DOWNLOAD</code>: download button</li>
+    <li><code>CLOSE</code>: close button</li>
+    <li><code>CUSTOM</code>: custom button created by you from scratch (behaviour, icons and so on)</li>
+    <li><code>FULLSCREEN</code>: full-screen button</li>
+  </ul>
+
+  <br>
+
+  <h2 id="ActionEnum" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ActionEnum</a>
+  </h2>
+  <p>Enum that represents the source of an action. It can be one of these enum values:</p>
+  <br>
+  <ul>
+    <li><code>NORMAL</code>: the default value</li>
+    <li><code>CLICK</code>: mouse click action</li>
+    <li><code>KEYBOARD</code>: keyboard action (<kbd>ctrl</kbd>+<kbd>s</kbd>, <kbd>cmd</kbd>+<kbd>s</kbd>, <kbd>esc</kbd>, <kbd>&rarr;</kbd>, <kbd>&larr;</kbd> and so on)</li>
+    <li><code>SWIPE</code>: swipe action</li>
+    <li><code>LOAD</code>: data/images loaded by the library</li>
+  </ul>
+</div>

@@ -1,0 +1,265 @@
+<div class="container">
+
+  <!-- TODO Add link to github sources -->
+  <h1 id="DescriptionInterfaces" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Description interfaces</a>
+  </h1>
+  <p>Description interfaces used by all components of this library.
+
+  <br>
+
+  <h2 id="Description" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Description</a>
+  </h2>
+  <p>Interface to set a config image description.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td class="very-big-tds"><small><code>strategy</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>DescriptionStrategy</code>
+        </div>
+        <div>
+          <p>Enum to choose when description should be visible. <code>ALWAYS_VISIBLE</code> by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>imageText</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>It's the beginning part of the description. By default its value is the string 'Image',
+            but you can change the language specifying your value, for instance 'Immagine' (italian),
+            'Bild' (german), 'Imagen' (spanish) or also an empty string ''.</p>
+          <p>Example: `<code>imageText</code> 2/12 - bla bla`</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>numberSeparator</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>It's the text between the current image number and the total number of images.</p>
+          <p>Example: `Image 2<code>numberSeparator</code>12 - bla bla`</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>beforeTextDescription</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>It's the text between the total number of images and the final description text</p>
+          <p>Example: `Image 2/12<code>beforeTextDescription</code>bla bla`</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>customFullDescription</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>It's the full text description. If you set this value, all others will be ignored.</p>
+          <p>Obviously, if you want a dynamic description with the current image number and so on,
+            you have to build it by yourself. Otherwise, you should use the other parameters of this object
+            to customize the default description. </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>style</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>DescriptionStyle</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>Interface to change background color, text color, margins, positions, sizes and so on.</p>
+          <p>All properties are optional and some of them have default values. Check <code><a href="#DescriptionStyle">DescriptionStyle</a></code> for more information.</p>
+<!--          <p>All properties are optional and some of them have default values. Check <code><a pageScroll href="#DescriptionStyle">DescriptionStyle</a></code> for more information.</p>-->
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="DescriptionStyle" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">DescriptionStyle</a>
+  </h2>
+  <p>Interface to change description style.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td class="very-big-tds"><small><code>bgColor</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'background' property. <code>rgba(0, 0, 0, .5)</code> by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>textColor</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'color' property. <code>white</code> by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>marginTop</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'margin-top' property. <code>0px</code> by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>marginBottom</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'margin-bottom' property. <code>5px</code> by default.</p>
+          <p class="text-danger"><b>Breaking change: From angular-modal-gallery 6.0.0, default value will be '0px'</b></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>marginLeft</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'margin-left' property. <code>0px</code> by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>marginRight</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'margin-right' property. <code>0px</code> by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>position</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'position' property.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>top</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'top' property.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>bottom</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'bottom' property.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>left</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'left' property.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>right</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'right' property.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>width</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'width' property.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="very-big-tds"><small><code>height</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>CSS 'height' property.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="DescriptionStrategy" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">DescriptionStrategy</a>
+  </h2>
+  <p>Enum to decide when description should be visible or hidden. It can be one of these enum values:</p>
+  <br>
+  <ul>
+    <li><code>ALWAYS_HIDDEN</code>: description is always hidden</li>
+    <li><code>ALWAYS_VISIBLE</code>: description is always visible</li>
+    <li><code>HIDE_IF_EMPTY</code>: description is visible if valid</li>
+  </ul>
+</div>

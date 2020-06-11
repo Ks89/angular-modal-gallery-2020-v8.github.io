@@ -1,0 +1,390 @@
+<div class="container">
+
+  <!-- TODO Add link to github sources -->
+  <h1 id="Carousel" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Carousel</a>
+  </h1>
+  <p>Carousel component is a new component to build responsive carousels. It contains a collection of <code><a [routerLink]="['/features/common']">Images</a></code>,
+    like all other components exposed by this library and many other config objects.
+    It displays images as a carousel, so a big image (either full or limited width) with right and left arrows and it shows images every a fixed amount of time.
+    Optionally, it can display previews above/below the main image. A live example of this component is available on the homepage of this website.
+    Obviously, there are additional configurable features, like aria, keyboard navigation, sizes and so on.
+    A very cool feature, it the integration with ModalGallery. In fact, you can configure the carousel to open the current image in a modal way,
+    using <code><a [routerLink]="['/features/modal-gallery']">ModalGalleryComponent</a></code>.</p>
+  <p class="warning">If you need to support also Internet Explorer 11 (IE11), enable <code>legacyIE11Mode: true</code> and use only
+    ABSOLUTE image paths (for instance '/assets/a.png' instead of './assets/a.png'). However, try to understand that I cannot support that obsolete browser forever!</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td>Template (HTML) selector</td>
+      <td><code>ks-carousel</code></td>
+    </tr>
+    <tr>
+      <td>Exported as</td>
+      <td><code>ksCarousel</code></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <section>
+    <h2>Inputs</h2>
+    <table class="table table-hover table-sm">
+      <tbody>
+        <tr>
+          <td class="big-tds"><small><code>id</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>number</code>
+            </div>
+            <div>
+              A mandatory unique id >= 0 of the current carousel.
+              Despite CarouselComponent doesn't use this value, it must be unique because a carousel can open a modal image
+              using <code><a [routerLink]="['/features/modal-gallery']">GalleryService</a></code>.
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds"><small><code>images</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/common']">Image[]</a></code>
+            </div>
+            <div>
+              <p> The mandatory array of <code><a [routerLink]="['/features/common']">Image</a></code> objects, that represent both the thumb gallery and the
+                modal images. In fact, an <code><a [routerLink]="['/features/common']">Image</a></code> is an object with both thumb and
+                image source paths with other additional configuration parameters. For more info check <code><a [routerLink]="['/features/common']">Image</a></code>.</p>
+              <p class="warning">Carousel uses the image path assigned to the modal property in Image class. This is for historical reason and to provide a better integration with modal-gallery.</p>
+              <p>Please, don't use <code>this.images.push(img)</code> when you want to modify this array, instead re-assign it to trigger change detection.
+              For instance: <code>this.images = [...this.images, newImage]</code> to create a new array from the original with a new image at the end.</p>
+              <p class="warning">If you need IE11 support, always use ABSOLUTE image paths (for instance '/assets/a.png' instead of './assets/a.png').</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>carouselConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a href="#CarouselConfig">CarouselConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+<!--              <i>Type: </i><code><a pageScroll href="#CarouselConfig">CarouselConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+            </div>
+            <div>
+              <p>Interface to configure the carousel, like to change sizes, hide some features and so on.</p>
+              <p>For more information, please see the <a href="#CarouselConfig">CarouselConfig</a>'s section</p>
+<!--              <p>For more information, please see the <a pageScroll href="#CarouselConfig">CarouselConfig</a>'s section</p>-->
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>playConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/common']">PlayConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to change the behaviour of auto-navigation, like autoPlay and interval in milliseconds.</p>
+              <p>For more information, please see the <a [routerLink]="['/features/common']">PlayConfig</a>'s section</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>carouselImageConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a href="#CarouselImageConfig">CarouselImageConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+<!--              <i>Type: </i><code><a pageScroll href="#CarouselImageConfig">CarouselImageConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+            </div>
+            <div>
+              <p>Interface to change current image of the carousel, like description or to invert the swipe direction.</p>
+              <p>For more information, please see the <a href="#CarouselImageConfig">CarouselImageConfig</a>'s section</p>
+<!--              <p>For more information, please see the <a pageScroll href="#CarouselImageConfig">CarouselImageConfig</a>'s section</p>-->
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>dotsConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/common']">DotsConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to configure dots.</p>
+              <p>For more information, please see the <code><a [routerLink]="['/features/common']">DotsConfig</a></code>'s section</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>previewConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/previews']">CarouselPreviewConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to configure previews, for instance to choose either the number, visibility, arrows, sizes.
+                If you want to know how to use this object, please check <a [routerLink]="['/features/previews']">PreviewsComponent</a>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>infinite</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p></p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>accessibilityConfig</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code><a [routerLink]="['/features/accessibility']">AccessibilityConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Interface to customize accessibility features, like alt, titles, aria-labels and so on. CarouselComponent applies a default value with english texts.
+                This default config object is exported as <small><code><a [routerLink]="['/features/default-values']">KS_DEFAULT_ACCESSIBILITY_CONFIG</a></code></small>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Outputs</h2>
+    <table class="table table-hover table-sm">
+      <tbody>
+        <tr>
+          <td><small><code>show</code></small></td>
+          <td>
+            <p>An <code><a href="#ImageEvent">ImageEvent</a></code> right <b>after</b> the current image is changed.</p>
+<!--            <p>An <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> right <b>after</b> the current image is changed.</p>-->
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number).</p>
+            <p>Everytime the current image changes, a new <code><a href="#ImageEvent">ImageEvent</a></code> will be emitted.</p>
+<!--            <p>Everytime the current image changes, a new <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> will be emitted.</p>-->
+            <ul>
+              <li>action: either <code><a [routerLink]="['/features/common']">Action.NORMAL</a></code>, <code><a [routerLink]="['/features/common']">Action.CLICK</a></code>, <code><a [routerLink]="['/features/common']">Action.KEYBOARD</a></code> or <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code></li>
+              <li>result: <code>number</code> (index of an image. Not the index of the array, but incremented by 1)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>firstImage</code></small></td>
+          <td>
+            <p>An <code><a href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the FIRST image in
+<!--            <p>An <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the FIRST image in-->
+              <code>images</code> is visible.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
+            <ul>
+              <li>action: either <code><a [routerLink]="['/features/common']">Action.NORMAL</a></code>, <code><a [routerLink]="['/features/common']">Action.CLICK</a></code>, <code><a [routerLink]="['/features/common']">Action.KEYBOARD</a></code> or <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code></li>
+              <li>result: <code>true</code></li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>lastImage</code></small></td>
+          <td>
+            <p>An <code><a href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the LAST image in
+<!--            <p>An <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the LAST image in-->
+              <code>images</code> is visible.</p>
+            <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
+            <ul>
+              <li>action: either <code><a [routerLink]="['/features/common']">Action.NORMAL</a></code>, <code><a [routerLink]="['/features/common']">Action.CLICK</a></code>, <code><a [routerLink]="['/features/common']">Action.KEYBOARD</a></code> or <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code></li>
+              <li>result: <code>true</code></li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <br>
+  <h2 id="CarouselConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">CarouselConfig</a>
+  </h2>
+  <p>Interface to configure the carousel, like to change sizes, hide some features and so on.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>maxWidth</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code>
+        </div>
+        <div>
+          <p>Maximum width of the carousel. It's used to set the CSS property maxWidth. '100%' (full width) by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>maxHeight</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code>
+        </div>
+        <div>
+          <p>Maximum height of the carousel. It's used to set the CSS property maxHeight. '400px%' by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>showArrows</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>boolean to disable both left and right arrows. true by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>objectFit</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code>
+        </div>
+        <div>
+          <p>CSS objectFit property. For more information check
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit">Mozilla MDN web doc</a>.
+          'cover' by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>keyboardEnable</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>boolean to disable keyboard navigation. true by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>modalGalleryEnable</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>boolean to enable clicks on the current image to open modal gallery. false by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>legacyIE11Mode</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>boolean to enable legacy support for Internet Explorer 11 (IE11), otherwise the carousel won't work properly. false by default.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 id="CarouselImageConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">CarouselImageConfig</a>
+  </h2>
+  <p>Interface to change current image of the carousel, like description or to invert the swipe direction.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>description</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>Optional description text.
+            Attention: this is not the full description, but only the last part, after image numbers.
+            For instance: `Image 2/12 - <code>description</code>`. To ignore this feature, don't add this property.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>invertSwipe</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>Optional boolean property to invert the default swipe direction on devices with touchscreen.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 id="ImageEvent" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ImageEvent</a>
+  </h2>
+  <p>The payload of events related to action, emitted by this library.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>action</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>Action</code>
+        </div>
+        <div>
+          <p>It's the enum <code><a [routerLink]="['/features/common']">Action</a></code></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>result</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number | boolean</code>
+        </div>
+        <div>
+          <p>The result/data of the emitted event. For example, it could be the index of the current image
+            or a boolean to say if images are ready to display and so on.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

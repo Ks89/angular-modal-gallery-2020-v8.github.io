@@ -1,0 +1,144 @@
+<div class="container">
+
+  <h2 class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Download Advanced example</a>
+  </h2>
+  <p>Modal gallery example with <b class="text-success">downloadable images</b> and <b class="text-success">download button</b>.</p>
+  <br>
+
+  <p><b>Attention: for security reasons Google Chrome and other browsers decided to block cross-origin downloads.</b>
+    So to use the download feature of this example, your images must be in the same server of your Angular application,
+    otherwise the browser will navigate to the image itself, without to download it automatically.
+    For more information check: <a href="https://developers.google.com/web/updates/2018/02/chrome-65-deprecations#block_cross-origin_wzxhzdk5a_download">HERE</a></p>
+  <br>
+
+  <h3>Live Demo</h3>
+  <br>
+  <ks-modal-gallery [id]="0" [modalImages]="images"
+                    [currentImageConfig]="{downloadable: true}"
+                    [buttonsConfig]="buttonsConfigSimple">
+  </ks-modal-gallery>
+  <br><br>
+
+  <section>
+    <h3>Code</h3>
+    <br>
+    <h4>Template</h4>
+    <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
+    </codemirror>
+    <br>
+    <h4>Typescript</h4>
+    <codemirror [(ngModel)]="codeTypescript" [config]="configTs">
+    </codemirror>
+  </section>
+
+  <br><br>
+
+  <section>
+    <h3>Details</h3>
+    <br>
+    <table class="table table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Input (.html)</th>
+        <th>Value (.ts)</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>id</code></td>
+          <td>
+            <div><i>Value: </i><code>NUMERIC UNIQUE ID</code></div>
+            <div><b class="text-success">Unique id</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>modalImages</code></td>
+          <td>
+            <div><i>Value: </i><code>Image[]</code></div>
+            <div><b class="text-success">Array of <code>Image</code> objects</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>currentImageConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>&#123; downloadable: true &#125;</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Image download is enabled with keyboard shortcuts, default loading spinner, clickable current image and with default description (always visible)</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>buttonsConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>It will show only the close button</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>enableCloseOutside</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Clicking on the semi-transparent background, modal-gallery will close</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dotsConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>It will show dots below the current modal image</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>previewConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>It will show 3 clickable previews (default size) with arrows</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>slideConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Infinite sliding is disabled by default and side previews are visible with a default size</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>accessibilityConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div><small>(an object with all default english accessibility values by default)</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>keyboardConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>plainGalleryConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Row plain gallery with default layout</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>slideConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Infinite sliding and autoPlay are disabled and side previews are enabled with default sizes</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

@@ -1,0 +1,121 @@
+<div class="container">
+
+  <h2 class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Carousel disable features</a>
+  </h2>
+  <p>Carousel disable features demo without previews.</p>
+  <br>
+
+  <h3>Live Demo</h3>
+  <br>
+  <p>Autoplay: <button class="btn btn-primary" (click)="onChangeAutoPlay()">{{autoPlay ? 'disable autoplay' : 'enable autoplay'}}</button></p>
+  <p>Show Arrows: <button class="btn btn-primary" (click)="onChangeShowArrows()">{{showArrows ? 'Hide Arrows' : 'Show Arrows'}}</button></p>
+  <p>Show Dots: <button class="btn btn-primary" (click)="onChangeShowDots()">{{showDots ? 'Hide Dots' : 'Show Dots'}}</button></p>
+  <br>
+  <ks-carousel [id]="108" [images]="images"
+    [previewConfig]="{visible: false}"
+    [playConfig]="{autoPlay: autoPlay, interval: 3000, pauseOnHover: true}"
+    [carouselConfig]="{maxWidth: '100%', maxHeight: '400px', showArrows: showArrows, objectFit: 'cover', keyboardEnable: true, modalGalleryEnable: false}"
+    [dotsConfig]="{visible: showDots}"></ks-carousel>
+  <br><br>
+
+  <section>
+    <h3>Code</h3>
+    <br>
+    <h4>Template</h4>
+    <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
+    </codemirror>
+    <br>
+    <h4>Typescript</h4>
+    <codemirror [(ngModel)]="codeTypescript" [config]="configTs">
+    </codemirror>
+  </section>
+
+  <br><br>
+
+  <section>
+    <h3>Details</h3>
+    <br>
+    <table class="table table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Input (.html)</th>
+        <th>Value (.ts)</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>id</code></td>
+          <td>
+            <div><i>Value: </i><code>NUMERIC UNIQUE ID</code></div>
+            <div><b class="text-success">Unique id</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>images</code></td>
+          <td>
+            <div><i>Value: </i><code>Image[]</code></div>
+            <div><b class="text-success">Array of <code>Image</code> objects</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>carouselConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>&#123; maxWidth: '100%', maxHeight: '400px', showArrows: showArrows, objectFit: 'cover', keyboardEnable: true, modalGalleryEnable: false &#125;</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Full width carousel with height 400px, image cover, togglable arrows via an external variable, keyboard navigation,
+              but without modal gallery</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>playConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>&#123; autoPlay: autoPlay, interval: 3000, pauseOnHover: true &#125;</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Togglable autoPlay via an external variable, pauseOnHover is enabled and there are 5000ms of delay</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>carouselImageConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>No description, and swipe not inverted</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dotsConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>visible: showDots</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Togglable dots via an external variable</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>previewConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>&#123; visible: false &#125;</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Hidden previews</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>infinite</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Infinite sliding is enabled by default</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>accessibilityConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div><small>(an object with all default english accessibility values by default)</small></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

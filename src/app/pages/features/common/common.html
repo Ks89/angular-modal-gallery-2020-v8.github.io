@@ -1,0 +1,173 @@
+<div class="container">
+
+  <!-- TODO Add link to github sources -->
+  <h1 id="Common" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Common</a>
+  </h1>
+  <p>Common interfaces and classes used by all components of this library.
+
+  <br>
+
+  <h2 id="Image" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Image</a>
+  </h2>
+  <p>The main object that represents an Image with both modal, thumbnail, description and so on.
+    To initialize <code>ModalGallery</code> you must instantiate an array of these objects with the 'new' keyword.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>id</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number</code>
+        </div>
+        <div>
+          <p>Mandatory <b>UNIQUE</b> id to identify the image.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>modal</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>ModalImage</code>
+        </div>
+        <div>
+          <p>Mandatory interface to configure the modal image.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>plain</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><a [routerLink]="['/features/plain-gallery']"><code>PlainImage</code></a><span class="badge badge-pill badge-secondary float-right">optional</span>
+        </div>
+        <div>
+          <p>Optional interface to configure the thumbnail (or 'plain image').</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h2 id="DotsConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">DotsConfig</a>
+  </h2>
+  <p>Interface to configure optional dots below the modal image.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>visible</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>If true, dots are visible, false otherwise. true by default.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2 id="Size" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Size</a>
+  </h2>
+  <p>Interface to customize images/icon sizes.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>width</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code>
+        </div>
+        <div>
+          <p style="margin-bottom: 0;">It can be a valid value for the css 'width' property.</p>
+          <p style="margin-bottom: 0;">For instance, you can use either '100px', 'auto', '20%'.</p>
+          <p style="margin-bottom: 0;">Default values change depending by the related component.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>height</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string</code>
+        </div>
+        <div>
+          <p style="margin-bottom: 0;">It can be a valid value for the css 'height' property.</p>
+          <p style="margin-bottom: 0;">For instance, you can use either '100px', 'auto', '20%'.</p>
+          <p style="margin-bottom: 0;">Default values change depending by the related component.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 id="PlayConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PlayConfig</a>
+  </h2>
+  <p>Interface to change the behaviour of auto-navigation, like autoPlay and interval in milliseconds.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><small><code>autoPlay</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>If false autoPlay is disabled. true by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>interval</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number</code>
+        </div>
+        <div>
+          <p>Integer >= 0 that represents the amount of time in milliseconds between every image.
+            It's used only when autoPlay is enabled. 5000 by default.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>pauseOnHover</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>If false, carousel won't stop moving the mouse pointer over it. true by default.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <h2 id="ActionEnum" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ActionEnum</a>
+  </h2>
+  <p>Enum that represents the source of an action. It can be one of these enum values:</p>
+  <br>
+  <ul>
+    <li><code>NORMAL</code>: the default value</li>
+    <li><code>CLICK</code>: mouse click action</li>
+    <li><code>KEYBOARD</code>: keyboard action (<kbd>ctrl</kbd>+<kbd>s</kbd>, <kbd>cmd</kbd>+<kbd>s</kbd>, <kbd>esc</kbd>, <kbd>&rarr;</kbd>, <kbd>&larr;</kbd> and so on)</li>
+    <li><code>SWIPE</code>: swipe action</li>
+    <li><code>LOAD</code>: data/images loaded by the library</li>
+    <li><code>AUTOPLAY</code>: modal-gallery's navigation caused by autoPlay</li>
+  </ul>
+</div>

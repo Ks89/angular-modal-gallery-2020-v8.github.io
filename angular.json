@@ -23,14 +23,27 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/theme"
+              ]
+            },
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/favicon.png",
+              "src/assets",
+              "src/browserconfig.xml",
+              "src/robots.txt",
+              "src/404.html",
+              "src/500.html"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/codemirror/lib/codemirror.css",
+              "node_modules/codemirror/theme/monokai.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/codemirror/lib/codemirror.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,14 +100,23 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/codemirror/lib/codemirror.css",
+              "node_modules/codemirror/theme/monokai.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/codemirror/lib/codemirror.js"
+            ],
+            "assets": [
+              "src/favicon.png",
+              "src/assets",
+              "src/browserconfig.xml",
+              "src/manifest.json",
+              "src/robots.txt",
+              "src/404.html",
+              "src/500.html"
+            ]
           }
         },
         "lint": {
@@ -123,6 +145,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-modal-gallery-docs"
+    }
+  },
+  "defaultProject": "angular-modal-gallery-docs",
+  "cli": {
+    "analytics": false
+  }
 }

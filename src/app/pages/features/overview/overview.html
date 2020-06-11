@@ -1,0 +1,67 @@
+<div class="container d-flex flex-column">
+
+  <h2>Overview</h2>
+  <p>@ks89/angular-modal-gallery is composed mainly in three parts: <strong>Carousel</strong>, <strong>Plain gallery</strong> and <strong>Modal gallery</strong>.
+    However, these components share some common interfaces and classes. So, I splitted this section in different parts: basic stuff and main components.</p>
+  <br>
+
+  <h3>Basic stuff</h3>
+  <ul>
+    <li>Common: all shared interfaces and classes</li>
+    <li>Description: interfaces to customize description for both Modal gallery and Carousel</li>
+    <li>Accessibility: interface to change accessibility texts for all components</li>
+    <li>Previews: interfaces to configure previews for both Modal gallery and Carousel</li>
+    <li>UpperButtons: interface to customize buttons of Modal gallery</li>
+    <li>Global configuration: explain how to change the behaviour of the library for the entire application passing parameters to <code>forRoot()</code> method</li>
+    <li>Default values: default values for all inputs of all components</li>
+  </ul>
+  <br>
+
+  <h3>Components</h3>
+  <ul>
+    <li><b>Carousel</b>: available via <code>&lt;ks-carousel&gt;&lt;/ks-carousel&gt;</code></li>
+    <li><b>Modal gallery</b>: available via <code>&lt;ks-modal-gallery&gt;&lt;/ks-modal-gallery&gt;</code></li>
+    <li><b>Plain gallery</b>: included inside Modal gallery, so it's not available via a standalone tag, but you have to use
+      <code>&lt;ks-modal-gallery&gt;&lt;/ks-modal-gallery&gt;</code> passing the right inputs</li>
+  </ul>
+  <br>
+
+  <h4>Carousel</h4>
+  <div class="d-flex flex-row justify-content-center">
+    <img [src]="carouselPath">
+  </div>
+  <br>
+  <p>It contains a list of scrollable images (full width or fixed width) also with previews. By default images scroll automatically.
+    Users can configure this component with many parameters, also they can project HTML content into the current carousel image.</p>
+  <p>For more info check <a [routerLink]="['/features/carousel']">Carousel's documentation</a></p>
+  <br>
+
+  <h4>Modal gallery</h4>
+  <div class="d-flex flex-row justify-content-center">
+    <img [src]="modalGalleryPath">
+  </div>
+  <br>
+  <ol>
+    <li>Current image</li>
+    <li>Side previews</li>
+    <li><a [routerLink]="['/features/upper-buttons']">Upper buttons</a></li>
+    <li><a [routerLink]="['/features/common']">Dots</a></li>
+    <li><a [routerLink]="['/features/previews']">Previews</a></li>
+    <li>Background (semi-transparent)</li>
+    <li><a [routerLink]="['/features/modal-gallery']">Modal gallery (the main component)</a></li>
+  </ol>
+  <p>For more info check <a [routerLink]="['/features/modal-gallery']">Modal gallery's documentation</a></p>
+  <br>
+
+  <h4>Plain gallery</h4>
+  <div class="d-flex flex-row justify-content-center">
+    <img [src]="plainGalleryPath">
+  </div>
+  <br>
+  <p>It contains a list of thumbnails that users can click to open modal gallery. Layouts are configurable and users could also use
+    a custom implementation to draw everything they want.</p>
+  <p>For more info check <a [routerLink]="['/features/plain-gallery']">Plain gallery's documentation</a></p>
+  <br>
+
+  <p>Check navigation sidebar to see all details.</p>
+</div>

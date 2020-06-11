@@ -1,0 +1,222 @@
+<div class="container">
+
+  <h2 class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Carousel custom breakpoints</a>
+  </h2>
+  <p>2 Carousels with custom breakpoints, one full width, the other one with fixed width 500px.</p>
+  <p>To see how they work, use a browser on your PC and try to reduce the width of the browser's window.</p>
+  <br>
+
+  <h3>Live Demos</h3>
+  <br>
+  <p>1. Full width</p>
+  <ks-carousel [id]="115" [images]="images"
+               [previewConfig]="{visible: true, breakpoints: {xSmall: 50, small: 60, medium: 80, large: 150, xLarge: 180}}"></ks-carousel>
+  <br>
+
+  <section>
+    <h3>Code</h3>
+    <br>
+    <h4>Template</h4>
+    <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
+    </codemirror>
+    <br>
+    <h4>Typescript</h4>
+    <codemirror [(ngModel)]="codeTypescript" [config]="configTs">
+    </codemirror>
+  </section>
+
+  <br>
+  <p>2. Fixed width 500px</p>
+  <ks-carousel [id]="116" [images]="images"
+               [carouselConfig]="{maxWidth: '500px', maxHeight: '400px', showArrows: true, objectFit: 'cover', keyboardEnable: true, modalGalleryEnable: false, legacyIE11Mode: false}"
+               [previewConfig]="{visible: true, breakpoints: {xSmall: 50, small: 60, medium: 70, large: 80, xLarge: 100}}"></ks-carousel>
+  <br>
+
+  <section>
+    <h3>Code</h3>
+    <br>
+    <h4>Template</h4>
+    <codemirror [(ngModel)]="codeHtml2" [config]="configHtml">
+    </codemirror>
+    <br>
+    <h4>Typescript</h4>
+    <codemirror [(ngModel)]="codeTypescript2" [config]="configTs">
+    </codemirror>
+  </section>
+
+  <br><br>
+
+  <section>
+    <h3>Details example 1 - full width</h3>
+    <br>
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th>Input (.html)</th>
+          <th>Value (.ts)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>id</code></td>
+          <td>
+            <div><i>Value: </i><code>NUMERIC UNIQUE ID</code></div>
+            <div><b class="text-success">Unique id</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>images</code></td>
+          <td>
+            <div><i>Value: </i><code>Image[]</code></div>
+            <div><b class="text-success">Array of <code>Image</code> objects</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>carouselConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Default full width carousel with height 400px, image cover, arrows, keyboard navigation,
+              but without modal gallery</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>playConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Both autoPlay and pauseOnHover are enabled with 5000ms of delay</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>carouselImageConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>No description, and swipe not inverted</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dotsConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>It will show dots inside the current image</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>previewConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>&#123; visible: true, breakpoints: &#123; xSmall: 50, small: 60, medium: 80, large: 150, xLarge: 180 &#125; &#125;</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Custom breakpoint but all the other properties have default values.</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>infinite</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Infinite sliding is enabled by default</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>accessibilityConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div><small>(an object with all default english accessibility values by default)</small></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <br><br>
+
+  <section>
+    <h3>Details example 2 - fixed width 500px</h3>
+    <br>
+    <table class="table table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Input (.html)</th>
+        <th>Value (.ts)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><code>id</code></td>
+        <td>
+          <div><i>Value: </i><code>NUMERIC UNIQUE ID</code></div>
+          <div><b class="text-success">Unique id</b></div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>images</code></td>
+        <td>
+          <div><i>Value: </i><code>Image[]</code></div>
+          <div><b class="text-success">Array of <code>Image</code> objects</b></div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>carouselConfig</code></td>
+        <td>
+          <div><i>Value: </i><code>&#123; maxWidth: '500px' &#125;</code></div>
+          <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          <div>Fixed width 500px, all other properties have default values</div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>playConfig</code></td>
+        <td>
+          <div><i>Value: </i><code>undefined</code></div>
+          <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          <div>Both autoPlay and pauseOnHover are enabled with 5000ms of delay</div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>carouselImageConfig</code></td>
+        <td>
+          <div><i>Value: </i><code>undefined</code></div>
+          <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          <div>No description, and swipe not inverted</div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>dotsConfig</code></td>
+        <td>
+          <div><i>Value: </i><code>undefined</code></div>
+          <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          <div>It will show dots inside the current image</div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>previewConfig</code></td>
+        <td>
+          <div><i>Value: </i><code>&#123; visible: true, breakpoints: &#123; xSmall: 50, small: 60, medium: 70, large: 80, xLarge: 100 &#125; &#125;</code></div>
+          <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          <div>Custom breakpoint but all the other properties have default values.</div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>infinite</code></td>
+        <td>
+          <div><i>Value: </i><code>undefined</code></div>
+          <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          <div>Infinite sliding is enabled by default</div>
+        </td>
+      </tr>
+      <tr>
+        <td><code>accessibilityConfig</code></td>
+        <td>
+          <div><i>Value: </i><code>undefined</code></div>
+          <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          <div><small>(an object with all default english accessibility values by default)</small></div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

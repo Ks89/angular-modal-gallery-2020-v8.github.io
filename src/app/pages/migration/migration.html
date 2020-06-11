@@ -1,0 +1,186 @@
+<div id="migration" class="jumbotron jumbotron-fluid title">
+  <div class="container">
+    <h1>Migration guide</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+      <h2>How to upgrade?</h2>
+      <ul>
+        <li><a href="#6to7">from 6.x.x to 7.x.x</a></li>
+        <li><a href="#5to6">from 5.x.x to 6.x.x</a></li>
+      </ul>
+<!--      <ul>-->
+<!--        <li><a pageScroll href="#6to7">from 6.x.x to 7.x.x</a></li>-->
+<!--        <li><a pageScroll href="#5to6">from 5.x.x to 6.x.x</a></li>-->
+<!--      </ul>-->
+
+      <hr>
+
+      <section id="6to7">
+        <h3>from 6.x.x to 7.x.x</h3>
+        <br>
+
+        <h4>Step 1 - upgrade @ks89/angular-modal-gallery to the latest 7.x.x version</h4>
+
+        <p>So, in your terminal run: <code>npm install --save @ks89/angular-modal-gallery@latest</code></p>
+
+        <br>
+        <h4>Step 2 - upgrade Angular and rxjs</h4>
+
+        <p>Use the latest version of Angular (you can choose both 6 and 7, but I really recommend to use always the latest stable release)
+          and rxjs 6 (rxjs-compat is no more required by this library).</p>
+
+        <br>
+        <h4>Step 3 - install the new dependency @angular/cdk</h4>
+
+        <p>In your terminal run: <code>npm install --save @angular/cdk</code>, because it's required to support responsiveness of carousel component.</p>
+
+        <br>
+        <h4>Step 4 - rename ModalGalleryModule into GalleryModule</h4>
+
+        <p>From version 7.x.x you must use <code>GalleryModule.forRoot()</code>, instead of <code>ModalGalleryModule.forRoot()</code> in your main app module</p>
+
+        <br>
+        <h4>(optional) Step 5 - add the new properties to <code>accessibilityConfig</code> input</h4>
+
+        <p>If you are using custom accessibility configurations, add these properties to the <code>accessibilityConfig</code> input:</p>
+        <pre>
+        carouselContainerAriaLabel: 'Current image and navigation',
+        carouselContainerTitle: '',
+        carouselPrevImageAriaLabel: 'Previous image',
+        carouselPrevImageTitle: 'Previous image',
+        carouselNextImageAriaLabel: 'Next image',
+        carouselNextImageTitle: 'Next image',
+        carouselPreviewsContainerAriaLabel: 'Image previews',
+        carouselPreviewsContainerTitle: '',
+        carouselPreviewScrollPrevAriaLabel: 'Scroll previous previews',
+        carouselPreviewScrollPrevTitle: 'Scroll previous previews',
+        carouselPreviewScrollNextAriaLabel: 'Scroll next previews',
+        carouselPreviewScrollNextTitle: 'Scroll next previews'
+        </pre>
+
+        <b>That's all!!!</b>
+
+        <br><br>
+
+        <h5>Addition info</h5>
+        <p>If you are using <code>GalleryModule.forRoot()</code> inside a child module, you should use simply <code>GalleryModule</code> (without forRoot()).
+          In fact, forRoot() should be used only for root modules. But, <b>if your module is lazy loaded, forRoot() is still mandatory.</b>
+          If you are confused and you need help, please open an issue :)</p>
+      </section>
+
+      <br>
+      <hr>
+      <br>
+
+      <section id="5to6">
+        <h3>from 5.x.x to 6.x.x</h3>
+        <br>
+
+        <h4>Step 1 - switch to @ks89/angular-modal-gallery</h4>
+
+        <p>The first thing to do is to uninstall <code>angular-modal-gallery</code> and install the new package <b><code>@ks89/angular-modal-gallery</code></b></p>
+        <p>So, in your terminal run:</p>
+        <ol>
+          <li><code>npm uninstall angular-modal-gallery</code></li>
+          <li><code>npm install --save @ks89/angular-modal-gallery@6.3.0</code></li>
+        </ol>
+
+        <br>
+        <h4>Step 2 - remove deprecated APIs</h4>
+
+        <p>Now you have the right dependency, however you still need to change all imports. Luckily it is really simple, because you can search for all
+          occurrences of <code>from 'angular-modal-gallery'</code> in your project and replace them with <code>from '@ks89/angular-modal-gallery'</code></p>
+
+        <p>Next, search for all occurrences of <code>&lt;ks-modal-gallery&gt;</code> in your html files and add a new input called <code>[id]="0"</code>. You must use
+        a unique value for every instance in the same component. Obviously, if you are using only one gallery at a time, you can always use "0". However, if you
+        have multiple <code>&lt;ks-modal-gallery&gt;</code> occurrences in a single template, you have to increase the id to prevent issues.</p>
+
+        <p>Finally, search for all <code>[downloadable]</code>, <code>[loadingConfig]</code> and <code>[description]</code> texts inside your templates, because
+        you have to remove these inputs and place them inside a new one called <code>[currentImageConfig]</code> in this way:</p>
+
+        <pre>
+      [currentImageConfig]="&#123;
+        downloadable: PUT HERE YOUR OLDER BOOLEAN VALUE OF DOWNLOADABLE,
+        loadingConfig: &#123; PUT HERE YOUR OLDER LOADINGCONFIG OBJECT'S PROPERTIES &#125;,
+        description: &#123; PUT HERE YOUR OLDER DESCRIPTION OBJECT'S PROPERTIES &#125;
+      &#125;"
+        </pre>
+
+        <p>Obviously, if you hadn't use one or all of those properties, simply ignore them. In fact, they are all optional, like in version 5.0.0.
+        The only difference is that all inputs are moved inside a wrapper object called <code>currentImageConfig</code>.</p>
+
+        <br>
+        <h4>(optional) Step 3 - restore older description bottom margin</h4>
+
+        <p>If you don't like the new bottom margin of the modal image description, you can restore the older adding this:</p>
+
+        <pre>
+      [currentImageConfig]="&#123;
+        description: &#123;
+          strategy: DescriptionStrategy.ALWAYS_VISIBLE,
+          style: &#123; marginBottom: '0px' &#125;
+        &#125;
+      &#125;"
+        </pre>
+
+        <b>That's all!!!</b>
+
+        <br><br>
+
+        <h4>(optional) Step 4 - Only for SystemJS users</h4>
+        <p>You have to update your config file from:</p>
+        <pre>
+      let map = &#123;
+        hammerjs: 'node_modules/hammerjs',
+        mousetrap: 'node_modules/mousetrap',
+        'angular-modal-gallery': 'node_modules/angular-modal-gallery/bundles'
+      &#125;;
+      let packages = &#123;
+        hammerjs: &#123; main: 'hammer.js' &#125;,
+        mousetrap: &#123; main: 'mousetrap.js' &#125;,
+        'angular-modal-gallery': &#123; main: 'angular-modal-gallery.umd.js' &#125;
+      &#125;;
+        </pre>
+        <p>to:</p>
+        <pre>
+      let map = &#123;
+        hammerjs: 'node_modules/hammerjs',
+        mousetrap: 'node_modules/mousetrap',
+        '@ks89': 'node_modules/@ks89'
+      &#125;;
+      let packages = &#123;
+        hammerjs: &#123; main: 'hammer.js' &#125;,
+        mousetrap: &#123; main: 'mousetrap.js' &#125;,
+        '@ks89/angular-modal-gallery': &#123; main: 'bundles/ks89-angular-modal-gallery.umd.min.js', defaultExtension: 'js' &#125;
+      &#125;;
+        </pre>
+
+        <p>Also, you have to change the way you import <code>ModalGalleryModule</code> with forRoot from:</p>
+        <pre>
+          ModalGalleryModule.forRoot()
+        </pre>
+        <p>to:</p>
+        <pre>
+          ModalGalleryModule.forRoot(&#123; shortcuts: ['ctrl+s', 'meta+s'], disableSsrWorkaround: true &#125;)
+        </pre>
+
+        <p>All SystemJS users must use <code>disableSsrWorkaround: true</code> to prevent errors at runtime.</p>
+
+        <h5>Addition info</h5>
+        <p>If you are using <code>ModalGalleryModule.forRoot()</code> inside a child module, you should use simply <code>ModalGalleryModule</code> (without forRoot()).
+          In fact, forRoot() should be used only for root modules. But, <b>if your module is lazy loaded, forRoot() is still mandatory.</b>
+          If you are confused and you need help, please open an issue :)</p>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+
+
+

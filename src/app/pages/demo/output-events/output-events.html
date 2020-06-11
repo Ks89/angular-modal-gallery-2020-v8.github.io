@@ -1,0 +1,257 @@
+<div class="container">
+
+  <h2 class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Output Events example</a>
+  </h2>
+  <p>Minimal and simple modal gallery example with <b class="text-success">output events logged in console.</b></p>
+  <br>
+
+  <h3>Live Demo</h3>
+  <br>
+  <ks-modal-gallery [id]="0" [modalImages]="images"
+                    (hasData)="onImageLoaded($event)"
+                    (close)="onCloseImageModal($event)"
+                    (show)="onVisibleIndex($event)"
+                    (firstImage)="onIsFirstImage($event)"
+                    (lastImage)="onIsLastImage($event)"
+                    (buttonBeforeHook)="onButtonBeforeHook($event)"
+                    (buttonAfterHook)="onButtonAfterHook($event)">
+  </ks-modal-gallery>
+  <br><br>
+  <h3>Live demo results</h3>
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th>Output</th>
+          <th>$event value (Event payload)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>(hasData)</code></td>
+          <td>
+            <div>{{imageLoaded | json}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(close)</code></td>
+          <td>
+            <div>{{closeImageModal | json}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(show)</code></td>
+          <td>
+            <div>{{visibleIndex | json}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(firstImage)</code></td>
+          <td>
+            <div>{{isFirstImage | json}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(lastImage)</code></td>
+          <td>
+            <div>{{isLastImage | json}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(buttonBeforeHook)</code></td>
+          <td>
+            <div>{{buttonBeforeHook | json}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(buttonAfterHook)</code></td>
+          <td>
+            <div>{{buttonAfterHook | json}}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br><br>
+
+  <section>
+    <h3>Code</h3>
+    <br>
+    <h4>Template</h4>
+    <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
+    </codemirror>
+  </section>
+
+  <br><br>
+
+  <section>
+    <h3>Details</h3>
+    <br>
+    <table class="table table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Input (.html)</th>
+        <th>Value (.ts)</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>id</code></td>
+          <td>
+            <div><i>Value: </i><code>NUMERIC UNIQUE ID</code></div>
+            <div><b class="text-success">Unique id</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>modalImages</code></td>
+          <td>
+            <div><i>Value: </i><code>Image[]</code></div>
+            <div><b class="text-success">Array of <code>Image</code> objects</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>currentImageConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>No downloadable at all, default loading spinner, clickable current image and with default description (always visible)</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>buttonsConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>It will show only the close button</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>enableCloseOutside</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Clicking on the semi-transparent background, modal-gallery will close</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dotsConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>It will show dots below the current modal image</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>previewConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>It will show 3 clickable previews (default size) with arrows</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>slideConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Infinite sliding is disabled by default and side previews are visible with a default size</div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>accessibilityConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div><small>(an object with all default english accessibility values by default)</small></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>keyboardConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>plainGalleryConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Row plain gallery with default layout</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th>Output (.html)</th>
+          <th>Return (.ts)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>(close)</code></td>
+          <td>
+            <div><i>Type: </i><code>ImageModalEvent</code></div>
+            <div><b class="text-success">Open the console of your browser to see the result</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(show)</code></td>
+          <td>
+            <div><i>Type: </i><code>ImageModalEvent</code></div>
+            <div><b class="text-success">Open the console of your browser to see the result</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(firstImage)</code></td>
+          <td>
+            <div><i>Type: </i><code>ImageModalEvent</code></div>
+            <div><b class="text-success">Open the console of your browser to see the result</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(lastImage)</code></td>
+          <td>
+            <div><i>Type: </i><code>ImageModalEvent</code></div>
+            <div><b class="text-success">Open the console of your browser to see the result</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(hasData)</code></td>
+          <td>
+            <div><i>Type: </i><code>ImageModalEvent</code></div>
+            <div><b class="text-success">Open the console of your browser to see the result</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(buttonBeforeHook)</code></td>
+          <td>
+            <div><i>Type: </i><code>ButtonEvent</code></div>
+            <div><b class="text-success">Open the console of your browser to see the result</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>(buttonAfterHook)</code></td>
+          <td>
+            <div><i>Type: </i><code>ButtonEvent</code></div>
+            <div><b class="text-success">Open the console of your browser to see the result</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>slideConfig</code></td>
+          <td>
+            <div><i>Value: </i><code>undefined</code></div>
+            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
+            <div>Infinite sliding and autoPlay are disabled and side previews are enabled with default sizes</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
