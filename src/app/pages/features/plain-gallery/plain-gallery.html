@@ -6,6 +6,95 @@
   </h1>
   <p>PlainGallery component contains clickable thumbnails to open modal gallery.</p>
   <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td>Template (HTML) selector</td>
+      <td><code>ks-plain-gallery</code></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <section>
+    <h2>Inputs</h2>
+    <table class="table table-hover table-sm">
+      <tbody>
+      <tr>
+        <td class="big-tds"><small><code>id</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>number</code>
+          </div>
+          <div>
+            A mandatory unique id >= 0 of the current gallery.
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="big-tds"><small><code>images</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code><a [routerLink]="['/features/common']">Image[]</a></code>
+          </div>
+          <div>
+            The mandatory array of <code><a [routerLink]="['/features/common']">Image</a></code> objects, that represent both the thumb gallery and the
+            modal images. In fact, an <code><a [routerLink]="['/features/common']">Image</a></code> is an object with both thumb and
+            image source paths with other additional configuration parameters. For more info check <code><a [routerLink]="['/features/common']">Image</a></code>.
+            Please don't use <code>this.images.push(img)</code>, when you want to modify this array, instead re-assign it to trigger change detection.
+            For instance: <code>this.images = [...this.images, newImage]</code> to create a new array from the original with a new image at the end.
+          </div>
+          <div>
+            <b class="text-success">Attention: if you need to add the same image (same url) multiple times in the same plain gallery, you must append to the url a random but unique query param to prevent caching issues.
+              For more info, please read <a href="https://github.com/Ks89/angular-modal-gallery/issues/171">this issue</a>.</b>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="big-tds"><small><code>showGallery</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code>
+          </div>
+          <div>
+            Show/hide plain gallery. If true the plain gallery will be visible, false otherwise.
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="big-tds">
+          <div>
+            <small><code>config</code></small>
+          </div>
+        </td>
+        <td>
+          <div>
+            <i>Type: </i><code><a [routerLink]="['/features/common']">LibConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Interface to configure plain gallery.</p>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Outputs</h2>
+    <table class="table table-hover table-sm">
+      <tbody>
+      <tr>
+        <td><small><code>showImage</code></small></td>
+        <td>
+          <p>A <code>number</code> that represents the index of the clicked image.</p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <br>
+
 
   <h2 id="PlainImage" class="link clickable">
     <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PlainImage</a>
@@ -70,17 +159,6 @@
         <div>
           <p>Optional aria label text. It sets 'aria-label' html's attribute, useful for accessibility purposes.
             To ignore this feature, don't add this property.</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td><small><code>size</code></small></td>
-      <td>
-        <div>
-          <i>Type: </i><code>Size</code><span class="badge badge-pill badge-secondary float-right">optional</span>
-        </div>
-        <div>
-          <p>Optional object to change the size of modal image. <code>width: 50px</code> and <code>height: auto</code> by default.</p>
         </div>
       </td>
     </tr>

@@ -1,0 +1,44 @@
+<div class="container">
+
+  <h1 id="KeyboardConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Keyboard configuration</a>
+  </h1>
+  <p>If you want to customize keyboard download shortcuts, you can pass a custom configuration to libConfig.</p>
+  <br>
+
+  <h2 id="KeyboardServiceConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">KeyboardServiceConfig</a>
+  </h2>
+  <p>Interface to change keyboard download shortcuts.</p>
+  <br>
+  <table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+      <td><code>shortcuts</code></td>
+      <td>
+        <div>
+          <i>Type: </i><code>string[] | string</code>
+        </div>
+        <div>
+          <p>This is a direct input into KeyboardService (<code>mousetrap.bind(HERE, ...)</code>) to manage keyboard's shortcuts.
+            Please refer to the official documentation of <a href="https://craig.is/killing/mice">mousetrap</a>. By default this value is <code>['ctrl+s','meta+s']</code>.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code>disableSsrWorkaround</code></td>
+      <td>
+        <div>
+          <i>Type: </i><code>boolean</code>
+        </div>
+        <div>
+          <p>If you are using SystemJS, instead of angular-cli or webpack, you must set this to true. By default this value is false.</p>
+          <p>This is an advanced configuration property and it should be used very carefully only by SystemJS users.</p>
+          <p class="warning">I cannot support SystemJS forever. Please, consider to upgrade your project to angular-cli as soon as possible.</p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

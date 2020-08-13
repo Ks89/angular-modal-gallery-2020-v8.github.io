@@ -11,15 +11,15 @@
       <h3>Dependencies</h3>
       <p>The most important required dependencies are:</p>
       <ul>
-        <li>Angular (requires Angular version 5 or higher, tested with 6.x.x)</li>
-        <li><code>rxjs</code> 5.0.0 or higher</li>
-        <li>If you are using Angular >=6 you need to install also <code>rxjs-compat</code></li>
+        <li>Angular (requires Angular version 8 or higher, tested with 9.x.x)</li>
+        <li>Angular CDK (requires Angular version 8 or higher, tested with 9.x.x)</li>
+        <li><code>rxjs</code> 6.0.0 or higher</li>
       </ul>
 
       <h3>Installation</h3>
       <p>After installing the above dependencies, add these: </p>
       <ul>
-        <li><code>npm i --save @ks89/angular-modal-gallery hammerjs mousetrap</code></li>
+        <li><code>npm i --save @ks89/angular-modal-gallery @angular/cdk hammerjs mousetrap</code></li>
         <li><code>npm i --save @types/hammerjs @types/mousetrap</code></li>
       </ul>
 
@@ -34,35 +34,24 @@
         import 'mousetrap';
         import &#123; GalleryModule &#125; from '@ks89/angular-modal-gallery';
       </pre>
-      <p>The only remaining part is to list the imported module in your root module and any additional application modules that make use of the components in this library.
-        The exact method will be slightly different for the root (top-level) module for which you should end up with the code similar to (notice <code>GalleryModule.forRoot()</code>):</p>
+      <p>The only remaining part is to list the imported module in your root module and any additional application modules that make use of the components in this library.</p>
       <pre>
         import 'hammerjs';
         import 'mousetrap';
         import &#123;GalleryModule&#125; from '@ks89/angular-modal-gallery';
         @NgModule(&#123;
-          imports: [GalleryModule.forRoot(), ...],
+          imports: [GalleryModule, ...],
           declarations: [ AppComponent, ... ],
           providers: [ ... ],
           bootstrap: [ AppComponent ]
         &#125;)
         export class AppModule &#123;&#125;
       </pre>
-      <p>Other modules in your application should simply import <code>GalleryModule</code> (without <code>.forRoot()</code>):</p>
-      <pre>
-        import &#123;GalleryModule&#125; from '@ks89/angular-modal-gallery';
-
-        @NgModule(&#123;
-          imports: [GalleryModule, ...],
-          declarations: [ AnotherComponent, ... ]
-        &#125;)
-        export class OtherModule &#123;&#125;
-      </pre>
 
       <h3>Official examples</h3>
       <ul>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli">angular-cli [latest version] (recommended)</a></li>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-5">angular-cli 5 [legacy support]</a></li>
+        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-9">angular-cli 9 [latest version] (recommended)</a></li>
+        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-8">angular-cli 8 [legacy support]</a></li>
         <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-material">angular-cli with material</a></li>
         <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">SystemJs</a></li>
         <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/universal">angular-universal</a></li>
@@ -87,9 +76,23 @@
         &#125;
       </pre>
       <br>
-      <p><b>All SystemJS users must import <code>GalleryModule</code> in this way:</b></p>
+      <p><b>All SystemJS users must add <code>disableSsrWorkaround: true</code> to the keyboardServiceConfig interface in this way:</b></p>
       <pre>
-        GalleryModule.forRoot(&#123; shortcuts: ['ctrl+s', 'meta+s'], disableSsrWorkaround: true &#125;)
+        const LIB_CONFIG: LibConfig = &#123;
+          keyboardServiceConfig: &#123;
+            shortcuts: ['ctrl+s', 'meta+s'],
+            disableSsrWorkaround: true
+          &#125;
+        &#125;;
+
+        const dialogRef: ModalGalleryRef = this.modalGalleryService.open(&#123;
+          config: &#123;
+            id,
+            images: arrayOfImages,
+            currentImage: imageToShow,
+            LIB_CONFIG
+          &#125;
+        &#125;);
       </pre>
       <p><b><code>disableSsrWorkaround:true</code> will prevent errors at runtime with SystemJS.</b></p>
       <p>For more information, you should check the <a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">official SystemJS example</a>.</p>

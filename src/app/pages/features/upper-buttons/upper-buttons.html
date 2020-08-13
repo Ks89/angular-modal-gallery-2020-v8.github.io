@@ -23,7 +23,7 @@
             <i>Type: </i><code>boolean</code>
           </div>
           <div>
-            <p>If <code>false</code>, all buttons are hidden, otherwise not.</p>
+            <p>If <code>false</code>, all buttons are hidden, otherwise not. true by default.</p>
           </div>
         </td>
       </tr>
@@ -34,7 +34,7 @@
             <i>Type: </i><code>ButtonsStrategy</code>
           </div>
           <div>
-            <p>Enum to decide which buttons are visible, based on some patterns (default, simple, advanced...)</p>
+            <p>Enum to decide which buttons are visible, based on some patterns (default, simple, advanced...). ButtonsStrategy.DEFAULT by default.</p>
           </div>
         </td>
       </tr>
@@ -91,6 +91,17 @@
         </div>
         <div>
           <p>It's the enum <code><a [routerLink]="['/features/common']">Action</a></code></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><small><code>galleryId</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number</code>
+        </div>
+        <div>
+          <p>Unique id of the current instance of modal, carousel of plain galleries.</p>
         </div>
       </td>
     </tr>
@@ -224,8 +235,8 @@
 
   <br>
 
-  <h2 id="ActionEnum" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ActionEnum</a>
+  <h2 id="Action" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Action</a>
   </h2>
   <p>Enum that represents the source of an action. It can be one of these enum values:</p>
   <br>
@@ -235,5 +246,6 @@
     <li><code>KEYBOARD</code>: keyboard action (<kbd>ctrl</kbd>+<kbd>s</kbd>, <kbd>cmd</kbd>+<kbd>s</kbd>, <kbd>esc</kbd>, <kbd>&rarr;</kbd>, <kbd>&larr;</kbd> and so on)</li>
     <li><code>SWIPE</code>: swipe action</li>
     <li><code>LOAD</code>: data/images loaded by the library</li>
+    <li><code>AUTOPLAY</code>: navigation caused by autoPlay</li>
   </ul>
 </div>

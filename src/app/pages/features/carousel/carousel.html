@@ -4,11 +4,10 @@
   <h1 id="Carousel" class="link clickable">
     <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Carousel</a>
   </h1>
-  <p>Carousel component is a new component to build responsive carousels. It contains a collection of <code><a [routerLink]="['/features/common']">Images</a></code>,
+  <p>Carousel component is a component to build responsive carousels. It contains a collection of <code><a [routerLink]="['/features/common']">Images</a></code>,
     like all other components exposed by this library and many other config objects.
     It displays images as a carousel, so a big image (either full or limited width) with right and left arrows and it shows images every a fixed amount of time.
-    Optionally, it can display previews above/below the main image. A live example of this component is available on the homepage of this website.
-    Obviously, there are additional configurable features, like aria, keyboard navigation, sizes and so on.
+    Optionally, it can display previews above/below the main image. Obviously, there are additional configurable features, like aria, keyboard navigation, sizes and so on.
     A very cool feature, it the integration with ModalGallery. In fact, you can configure the carousel to open the current image in a modal way,
     using <code><a [routerLink]="['/features/modal-gallery']">ModalGalleryComponent</a></code>.</p>
   <p class="warning">If you need to support also Internet Explorer 11 (IE11), enable <code>legacyIE11Mode: true</code> and use only
@@ -26,6 +25,10 @@
     </tr>
     </tbody>
   </table>
+
+  aggiungere tabella libconfig con le proprietà usate da carousel e quali invece vengono ignorate.
+  mettere anche nota su quali vengono usate solo se si abilita apertura modale.
+
 
   <section>
     <h2>Inputs</h2>
@@ -156,7 +159,7 @@
               <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
             </div>
             <div>
-              <p></p>
+              <p>Input to enables infinite sliding. true by default</p>
             </div>
           </td>
         </tr>
@@ -177,6 +180,24 @@
           </td>
         </tr>
         <tr>
+          <td class="big-tds">
+            <div>
+              <small><code>disableSsrWorkaround</code></small>
+            </div>
+          </td>
+          <td>
+            <div>
+              <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <div>
+                <p>Input to support SystemJS bypassing some workarounds to enable SSR support. false by default</p>
+                <p class="warning">Attention: use this only if you are using SystemJS instead of angular-cli or webpack.
+                  In future releases I'll drop SystemJS support, so please consider to switch to angular-cli as soon as possible.</p>
+              </div>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -362,6 +383,17 @@
   <br>
   <table class="table table-hover table-sm">
     <tbody>
+    <tr>
+      <td><small><code>galleryId</code></small></td>
+      <td>
+        <div>
+          <i>Type: </i><code>number</code>
+        </div>
+        <div>
+          <p>Unique id of the current carousel.</p>
+        </div>
+      </td>
+    </tr>
     <tr>
       <td><small><code>action</code></small></td>
       <td>

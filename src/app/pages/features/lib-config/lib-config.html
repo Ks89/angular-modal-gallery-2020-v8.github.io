@@ -1,0 +1,291 @@
+<div class="container">
+
+  <h1 id="LibConfig" class="link clickable">
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">LibConfig</a>
+  </h1>
+
+  <p>The most important interface used to configure components is LibConfig. In case of plain-gallery and carousel you have to pass an object of type LibConfig as component input. Instead, in case of modal-gallery it will be a parameter
+    of a service function.</p>
+  <p>LibConfig has only optional properties. When any of them is undefined, a default value will be applied, as described in LINK.</p>
+  <p>LibConfig is an object with many optional properties. However, not all of them are used by all components. Here you can find a table to know which of these properties can impact on components</p>
+
+  <table class="table table-hover table-sm">
+    <thead>
+    <tr>
+      <th>Property</th>
+      <th>Modal gallery</th>
+      <th>Plain gallery</th>
+      <th>Carousel</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>slideConfig</td>
+      <td>V</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>accessibilityConfig</td>
+      <td>V</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>previewConfig</td>
+      <td>V</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>buttonsConfig</td>
+      <td>V</td>
+      <td>X</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>dotsConfig</td>
+      <td>V</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>plainGalleryConfig</td>
+      <td>X</td>
+      <td>V</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>currentImageConfig</td>
+      <td>V</td>
+      <td>X</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>keyboardConfig</td>
+      <td>V</td>
+      <td>X</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>carouselConfig</td>
+      <td>X</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>carouselImageConfig</td>
+      <td>X</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>carouselPreviewsConfig</td>
+      <td>X</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>carouselPlayConfig</td>
+      <td>X</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>carouselDotsConfig</td>
+      <td>X</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>enableCloseOutside</td>
+      <td>V</td>
+      <td>X</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>keyboardServiceConfig</td>
+      <td>V</td>
+      <td>?</td>
+      <td>V</td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+
+  <p>All these properties have spefic roles</p>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <tbody>
+        <tr>
+          <td><small><code>slideConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>SlideConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#SlideConfig">SlideConfig</a></code> to manage sliding features of modal-gallery and ....</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>accessibilityConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>AccessibilityConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#AccessibilityConfig">AccessibilityConfig</a></code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>previewConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>PreviewConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#PreviewConfig">PreviewConfig</a></code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>buttonsConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>ButtonsConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#ButtonsConfig">ButtonsConfig</a></code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>dotsConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>DotsConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#DotsConfig">DotsConfig</a></code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>plainGalleryConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>PlainGalleryConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#PlainGalleryConfig">PlainGalleryConfig</a></code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>currentImageConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>CurrentImageConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#CurrentImageConfig">CurrentImageConfig</a></code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>keyboardConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>KeyboardConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#KeyboardConfig">KeyboardConfig</a></code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>carouselConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>CarouselConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#CarouselConfig">CarouselConfig</a></code>. Used only by carousel.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>carouselImageConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>CarouselImageConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#CarouselImageConfig">CarouselImageConfig</a></code>. Used only by carousel.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>carouselPreviewsConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>CarouselPreviewConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#CarouselPreviewConfig">CarouselPreviewConfig</a></code>. Used only by carousel.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>carouselPlayConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>PlayConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#PlayConfig">PlayConfig</a></code>. Used only by carousel.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>carouselDotsConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>DotsConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#DotsConfig">DotsConfig</a></code>. Used only by carousel.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>keyboardServiceConfig</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>KeyboardServiceConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional object used to configure <code><a href="#KeyboardServiceConfig">KeyboardServiceConfig</a></code>. Used to pass custom configuration to mousetrap to download images with keyboard shortcut, and also to disable
+                SSR in case you want to use SystemJS.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><small><code>enableCloseOutside</code></small></td>
+          <td>
+            <div>
+              <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            </div>
+            <div>
+              <p>Optional property to close modal-gallery clicking on the semi-transparent background.</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

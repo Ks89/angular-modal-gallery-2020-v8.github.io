@@ -36,17 +36,9 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'gettingStarted', component: GettingStartedComponent},
 
-  // {
-  //   path: 'features',
-  //   loadChildren: './pages/features/features.module#FeaturesModule',
-  //   data: {preload: true}
-  // },
-  //
-  // {
-  //   path: 'demo',
-  //   loadChildren: './pages/demo/demo.module#DemoModule',
-  //   data: {preload: true}
-  // },
+  { path: 'features', loadChildren: () => import('./pages/features/features.module').then(m => m.FeaturesModule) },
+
+  // { path: 'demo', loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule) },
 
   {path: 'migration', component: MigrationComponent},
 

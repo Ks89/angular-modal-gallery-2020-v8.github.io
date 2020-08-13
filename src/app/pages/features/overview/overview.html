@@ -1,28 +1,18 @@
 <div class="container d-flex flex-column">
 
   <h2>Overview</h2>
-  <p>@ks89/angular-modal-gallery is composed mainly in three parts: <strong>Carousel</strong>, <strong>Plain gallery</strong> and <strong>Modal gallery</strong>.
-    However, these components share some common interfaces and classes. So, I splitted this section in different parts: basic stuff and main components.</p>
-  <br>
-
-  <h3>Basic stuff</h3>
+  <p>There are 2 main concepts to understand about @ks89/angular-modal-gallery.</p>
   <ul>
-    <li>Common: all shared interfaces and classes</li>
-    <li>Description: interfaces to customize description for both Modal gallery and Carousel</li>
-    <li>Accessibility: interface to change accessibility texts for all components</li>
-    <li>Previews: interfaces to configure previews for both Modal gallery and Carousel</li>
-    <li>UpperButtons: interface to customize buttons of Modal gallery</li>
-    <li>Global configuration: explain how to change the behaviour of the library for the entire application passing parameters to <code>forRoot()</code> method</li>
-    <li>Default values: default values for all inputs of all components</li>
+    <li>Components: <strong>Carousel</strong>, <strong>Plain gallery</strong> and <strong>Modal gallery</strong> are the main features of this library. A detailed description is available in dedicated sections.</li>
+    <li>Configuration: using as object of type <strong>LibConfig</strong> you can configure the behaviour of all components. There is only an object to configure all components.</li>
   </ul>
   <br>
 
   <h3>Components</h3>
   <ul>
     <li><b>Carousel</b>: available via <code>&lt;ks-carousel&gt;&lt;/ks-carousel&gt;</code></li>
-    <li><b>Modal gallery</b>: available via <code>&lt;ks-modal-gallery&gt;&lt;/ks-modal-gallery&gt;</code></li>
-    <li><b>Plain gallery</b>: included inside Modal gallery, so it's not available via a standalone tag, but you have to use
-      <code>&lt;ks-modal-gallery&gt;&lt;/ks-modal-gallery&gt;</code> passing the right inputs</li>
+    <li><b>Modal gallery</b>: available injecting the <code>ModalGalleryService</code> into your component</li>
+    <li><b>Plain gallery</b>: available via <code>&lt;ks-plain-gallery&gt;&lt;/ks-plain-gallery&gt;</code></li>
   </ul>
   <br>
 
@@ -61,6 +51,117 @@
   <p>It contains a list of thumbnails that users can click to open modal gallery. Layouts are configurable and users could also use
     a custom implementation to draw everything they want.</p>
   <p>For more info check <a [routerLink]="['/features/plain-gallery']">Plain gallery's documentation</a></p>
+  <br>
+
+  <h3>LibConfig</h3>
+  <p>The most important interface used to configure components is LibConfig. In case of plain-gallery and carousel you have to pass an object of type LibConfig as component input. Instead, in case of modal-gallery it will be a parameter
+    of a service function.</p>
+  <p>LibConfig is an object with many optional properties. However, not all of them are used by all components. Here you can find a table to know which of these properties can impact on components</p>
+
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Modal gallery</th>
+        <th>Plain gallery</th>
+        <th>Carousel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>slideConfig</td>
+        <td>V</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>accessibilityConfig</td>
+        <td>V</td>
+        <td>V</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>previewConfig</td>
+        <td>V</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>buttonsConfig</td>
+        <td>V</td>
+        <td>X</td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <td>dotsConfig</td>
+        <td>V</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>plainGalleryConfig</td>
+        <td>X</td>
+        <td>V</td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <td>currentImageConfig</td>
+        <td>V</td>
+        <td>X</td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <td>keyboardConfig</td>
+        <td>V</td>
+        <td>X</td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <td>carouselConfig</td>
+        <td>X</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>carouselImageConfig</td>
+        <td>X</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>carouselPreviewsConfig</td>
+        <td>X</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>carouselPlayConfig</td>
+        <td>X</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>carouselDotsConfig</td>
+        <td>X</td>
+        <td>X</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>enableCloseOutside</td>
+        <td>V</td>
+        <td>X</td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <td>keyboardServiceConfig</td>
+        <td>V</td>
+        <td>?</td>
+        <td>V</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For more details about LibConfig, please check <a [routerLink]="['/features/lib-config']">LibConfig</a> section.</p>
   <br>
 
   <p>Check navigation sidebar to see all details.</p>
