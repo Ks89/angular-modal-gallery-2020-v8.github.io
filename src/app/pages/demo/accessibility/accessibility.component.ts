@@ -25,8 +25,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-// import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
-
 import { AccessibilityConfig, Image } from '@ks89/angular-modal-gallery';
 
 import { IMAGES_ARRAY } from '../images';

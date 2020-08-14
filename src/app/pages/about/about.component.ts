@@ -25,8 +25,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll-core';
-
 import { Metadata, UiService } from '../../core/services/ui.service';
 
 @Component({
@@ -37,12 +35,7 @@ import { Metadata, UiService } from '../../core/services/ui.service';
 export class AboutComponent implements OnInit {
 
   constructor(private uiService: UiService,
-              // private scrollService: PageScrollService,
-              @Inject(DOCUMENT) private document: any) {
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#about');
-    // this.scrollService.start(pageScrollInstance);
-  }
+              @Inject(DOCUMENT) private document: any) {}
 
   ngOnInit() {
     this.metaData();

@@ -10,24 +10,15 @@ import { SharedModule } from '../../shared/shared.module';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
 // **************************************************************************
 
-// import { NgxPageScrollModule, PageScrollConfig } from 'ngx-page-scroll';
-
 @NgModule({
   imports: [
     CommonModule,
     routing,
     SharedModule,
-    // NgxPageScrollModule,
-    GalleryModule // no for root here
+    GalleryModule
   ],
   declarations: [
     FEATURES_COMPONENTS
   ]
 })
-export class FeaturesModule {
-  constructor() {
-    // PageScrollConfig.defaultScrollOffset = 30;
-    // PageScrollConfig.defaultDuration = 200;
-    // PageScrollConfig.defaultInterruptible = false;
-  }
-}
+export class FeaturesModule {}

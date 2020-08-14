@@ -3,15 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { SHARED_COMPONENTS } from './components/components';
-// import { NgxPageScrollCoreModule, PageScrollConfig } from 'ngx-page-scroll-core';
-// import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    // NgxPageScrollCoreModule,
-    // NgxPageScrollModule,
+    RouterModule
   ],
   exports: [
     SHARED_COMPONENTS
@@ -22,10 +18,4 @@ import { SHARED_COMPONENTS } from './components/components';
   providers: [ ]
 })
 
-export class SharedModule {
-  // constructor() {
-  //   PageScrollConfig.defaultScrollOffset = 56;
-  //   PageScrollConfig.defaultDuration = 0;
-  //   PageScrollConfig.defaultInterruptible = true;
-  // }
-}
+export class SharedModule {}

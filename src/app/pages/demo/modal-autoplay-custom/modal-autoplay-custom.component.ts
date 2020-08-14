@@ -25,8 +25,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
-
 import { Image } from '@ks89/angular-modal-gallery';
 
 import { IMAGES_ARRAY } from '../images';
@@ -49,13 +47,7 @@ export class ModalAutoplayCustomComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              private scrollService: PageScrollService,
               @Inject(DOCUMENT) private document: any) {
-
-    // scroll to the top of the document
-    const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    this.scrollService.start(pageScrollInstance);
-
     this.titleService.titleEvent.emit('Examples - Autoplay custom');
 
     this.codeHtml =

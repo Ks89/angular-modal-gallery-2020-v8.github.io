@@ -23,9 +23,8 @@
  */
 
 import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-
-// import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { Metadata, UiService } from '../../core/services/ui.service';
 
@@ -37,15 +36,21 @@ import { Metadata, UiService } from '../../core/services/ui.service';
 export class GettingStartedComponent implements OnInit {
 
   constructor(private uiService: UiService,
-              // private scrollService: PageScrollService,
+              private router: Router,
+              private viewPortScroller: ViewportScroller,
               @Inject(DOCUMENT) private document: any) {
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#getting-started');
-    // this.scrollService.start(pageScrollInstance);
   }
 
   ngOnInit() {
     this.metaData();
+  }
+
+  onScrollTo(examples: string) {
+    this.viewPortScroller.scrollToAnchor('examples');
+  }
+
+  onNavigateTo(path: string) {
+    this.router.navigate([path]);
   }
 
   metaData() {

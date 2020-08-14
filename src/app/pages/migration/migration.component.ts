@@ -25,8 +25,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-// import { PageScrollService } from 'ngx-page-scroll-core';
-
 import { Metadata, UiService } from '../../core/services/ui.service';
 
 @Component({
@@ -36,14 +34,7 @@ import { Metadata, UiService } from '../../core/services/ui.service';
 })
 export class MigrationComponent implements OnInit {
   constructor(private uiService: UiService,
-              // private scrollService: PageScrollService,
-              @Inject(DOCUMENT) private document: any) {
-    // scroll to the top of the document
-    // this.scrollService.scroll({
-    //   document: this.document,
-    //   scrollTarget: '#migration',
-    // });
-  }
+              @Inject(DOCUMENT) private document: any) {}
 
   ngOnInit() {
     this.metaData();

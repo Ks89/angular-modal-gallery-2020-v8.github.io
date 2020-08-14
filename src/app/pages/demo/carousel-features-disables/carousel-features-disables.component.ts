@@ -25,8 +25,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-// import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
-
 import { IMAGES_RECT_ARRAY } from '../images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
@@ -52,13 +50,7 @@ export class CarouselFeaturesDisablesComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              // private scrollService: PageScrollService,
               @Inject(DOCUMENT) private document: any) {
-
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
-
     this.titleService.titleEvent.emit('Examples - Carousel disable features');
 
     this.codeHtml =

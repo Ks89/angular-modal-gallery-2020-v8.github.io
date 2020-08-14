@@ -25,8 +25,6 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-// import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
-
 import { TitleService } from '../../core/services/title.service';
 
 @Component({
@@ -38,15 +36,10 @@ export class FeaturesComponent {
   title = 'Features - Modal Gallery';
 
   constructor(private titleService: TitleService,
-              // private scrollService: PageScrollService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.subscribe((val: string) => {
       this.onUpdateTitle(val);
     });
-
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
   }
 
   onUpdateTitle(event: string) {

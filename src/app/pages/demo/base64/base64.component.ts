@@ -26,8 +26,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
-
 import { Image } from '@ks89/angular-modal-gallery';
 
 import { TitleService } from '../../../core/services/title.service';

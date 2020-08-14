@@ -25,7 +25,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-// import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
 import { Image } from '@ks89/angular-modal-gallery';
 
 import { Metadata, UiService } from '../../core/services/ui.service';
@@ -75,12 +74,7 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(private uiService: UiService,
-              // private scrollService: PageScrollService,
-              @Inject(DOCUMENT) private document: any) {
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#home');
-    // this.scrollService.start(pageScrollInstance);
-  }
+              @Inject(DOCUMENT) private document: any) {}
 
   ngOnInit() {
     this.metaData();

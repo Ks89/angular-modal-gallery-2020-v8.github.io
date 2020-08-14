@@ -37,11 +37,8 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { COMPONENTS } from './pages/components';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 
 import { CodemirrorModule } from '@ks89/ngx-codemirror';
-// import { NgxPageScrollCoreModule, PageScrollConfig } from 'ngx-page-scroll-core';
-// import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -54,12 +51,6 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
 
     CodemirrorModule,
-    // NgxPageScrollCoreModule.forRoot({
-    //   scrollOffset: 30,
-    //   duration: 200,
-    //   interruptible: false
-    // }),
-    // NgxPageScrollModule,
     GalleryModule.forRoot(),
     CoreModule,
     SharedModule,
