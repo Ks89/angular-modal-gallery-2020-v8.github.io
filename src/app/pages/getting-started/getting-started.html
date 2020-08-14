@@ -1,6 +1,6 @@
-<div id="gettingStarted" class="jumbotron jumbotron-fluid title">
+<div id="getting-started" class="jumbotron jumbotron-fluid title">
   <div class="container">
-    <h1>Getting Started</h1>
+    <h1>Getting started</h1>
   </div>
 </div>
 
@@ -8,64 +8,168 @@
   <div class="row">
     <div class="col-12">
 
-      <h3>Dependencies</h3>
-      <p>The most important required dependencies are:</p>
-      <ul>
-        <li>Angular (requires Angular version 8 or higher, tested with 9.x.x)</li>
-        <li>Angular CDK (requires Angular version 8 or higher, tested with 9.x.x)</li>
-        <li><code>rxjs</code> 6.0.0 or higher</li>
-      </ul>
+      <section class="container">
+        <h2>Dependencies</h2>
+        <p>Based on the table below, choose the right version of @ks89/angular-modal-gallery.</p>
+        <p>However, only the latest stable release of @ks89/angular-modal-gallery is supported. For this reason, I really suggest to always stay up-to-date with all your dependencies.</p>
 
-      <h3>Installation</h3>
-      <p>After installing the above dependencies, add these: </p>
-      <ul>
-        <li><code>npm i --save @ks89/angular-modal-gallery @angular/cdk hammerjs mousetrap</code></li>
-        <li><code>npm i --save @types/hammerjs @types/mousetrap</code></li>
-      </ul>
+        <p>The supported versions are:</p>
+        <table class="table table-hover table-sm table-responsive">
+          <tbody>
+          <tr>
+            <td><b>@ks89/angular-modal-gallery</b>&nbsp;&nbsp;&nbsp;</td>
+            <td>angular</td>
+            <td>@angular/cdk</td>
+            <td>mousetrap</td>
+            <td>hammerjs</td>
+            <td>Font Awesome</td>
+          </tr>
+          <tr>
+            <td><b>3.3.5</b></td>
+            <td>2</td>
+            <td>not required</td>
+            <td>>=1.6.1</td>
+            <td>>=2.0.0</td>
+            <td>>= 4.0.0</td>
+          </tr>
+          <tr>
+            <td><b>5.7.1</b></td>
+            <td>4</td>
+            <td>not required</td>
+            <td>>=1.6.1</td>
+            <td>>=2.0.0</td>
+            <td>optional</td>
+          </tr>
+          <tr>
+            <td><b>6.3.0</b></td>
+            <td>5</td>
+            <td>not required</td>
+            <td>>=1.6.1</td>
+            <td>>=2.0.0</td>
+            <td>optional</td>
+          </tr>
+          <tr>
+            <td><b>7.2.5</b></td>
+            <td>6, 7, 8</td>
+            <td>6, 7, 8</td>
+            <td>>=1.6.1</td>
+            <td>>=2.0.0</td>
+            <td>optional</td>
+          </tr>
+          <tr>
+            <td><b>8.0.0 (recommended)</b></td>
+            <td><b>9, 10</b></td>
+            <td><b>9, 10</b></td>
+            <td><b>>=1.6.1</b></td>
+            <td><b>>=2.0.0</b></td>
+            <td><b>optional</b></td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+      <br>
 
-      <p><strong>All default icons don't require font-awesome, so starting from angular-modal-gallery 5.0.0 font-awesome is optional.</strong>
-        However, if you want to use custom button icons, you are free to use either your own css or font-awesome (versions 4 or 5).
-        Font Awesome 5 is officially supported from angular-modal-gallery 5.3.0 or greater.</p>
+      <section class="container">
+        <h2>Supported Browsers</h2>
+        <p>All versions of this library support modern browsers and Internet Explorer 11.</p>
 
-      <h3>Configuration</h3>
-      <p>Once finished to install dependencies, you need to import the main module and both <code>hammerjs</code> and <code>mousetrap</code>.</p>
-      <pre>
+        <p>However, try to understand that I cannot support Internet Explorer 11 forever.
+          This is a very old and obsolete, so you should ask to your users to use a modern browser.</p>
+      </section>
+      <br>
+
+      <section class="container">
+        <h2>Installation</h2>
+        <p>Based on the table above, install the required dependencies.</p>
+        <p>For <strong>@ks89/angular-modal-gallery 8</strong> run</p>
+        <ul>
+          <li><code>npm i --save @ks89/angular-modal-gallery@latest</code></li>
+          <li><code>npm i --save @angular/cdk hammerjs mousetrap</code></li>
+          <li><code>npm i --save-dev @types/hammerjs @types/mousetrap</code></li>
+        </ul>
+
+        <p>Please note that if you need angular-modal-gallery versions 5 or 3, you must use the older npm package called <a href="https://www.npmjs.com/package/angular-modal-gallery">angular-modal-gallery</a> without @ks89 scope.</p>
+
+        <p>All default icons don't require font-awesome, so starting from angular-modal-gallery 5.0.0 font-awesome is optional.
+          However, if you want to use custom button icons, you are free to use either your own css or font-awesome (versions 4 or 5).
+          Font Awesome 5 is officially supported from angular-modal-gallery 5.3.0 or greater.</p>
+      </section>
+      <br>
+
+      <section class="container">
+        <h2>Update your project</h2>
+        <p>Once finished to install dependencies, you need to follow some simple steps.</p>
+        <p>I consider only angular-cli projects. If you want to use <code>@angular/universal</code> or <code>SystemJS</code>, please check official examples.</p>
+
+        <h3>Step 1: Import dependencies</h3>
+        <p>Import <code>GalleryModule</code> and both <code>hammerjs</code> and <code>mousetrap</code>.</p>
+        <pre>
         import 'hammerjs';
         import 'mousetrap';
         import &#123; GalleryModule &#125; from '@ks89/angular-modal-gallery';
-      </pre>
-      <p>The only remaining part is to list the imported module in your root module and any additional application modules that make use of the components in this library.</p>
-      <pre>
+        </pre>
+        <p>Then list <code>GalleryModule</code> in your root module and any additional application modules that make use of the components in this library.</p>
+        <pre>
         import 'hammerjs';
         import 'mousetrap';
         import &#123;GalleryModule&#125; from '@ks89/angular-modal-gallery';
         @NgModule(&#123;
-          imports: [GalleryModule, ...],
+          imports: [
+            GalleryModule,
+            ...],
           declarations: [ AppComponent, ... ],
           providers: [ ... ],
           bootstrap: [ AppComponent ]
         &#125;)
         export class AppModule &#123;&#125;
-      </pre>
+        </pre>
 
-      <h3>Official examples</h3>
-      <ul>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-9">angular-cli 9 [latest version] (recommended)</a></li>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-8">angular-cli 8 [legacy support]</a></li>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-material">angular-cli with material</a></li>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">SystemJs</a></li>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/universal">angular-universal</a></li>
-        <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/stackblitz">live examples on stackblitz.com</a></li>
-      </ul>
+        <h3>Step 2: Update global CSS</h3>
+        <p>Update your global styles (CSS/SCSS/LESS) file adding this:</p>
+        <pre>
+        @import "~@angular/cdk/overlay-prebuilt.css";
+        .ks-modal-gallery-backdrop &#123;
+                  background: #000 !important;;
+                  opacity: 0.85 !important;;
+        &#125;
+        .ks-modal-gallery-panel &#123;
+                  z-index: 90000 !important;
+        &#125;
+        </pre>
 
+        <h3>Step 3: (optional) update your angular.json</h3>
+        <p>If you are using Angular 10 or greater with angular-cli, update your angular.json to whitelist commonjs dependencies as follow:</p>
+        <pre>
+        "architect": &#123;
+          "build": &#123;
+            "options": &#123;
+              ...
+              "allowedCommonJsDependencies": ["mousetrap", "hammerjs"]
+              &#125;,
+        ...
+        </pre>
 
-      <b>Don't use SystemJS in production!</b>
-      <p>If you are using SystemJS, you should also adjust your configuration to point to the UMD bundle.</p>
-      <p>In your SystemJS config file, add both map and packages to tell the System loader where to look for libraries:</p>
-      <pre>
+        <h3>Step 4: (optional) update tsconfig.base.json</h3>
+        <p>Add @types to tsconfig.base.json as follow:</p>
+        <pre>
+        &#123;
+          ...
+          "compilerOptions": &#123;
+            ...
+            "typeRoots": ["node_modules/@types"]
+          &#125;
+        &#125;
+        </pre>
+
+        <h3>Step 5: (optional) Only for SystemJS users</h3>
+        <p>If you are not using SystemJS, skip this step.</p>
+        <b>Instead, if you are really using SystemJS, remember to don't use SystemJS in production!</b>
+        <p>You should also adjust your configuration to point to the UMD bundle.</p>
+        <p>In your SystemJS config file, add both map and packages to tell the System loader where to look for libraries:</p>
+        <pre>
         map: &#123;
-          'hammerjs'                  : 'node_modules/hammerjs',
-          'mousetrap'                 : 'node_modules/mousetrap'
+          'hammerjs'                 : 'node_modules/hammerjs',
+          'mousetrap'                : 'node_modules/mousetrap'
           '@ks89'                    : 'node_modules/@ks89',
         &#125;
 
@@ -75,9 +179,9 @@
           '@ks89/angular-modal-gallery' : &#123; main: 'bundles/ks89-angular-modal-gallery.umd.min.js', defaultExtension: 'js' &#125;
         &#125;
       </pre>
-      <br>
-      <p><b>All SystemJS users must add <code>disableSsrWorkaround: true</code> to the keyboardServiceConfig interface in this way:</b></p>
-      <pre>
+        <br>
+        <p><b>All SystemJS users must add <code>disableSsrWorkaround: true</code> to the keyboardServiceConfig interface in this way:</b></p>
+        <pre>
         const LIB_CONFIG: LibConfig = &#123;
           keyboardServiceConfig: &#123;
             shortcuts: ['ctrl+s', 'meta+s'],
@@ -94,15 +198,39 @@
           &#125;
         &#125;);
       </pre>
-      <p><b><code>disableSsrWorkaround:true</code> will prevent errors at runtime with SystemJS.</b></p>
-      <p>For more information, you should check the <a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">official SystemJS example</a>.</p>
+        <p><b><code>disableSsrWorkaround:true</code> will prevent errors at runtime with SystemJS.</b></p>
+        <p>For more information, you should check the <a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">official SystemJS example</a>.</p>
 
+      </section>
       <br>
-      <h3>Getting Help</h3>
-      <p>Do you need help? Open an issue on GitHub!</p>
 
-      <h3>Contributing</h3>
-      <p>Please check <code>CONTRIBUTING.md</code> on GitHub for contribution guidelines.</p>
+      <section class="container">
+        <h2>Official examples</h2>
+        <ul>
+          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-10">angular-cli 10 [latest version] (recommended)</a></li>
+          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-9">angular-cli 9 [legacy support]</a></li>
+          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-material">angular-cli with material</a></li>
+          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">SystemJs</a></li>
+          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/universal">angular-universal</a></li>
+          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/stackblitz">live examples on stackblitz.com</a></li>
+        </ul>
+      </section>
+      <br>
+
+      <section class="container">
+        <h2>Support requests</h2>
+        <p>If you need support, <a href="https://github.com/Ks89/angular-modal-gallery/issues">open an issue</a> filling the template with all information.</p>
+      </section>
+      <br>
+
+      <section class="container">
+        <h2>Contributing</h2>
+        <p>This project is becoming bigger year after year. Also, It requires many time staying up-to-date and supporting the latest Angular version.</p>
+        <p>For these reasons I'm searching for <a href="https://github.com/Ks89/angular-modal-gallery/blob/master/CONTRIBUTING.md">contributions</a>.
+          Also, <a href="https://github.com/sponsors/Ks89">donations via Github Sponsors</a> are
+          very appreciated.</p>
+      </section>
+      <br>
     </div>
   </div>
 </div>

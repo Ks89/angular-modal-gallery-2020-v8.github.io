@@ -30,15 +30,42 @@
         <p>So, in your terminal run: <code>npm install --save @ks89/angular-modal-gallery@latest</code></p>
 
         <br>
-        <h4>Step 2 - upgrade Angular, angular@cdk and rxjs</h4>
+        <h4>Step 2 - upgrade Angular and rxjs</h4>
+
+        <p>Use the latest version of Angular (you can choose both 9 and 10, but I really recommend to use always the latest stable release) and rxjs 6.</p>
 
         <br>
-        <h4>Step 3 - upgrade the new dependency @angular/cdk</h4>
+        <h4>Step 3 - be sure to install the mandatory dependency `@angular/cdk`</h4>
 
         <p>@angular/cdk is mandatory to support responsiveness of carousel component and to show modal gallery.</p>
 
         <br>
-        <h4>Upgrade your code in this way:</h4>
+        <h4>Step 4 - update module import</h4>
+
+        <p>Replace all occurrences of <code>GalleryModule.forRoot()</code> into <code>GalleryModule</code>.</p>
+
+        <br>
+        <h4>Step 5 - update your global style file</h4>
+
+        <p>Add these classes to your global style file:</p>
+
+        <pre>
+        .ks-modal-gallery-backdrop &#123;
+          background: #000 !important;;
+          opacity: 0.85 !important;;
+        &#125;
+
+        .ks-modal-gallery-panel &#123;
+          z-index: 90000 !important;
+        &#125;
+        </pre>
+
+        <br>
+        <h4>Step 6 - update your code</h4>
+
+        <p>If you are using ks-modal-gallery component, you have to remove it from all you HTML files, because now it's an Angular service and not a component.</p>
+
+        TODO add here an example to update your code!
 
         <br>
       </section>
@@ -64,7 +91,7 @@
         <br>
         <h4>Step 3 - install the new dependency @angular/cdk</h4>
 
-        <p>In your terminal run: <code>npm install --save @angular/cdk</code>, because it's required to support responsiveness of carousel component.</p>
+        <p>In your terminal run: <code>npm install --save @angular/cdk@latest</code>, because it's required to support responsiveness of carousel component.</p>
 
         <br>
         <h4>Step 4 - rename ModalGalleryModule into GalleryModule</h4>

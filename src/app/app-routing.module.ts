@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2018 Stefano Cappa
+ * Copyright (c) 2017-2020 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'gettingStarted', component: GettingStartedComponent},
+  {path: 'getting-started', component: GettingStartedComponent},
 
   { path: 'features', loadChildren: () => import('./pages/features/features.module').then(m => m.FeaturesModule) },
 
@@ -49,6 +49,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
+    // always scroll on top when navigating
+    scrollPositionRestoration: 'top',
     useHash: Boolean(history.pushState) === false,
     preloadingStrategy: PreloadAllModules
   })],

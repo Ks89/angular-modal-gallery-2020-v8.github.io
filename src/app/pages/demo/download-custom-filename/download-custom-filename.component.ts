@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2018 Stefano Cappa
+ * Copyright (c) 2017-2020 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -75,7 +75,7 @@ export class DownloadCustomFilenameComponent implements OnInit {
     this.codeTypescript =
       `  // init this value with your images with 'downloadFileName': 'custom path'
   images: Image[];
-    
+
   buttonsConfigSimple: ButtonsConfig = {
     visible: true,
     strategy: ButtonsStrategy.SIMPLE
