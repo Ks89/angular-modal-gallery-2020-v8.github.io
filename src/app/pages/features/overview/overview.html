@@ -1,32 +1,16 @@
 <div class="container d-flex flex-column">
 
   <h2>Overview</h2>
-  <p>There are 2 main concepts to understand about @ks89/angular-modal-gallery.</p>
+  <p>Despite its name, @ks89/angular-modal-gallery is more than for modal galleries, because I'm introducing new features every major release. In fact, It's composed by 3 main parts:</p>
   <ul>
-    <li>Components: <strong>Carousel</strong>, <strong>Plain gallery</strong> and <strong>Modal gallery</strong> are the main features of this library. A detailed description is available in dedicated sections.</li>
-    <li>Configuration: using an object of type <strong>LibConfig</strong> you can configure the behaviour of all components. There is only an object to configure all components.</li>
+    <li><strong>MODAL GALLERY</strong>: available injecting the <code>ModalGalleryService</code> in your component</li>
+    <li><strong>PLAIN GALLERY</strong>: available via <code>&lt;ks-plain-gallery&gt;&lt;/ks-plain-gallery&gt;</code></li>
+    <li><strong>CAROUSEL</strong>: available via <code>&lt;ks-carousel&gt;&lt;/ks-carousel&gt;</code></li>
   </ul>
   <br>
 
-  <h3>Components</h3>
-  <ul>
-    <li><b>Carousel</b>: available via <code>&lt;ks-carousel&gt;&lt;/ks-carousel&gt;</code></li>
-    <li><b>Modal gallery</b>: available injecting the <code>ModalGalleryService</code> into your component</li>
-    <li><b>Plain gallery</b>: available via <code>&lt;ks-plain-gallery&gt;&lt;/ks-plain-gallery&gt;</code></li>
-  </ul>
-  <br>
-
-  <h4>Carousel</h4>
-  <div class="d-flex flex-row justify-content-center">
-    <img [src]="carouselPath">
-  </div>
-  <br>
-  <p>It contains a list of scrollable images (full width or fixed width) also with previews. By default images scroll automatically.
-    Users can configure this component with many parameters, also they can project HTML content into the current carousel image.</p>
-  <p>For more info check <a [routerLink]="['/features/carousel']">Carousel's documentation</a></p>
-  <br>
-
-  <h4>Modal gallery</h4>
+  <h4>MODAL GALLERY</h4>
+  <p>It's the core part of this project and display a modal window with full screen images, buttons, the current image and optionally, also navigation dots and previews</p>
   <div class="d-flex flex-row justify-content-center">
     <img [src]="modalGalleryPath">
   </div>
@@ -40,126 +24,136 @@
     <li>Background (semi-transparent)</li>
     <li><a [routerLink]="['/features/modal-gallery']">Modal gallery (the main component)</a></li>
   </ol>
-  <p>For more info check <a [routerLink]="['/features/modal-gallery']">Modal gallery's documentation</a></p>
+  <p>For more info check <a [routerLink]="['/features/modal-gallery']">Modal gallery documentation</a></p>
   <br>
 
-  <h4>Plain gallery</h4>
+  <h4>PLAIN GALLERY</h4>
+  <p>It contains a list of clickable thumbnails to open modal gallery. Layouts are configurable and users could also use
+    a custom implementation to draw everything they want.</p>
   <div class="d-flex flex-row justify-content-center">
     <img [src]="plainGalleryPath">
   </div>
   <br>
-  <p>It contains a list of thumbnails that users can click to open modal gallery. Layouts are configurable and users could also use
-    a custom implementation to draw everything they want.</p>
-  <p>For more info check <a [routerLink]="['/features/plain-gallery']">Plain gallery's documentation</a></p>
+  <p>For more info check <a [routerLink]="['/features/plain-gallery']">Plain gallery documentation</a></p>
   <br>
 
-  <h3>LibConfig</h3>
-  <p>The most important interface used to configure components is LibConfig. In case of plain-gallery and carousel you have to pass an object of type LibConfig as component input. Instead, in case of modal-gallery it will be a parameter
-    of a service function.</p>
-  <p>LibConfig is an object with many optional properties. However, not all of them are used by all components. Here you can find a table to know which of these properties can impact on components</p>
+  <h4>CAROUSEL</h4>
+  <p>It contains a list of scrollable images (full width or fixed width) also with previews. By default images scroll automatically.
+    Users can configure this component with many parameters, also they can project HTML content into the current carousel image.</p>
+  <div class="d-flex flex-row justify-content-center">
+    <img [src]="carouselPath">
+  </div>
+  <br>
+  <p>For more info check <a [routerLink]="['/features/carousel']">Carousel documentation</a></p>
+  <br>
 
-  <table class="table table-hover table-sm">
-    <thead>
-      <tr>
-        <th>Property</th>
-        <th>Modal gallery</th>
-        <th>Plain gallery</th>
-        <th>Carousel</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>slideConfig</td>
-        <td>V</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>accessibilityConfig</td>
-        <td>V</td>
-        <td>V</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>previewConfig</td>
-        <td>V</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>buttonsConfig</td>
-        <td>V</td>
-        <td>X</td>
-        <td>X</td>
-      </tr>
-      <tr>
-        <td>dotsConfig</td>
-        <td>V</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>plainGalleryConfig</td>
-        <td>X</td>
-        <td>V</td>
-        <td>X</td>
-      </tr>
-      <tr>
-        <td>currentImageConfig</td>
-        <td>V</td>
-        <td>X</td>
-        <td>X</td>
-      </tr>
-      <tr>
-        <td>keyboardConfig</td>
-        <td>V</td>
-        <td>X</td>
-        <td>X</td>
-      </tr>
-      <tr>
-        <td>carouselConfig</td>
-        <td>X</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>carouselImageConfig</td>
-        <td>X</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>carouselPreviewsConfig</td>
-        <td>X</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>carouselPlayConfig</td>
-        <td>X</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>carouselDotsConfig</td>
-        <td>X</td>
-        <td>X</td>
-        <td>V</td>
-      </tr>
-      <tr>
-        <td>enableCloseOutside</td>
-        <td>V</td>
-        <td>X</td>
-        <td>X</td>
-      </tr>
-      <tr>
-        <td>keyboardServiceConfig</td>
-        <td>V</td>
-        <td>?</td>
-        <td>V</td>
-      </tr>
-    </tbody>
-  </table>
+<!--  <h3>LibConfig</h3>-->
+<!--  <p>The most important interface used to configure components is LibConfig. In case of plain-gallery and carousel you have to pass an object of type LibConfig as component input. Instead, in case of modal-gallery it will be a parameter-->
+<!--    of a service function.</p>-->
+<!--  <p>LibConfig is an object with many optional properties. However, not all of them are used by all components. Here you can find a table to know which of these properties can impact on components</p>-->
+
+<!--  <table class="table table-hover table-sm">-->
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        <th>Property</th>-->
+<!--        <th>Modal gallery</th>-->
+<!--        <th>Plain gallery</th>-->
+<!--        <th>Carousel</th>-->
+<!--      </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      <tr>-->
+<!--        <td>slideConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>accessibilityConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>V</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>previewConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>buttonsConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>dotsConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>plainGalleryConfig</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>currentImageConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>keyboardConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>carouselConfig</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>carouselImageConfig</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>carouselPreviewsConfig</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>carouselPlayConfig</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>carouselDotsConfig</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>enableCloseOutside</td>-->
+<!--        <td>V</td>-->
+<!--        <td>X</td>-->
+<!--        <td>X</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>keyboardServiceConfig</td>-->
+<!--        <td>V</td>-->
+<!--        <td>?</td>-->
+<!--        <td>V</td>-->
+<!--      </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
 
   <p>For more details about LibConfig, please check <a [routerLink]="['/features/lib-config']">LibConfig</a> section.</p>
   <br>

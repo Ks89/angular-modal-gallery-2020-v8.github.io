@@ -2,18 +2,36 @@
 
   <!-- TODO Add link to github sources -->
   <h1 id="PlainGallery" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PlainGallery</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">Plain Gallery</a>
   </h1>
-  <p>PlainGallery component contains clickable thumbnails to open modal gallery.</p>
+  <p> Plain gallery contains a list of clickable thumbnails to open modal gallery.
+    Layouts are configurable and users could also use a custom implementation to draw everything they want.</p>
   <br>
-  <table class="table table-hover table-sm">
-    <tbody>
-    <tr>
-      <td>Template (HTML) selector</td>
-      <td><code>ks-plain-gallery</code></td>
-    </tr>
-    </tbody>
-  </table>
+
+  <h2>Live demo</h2>
+<!--  <ks-plain-gallery [id]="0" [modalImages]="images"</ks-plain-gallery>-->
+  <br>
+  <br>
+
+  <h2>API</h2>
+
+  <p>To add plain gallery in your application, you must add <code>&lt;ks-plain-gallery&gt;&lt;/ks-plain-gallery&gt;</code> in your component template file
+    and pass the two mandatory inputs id and images.</p>
+  <p>The minimal plain gallery in your HTML file is:</p>
+
+  <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
+  </codemirror>
+  <br>
+
+  <p>Then, in your Typescript component you have to init the images array with Image class instances. For instance</p>
+
+  <codemirror [(ngModel)]="codeTypescript" [config]="configTs">
+  </codemirror>
+  <br>
+
+  <p>To customize the plain gallery exploring all possibilities, see the table below to pass your configuration. To listen for plain gallery events, check the Output table.</p>
+  <p>To try more plain gallery live demos with custom configuration, please take a look at the <a href="TODO add link">example section</a> of this website.</p>
+  <br>
 
   <section>
     <h2>Inputs</h2>
@@ -92,12 +110,15 @@
       </tbody>
     </table>
   </section>
-
   <br>
 
+  <app-table-libconfig [showModalGallery]="false" [showPlainGallery]="true" [showCarousel]="false"></app-table-libconfig>
+  <br>
+
+  <app-table-image></app-table-image>
 
   <h2 id="PlainImage" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PlainImage</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">PlainImage</a>
   </h2>
   <p>Interface that represent the optional plain image used to open modal image, clicking on it.</p>
   <p>If you don't provide this object, angular-modal-gallery will scale down the img path of modal image to display the thumbnail.</p>
@@ -168,7 +189,7 @@
   <br>
 
   <h2 id="PlainGalleryConfig" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PlainGalleryConfig</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">PlainGalleryConfig</a>
   </h2>
   <p>Interface to configure plain gallery.</p>
   <br>
@@ -224,7 +245,7 @@
   <br>
 
   <h2 id="PlainGalleryLayout" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PlainGalleryLayout</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">PlainGalleryLayout</a>
   </h2>
   <p>Empty interface implemented by both <code><a href="#LineLayout">LineLayout</a></code>,
     <code><a href="#GridLayout">GridLayout</a></code>, <code><a href="#AdvancedLayout">AdvancedLayout</a></code>.</p>
@@ -234,7 +255,7 @@
   <br>
 
   <h2 id="LineLayout" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">LineLayout</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">LineLayout</a>
   </h2>
   <p>Class to configure a linear plain gallery.</p>
   <br>
@@ -279,7 +300,7 @@
   <br>
 
   <h2 id="GridLayout" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">GridLayout</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">GridLayout</a>
   </h2>
   <p>Class to configure a grid plain gallery.</p>
   <br>
@@ -313,7 +334,7 @@
   <br>
 
   <h2 id="AdvancedLayout" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">AdvancedLayout</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">AdvancedLayout</a>
   </h2>
   <p>Class to configure a custom plain gallery.</p>
   <br>
@@ -347,7 +368,7 @@
   <br>
 
   <h2 id="BreakConfig" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">BreakConfig</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">BreakConfig</a>
   </h2>
   <p>Interface to limit the number of items of the plain gallery or to fill other lines.</p>
   <br>
@@ -381,7 +402,7 @@
   <br>
 
   <h2 id="AdvancedConfig" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">AdvancedConfig</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">AdvancedConfig</a>
   </h2>
   <p>Interface to use &lt;a&gt; tags instead of &lt;img&gt; and to customize the css background property for thumbnails in plain gallery.</p>
   <br>
@@ -416,7 +437,7 @@
   <br>
 
   <h2 id="PlainGalleryStrategy" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">PlainGalleryStrategy</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">PlainGalleryStrategy</a>
   </h2>
   <p>Enum that represent the strategy used to show thumbnails in plain gallery. It can be one of these enum values:</p>
   <br>

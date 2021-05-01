@@ -2,7 +2,7 @@
 
   <!-- TODO Add link to github sources -->
   <h1 id="Carousel" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Carousel</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">Carousel</a>
   </h1>
   <p>Carousel component is a component to build responsive carousels. It contains a collection of <code><a [routerLink]="['/features/common']">Images</a></code>,
     like all other components exposed by this library and many other config objects.
@@ -13,22 +13,31 @@
   <p class="warning">If you need to support also Internet Explorer 11 (IE11), enable <code>legacyIE11Mode: true</code> and use only
     ABSOLUTE image paths (for instance '/assets/a.png' instead of './assets/a.png'). However, try to understand that I cannot support that obsolete browser forever!</p>
   <br>
-  <table class="table table-hover table-sm">
-    <tbody>
-    <tr>
-      <td>Template (HTML) selector</td>
-      <td><code>ks-carousel</code></td>
-    </tr>
-    <tr>
-      <td>Exported as</td>
-      <td><code>ksCarousel</code></td>
-    </tr>
-    </tbody>
-  </table>
 
-  aggiungere tabella libconfig con le proprietà usate da carousel e quali invece vengono ignorate.
-  mettere anche nota su quali vengono usate solo se si abilita apertura modale.
+  <h2>Live demo</h2>
+  <ks-carousel [id]="100" [images]="images"></ks-carousel>
+  <br>
+  <br>
 
+  <h2>API</h2>
+
+  <p>To add carousel in your application, you must add <code>&lt;ks-carousel&gt;&lt;/ks-carousel&gt;</code> in your component template file
+  and pass the two mandatory inputs id and images.</p>
+  <p>The minimal carousel in your HTML file is:</p>
+
+  <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
+  </codemirror>
+  <br>
+
+  <p>Then, in your Typescript component you have to init the images array with Image class instances. For instance</p>
+
+  <codemirror [(ngModel)]="codeTypescript" [config]="configTs">
+  </codemirror>
+  <br>
+
+  <p>To customize the carousel exploring all possibilities, see the table below to pass your configuration. To listen for carousel events, check the Output table.</p>
+  <p>To try more carousel live demos with custom configuration, please take a look at the <a href="TODO add link">example section</a> of this website.</p>
+  <br>
 
   <section>
     <h2>Inputs</h2>
@@ -249,10 +258,15 @@
       </tbody>
     </table>
   </section>
-
   <br>
+
+  <app-table-libconfig [showModalGallery]="false" [showPlainGallery]="false" [showCarousel]="true"></app-table-libconfig>
+  <br>
+
+  <app-table-image></app-table-image>
+
   <h2 id="CarouselConfig" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">CarouselConfig</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">CarouselConfig</a>
   </h2>
   <p>Interface to configure the carousel, like to change sizes, hide some features and so on.</p>
   <br>
@@ -342,7 +356,7 @@
 
   <br>
   <h2 id="CarouselImageConfig" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">CarouselImageConfig</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">CarouselImageConfig</a>
   </h2>
   <p>Interface to change current image of the carousel, like description or to invert the swipe direction.</p>
   <br>
@@ -377,7 +391,7 @@
 
   <br>
   <h2 id="ImageEvent" class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">ImageEvent</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">ImageEvent</a>
   </h2>
   <p>The payload of events related to action, emitted by this library.</p>
   <br>

@@ -45,8 +45,8 @@ export class GettingStartedComponent implements OnInit {
     this.metaData();
   }
 
-  onScrollTo(examples: string) {
-    this.viewPortScroller.scrollToAnchor('examples');
+  onScrollTo(tag: string) {
+    this.viewPortScroller.scrollToAnchor(tag);
   }
 
   onNavigateTo(path: string) {

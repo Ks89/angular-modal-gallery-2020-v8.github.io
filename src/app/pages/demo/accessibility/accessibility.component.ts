@@ -27,7 +27,7 @@ import { DOCUMENT } from '@angular/common';
 
 import { AccessibilityConfig, Image } from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';

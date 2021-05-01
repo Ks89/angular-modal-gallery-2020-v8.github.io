@@ -33,7 +33,7 @@ import { TitleService } from '../../core/services/title.service';
 })
 export class FeaturesComponent {
 
-  title = 'Features - Modal Gallery';
+  title = 'Features';
 
   constructor(private titleService: TitleService,
               @Inject(DOCUMENT) private document: any) {

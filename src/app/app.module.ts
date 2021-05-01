@@ -32,6 +32,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { GalleryModule } from '@ks89/angular-modal-gallery'; // <----------------- angular-modal-gallery library import
 // **************************************************************************
 
+// ************************ optional font-awesome 5 ************************
+// to install use both `npm i --save @fortawesome/fontawesome-svg-core` and `npm i --save @fortawesome/free-solid-svg-icons`
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
+library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
+dom.watch(); // Kicks off the process of finding <i> tags and replacing with <svg>
+// *************************************************************************
+
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
@@ -51,7 +59,8 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
 
     CodemirrorModule,
-    GalleryModule.forRoot(),
+    GalleryModule,
+
     CoreModule,
     SharedModule,
     RouterModule

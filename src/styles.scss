@@ -30,6 +30,24 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+// *****************************************************************
+// *********** required by @ks89/angular-modal-gallery *************
+// *****************************************************************
+// ATTENTION: You have to install @angular/cdk to be able to use @ks89/angular-modal-gallery properly
+@import "~@angular/cdk/overlay-prebuilt.css";
+
+.ks-modal-gallery-backdrop {
+  background: #000 !important;;
+  opacity: 0.85 !important;;
+}
+
+.ks-modal-gallery-panel {
+  z-index: 90000 !important;
+}
+// *****************************************************************
+// *****************************************************************
+// *****************************************************************
+
 // force codemirror's height https://codemirror.net/demo/resize.html
 .CodeMirror {
   border: 1px solid #eee;

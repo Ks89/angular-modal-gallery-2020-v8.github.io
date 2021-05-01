@@ -38,7 +38,7 @@ const routes: Routes = [
 
   { path: 'features', loadChildren: () => import('./pages/features/features.module').then(m => m.FeaturesModule) },
 
-  // { path: 'demo', loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule) },
+  { path: 'demo', loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule) },
 
   {path: 'migration', component: MigrationComponent},
 

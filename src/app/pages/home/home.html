@@ -20,7 +20,11 @@
 <!--        <p class="lead">Small demo with all default values.-->
 <!--          For more information, go to <a pageScroll href="#features" [routerLink]="['/features']">Features</a>.</p>-->
         <br>
-        <ks-modal-gallery [id]="0" [modalImages]="images"></ks-modal-gallery>
+
+        <ks-plain-gallery [id]="1"
+                          [images]="images"
+                          [showGallery]="true"
+                          (showImage)="onShow(1, $event)"></ks-plain-gallery>
       </section>
     </div>
 

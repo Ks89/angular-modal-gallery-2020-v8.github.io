@@ -27,7 +27,7 @@ import { DOCUMENT } from '@angular/common';
 
 import { AdvancedLayout, Image, PlainGalleryConfig, PlainGalleryStrategy } from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -54,13 +54,7 @@ export class PlainGalleryCustomWithDescComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              // private scrollService: PageScrollService,
               @Inject(DOCUMENT) private document: any) {
-
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
-
     this.titleService.titleEvent.emit('Examples - Plain gallery custom with description');
 
     this.codeHtml =

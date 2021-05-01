@@ -18,38 +18,38 @@ import { LoadingSpinnerTypeComponent } from './loading-spinner-type/loading-spin
 import { PreviewsLengthComponent } from './previews-length/previews-length.component';
 import { PreviewsNoArrowsComponent } from './previews-no-arrows/previews-no-arrows.component';
 import { PreviewsNotClickableComponent } from './previews-not-clickable/previews-not-clickable.component';
-import { AccessibilityComponent } from './accessibility/accessibility.component';
+// import { AccessibilityComponent } from './accessibility/accessibility.component';
 import { ButtonsStrategiesComponent } from './buttons-strategies/buttons-strategies.component';
 import { ButtonsExturlNewtabComponent } from './buttons-exturl-newtab/buttons-exturl-newtab.component';
 import { ButtonsCustomFaComponent } from './buttons-custom-fa/buttons-custom-fa.component';
-import { PlainGalleryCustomWithDescComponent } from './plain-gallery-custom-with-desc/plain-gallery-custom-with-desc.component';
-import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
-import { PlainGalleryLayoutsComponent } from './plain-gallery-layouts/plain-gallery-layouts.component';
-import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
-import { GalleryServiceComponent } from './gallery-service/gallery-service.component';
-
-import { Base64Component } from './base64/base64.component';
+// import { PlainGalleryCustomWithDescComponent } from './plain-gallery-custom-with-desc/plain-gallery-custom-with-desc.component';
+// import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
+// import { PlainGalleryLayoutsComponent } from './plain-gallery-layouts/plain-gallery-layouts.component';
+// import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
+// import { GalleryServiceComponent } from './gallery-service/gallery-service.component';
+//
+// import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
-import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
+// import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
+//
+// import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
+// import { ModalAutoplayPlayButtonComponent } from './modal-autoplay-playbutton/modal-autoplay-playbutton.component';
+// import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
+//
+// import { CarouselMinimalComponent } from './carousel-minimal/carousel-minimal.component';
+// import { CarouselFixedComponent } from './carousel-fixed/carousel-fixed.component';
+// import { CarouselContentProjectionComponent } from './carousel-content-projection/carousel-content-projection.component';
+// import { CarouselFeaturesDisablesComponent } from './carousel-features-disables/carousel-features-disables.component';
+// import { CarouselNoAutoplayComponent } from './carousel-no-autoplay/carousel-no-autoplay.component';
+// import { CarouselNoInfiniteComponent } from './carousel-no-infinite/carousel-no-infinite.component';
+// import { CarouselCustomAutoplayComponent } from './carousel-custom-autoplay/carousel-custom-autoplay.component';
+// import { CarouselCustomPreviewsComponent } from './carousel-custom-previews/carousel-custom-previews.component';
+// import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
+// import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
+// import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
+// import { SameImagesComponent } from './same-images/same-images.component';
 
-import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
-import { ModalAutoplayPlayButtonComponent } from './modal-autoplay-playbutton/modal-autoplay-playbutton.component';
-import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
-
-import { CarouselMinimalComponent } from './carousel-minimal/carousel-minimal.component';
-import { CarouselFixedComponent } from './carousel-fixed/carousel-fixed.component';
-import { CarouselContentProjectionComponent } from './carousel-content-projection/carousel-content-projection.component';
-import { CarouselFeaturesDisablesComponent } from './carousel-features-disables/carousel-features-disables.component';
-import { CarouselNoAutoplayComponent } from './carousel-no-autoplay/carousel-no-autoplay.component';
-import { CarouselNoInfiniteComponent } from './carousel-no-infinite/carousel-no-infinite.component';
-import { CarouselCustomAutoplayComponent } from './carousel-custom-autoplay/carousel-custom-autoplay.component';
-import { CarouselCustomPreviewsComponent } from './carousel-custom-previews/carousel-custom-previews.component';
-import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
-import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
-import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
-import { SameImagesComponent } from './same-images/same-images.component';
-
-export const FEATURES_COMPONENTS = [
+export const DEMO_COMPONENTS = [
   DemoComponent,
   ArraySimpleComponent,
   DownloadSimpleComponent,
@@ -64,38 +64,37 @@ export const FEATURES_COMPONENTS = [
   NoDotsAndPreviewsComponent,
   SidePreviewsHiddenComponent,
   OnlyCurrentImgComponent,
-  PreviewsCustomSizeComponent,
   LoadingSpinnerDisableComponent,
   LoadingSpinnerTypeComponent,
   PreviewsCustomSizeComponent,
   PreviewsLengthComponent,
   PreviewsNoArrowsComponent,
   PreviewsNotClickableComponent,
-  AccessibilityComponent,
+  // AccessibilityComponent,
   ButtonsStrategiesComponent,
   ButtonsExturlNewtabComponent,
   ButtonsCustomFaComponent,
-  PlainGalleryCustomWithDescComponent,
-  PlainGalleryImagePointerComponent,
-  PlainGalleryLayoutsComponent,
-  PlainGalleryAtagsComponent,
-  GalleryServiceComponent,
-  Base64Component,
+  // PlainGalleryCustomWithDescComponent,
+  // PlainGalleryImagePointerComponent,
+  // PlainGalleryLayoutsComponent,
+  // PlainGalleryAtagsComponent,
+  // GalleryServiceComponent,
+  // Base64Component,
   DownloadCustomFilenameComponent,
-  InvertSwipeComponent,
-  SameImagesComponent,
-  ModalAutoplayMinimalComponent,
-  ModalAutoplayCustomComponent,
-  ModalAutoplayPlayButtonComponent,
-  CarouselMinimalComponent,
-  CarouselFixedComponent,
-  CarouselContentProjectionComponent,
-  CarouselFeaturesDisablesComponent,
-  CarouselNoAutoplayComponent,
-  CarouselNoInfiniteComponent,
-  CarouselCustomAutoplayComponent,
-  CarouselCustomPreviewsComponent,
-  CarouselWithDescriptionComponent,
-  CarouselOutputsComponent,
-  CarouselBreakpointsComponent
+  // InvertSwipeComponent,
+  // SameImagesComponent,
+  // ModalAutoplayMinimalComponent,
+  // ModalAutoplayCustomComponent,
+  // ModalAutoplayPlayButtonComponent,
+  // CarouselMinimalComponent,
+  // CarouselFixedComponent,
+  // CarouselContentProjectionComponent,
+  // CarouselFeaturesDisablesComponent,
+  // CarouselNoAutoplayComponent,
+  // CarouselNoInfiniteComponent,
+  // CarouselCustomAutoplayComponent,
+  // CarouselCustomPreviewsComponent,
+  // CarouselWithDescriptionComponent,
+  // CarouselOutputsComponent,
+  // CarouselBreakpointsComponent
 ];

@@ -25,11 +25,19 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import {
+  DotsConfig,
+  Image,
+  LibConfig,
+  ModalGalleryConfig,
+  ModalGalleryRef,
+  ModalGalleryService,
+  PreviewConfig
+} from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
-import { codemirrorHtml } from '../../codemirror.config';
+import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
 
 @Component({
@@ -40,28 +48,66 @@ export class NoDotsAndPreviewsComponent implements OnInit {
   images: Image[] = [...IMAGES_ARRAY];
 
   configHtml: any = codemirrorHtml;
+  configTs: any = codemirrorTs;
 
   codeHtml: string;
+  codeTypescript: string;
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
 
     this.titleService.titleEvent.emit('Examples - No dots and previews');
 
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"
-    [previewConfig]="{visible: false}"
-    [dotsConfig]="{visible: false}"></ks-modal-gallery>`;
+      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
+
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id: id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        previewConfig: {
+          visible: false
+        },
+        dotsConfig: {
+          visible: false
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        previewConfig: {
+          visible: false
+        } as PreviewConfig,
+        dotsConfig: {
+          visible: false
+        } as DotsConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo no dots and previews'
-    });
+    } as Metadata);
   }
 }

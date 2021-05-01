@@ -26,7 +26,7 @@
           </tr>
           <tr>
             <td><b>3.3.5</b></td>
-            <td>2</td>
+            <td>2.0.0</td>
             <td>not required</td>
             <td>>=1.6.1</td>
             <td>>=2.0.0</td>
@@ -34,7 +34,7 @@
           </tr>
           <tr>
             <td><b>5.7.1</b></td>
-            <td>4</td>
+            <td>4.0.0</td>
             <td>not required</td>
             <td>>=1.6.1</td>
             <td>>=2.0.0</td>
@@ -42,7 +42,7 @@
           </tr>
           <tr>
             <td><b>6.3.0</b></td>
-            <td>5</td>
+            <td>5.0.0</td>
             <td>not required</td>
             <td>>=1.6.1</td>
             <td>>=2.0.0</td>
@@ -50,16 +50,16 @@
           </tr>
           <tr>
             <td><b>7.2.5</b></td>
-            <td>6, 7, 8</td>
-            <td>6, 7, 8</td>
+            <td>6.0.0<br>7.0.0<br>8.0.0</td>
+            <td>6.0.0<br>7.0.0<br>8.0.0</td>
             <td>>=1.6.1</td>
             <td>>=2.0.0</td>
             <td>optional</td>
           </tr>
           <tr>
             <td><b>8.0.0 (recommended)</b></td>
-            <td><b>9, 10</b></td>
-            <td><b>9, 10</b></td>
+            <td><b>9.0.0<br>10.0.0</b></td>
+            <td><b>9.0.0<br>10.0.0</b></td>
             <td><b>>=1.6.1</b></td>
             <td><b>>=2.0.0</b></td>
             <td><b>optional</b></td>
@@ -166,23 +166,25 @@
         </pre>
 
         <h3>Step 5: (optional) Only for SystemJS users</h3>
-        <p>If you are not using SystemJS, skip this step.</p>
-        <b>Instead, if you are really using SystemJS, remember to don't use SystemJS in production!</b>
-        <p>You should also adjust your configuration to point to the UMD bundle.</p>
-        <p>In your SystemJS config file, add both map and packages to tell the System loader where to look for libraries:</p>
+        <p>If you are using angular-cli, skip this step.</p>
+        <p>In your SystemJS config file, after angular and @angular/cdk imports, add both map and packages to tell the System loader where to look for libraries:</p>
         <pre>
         map: &#123;
+          ...
           'hammerjs'                 : 'node_modules/hammerjs',
           'mousetrap'                : 'node_modules/mousetrap'
           '@ks89'                    : 'node_modules/@ks89',
+          ...
         &#125;
 
         packages = &#123;
+          ...
           'hammerjs'                    : &#123; main: 'hammer.js' &#125;,
           'mousetrap'                   : &#123; main: 'mousetrap.js' &#125;,
           '@ks89/angular-modal-gallery' : &#123; main: 'bundles/ks89-angular-modal-gallery.umd.min.js', defaultExtension: 'js' &#125;
+          ...
         &#125;
-      </pre>
+        </pre>
         <br>
         <p><b>All SystemJS users must add <code>disableSsrWorkaround: true</code> to the keyboardServiceConfig interface in this way:</b></p>
         <pre>

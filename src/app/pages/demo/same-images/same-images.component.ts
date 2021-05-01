@@ -27,7 +27,7 @@ import { DOCUMENT } from '@angular/common';
 
 import { Image } from '@ks89/angular-modal-gallery';
 
-import { SAME_IMAGES } from '../images';
+import { SAME_IMAGES } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';

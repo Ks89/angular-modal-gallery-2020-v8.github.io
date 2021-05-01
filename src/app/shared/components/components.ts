@@ -27,11 +27,15 @@ import { IntroHeaderComponent } from './intro-header/intro-header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarDemoComponent } from './sidebar-demo/sidebar-demo.component';
 import { SidebarFeaturesComponent } from './sidebar-features/sidebar-features.component';
+import { TableImageComponent } from './table-image/table-image.component';
+import { TableLibconfigComponent } from './table-libconfig/table-libconfig.component';
 
 export const SHARED_COMPONENTS = [
   NavbarComponent,
   IntroHeaderComponent,
   FooterComponent,
   SidebarDemoComponent,
-  SidebarFeaturesComponent
+  SidebarFeaturesComponent,
+  TableImageComponent,
+  TableLibconfigComponent
 ];

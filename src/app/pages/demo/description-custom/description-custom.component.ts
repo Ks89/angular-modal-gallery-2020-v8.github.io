@@ -25,9 +25,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Description, DescriptionStrategy, Image } from '@ks89/angular-modal-gallery';
+import {
+  CurrentImageConfig,
+  Description,
+  DescriptionStrategy,
+  Image,
+  LibConfig, ModalGalleryConfig,
+  ModalGalleryRef,
+  ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -40,13 +48,6 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
 export class DescriptionCustomComponent implements OnInit {
   images: Image[] = [...IMAGES_ARRAY];
 
-  customDescription: Description = {
-    strategy: DescriptionStrategy.ALWAYS_VISIBLE,
-    imageText: 'Look this image ',
-    numberSeparator: ' of ',
-    beforeTextDescription: ' => '
-  };
-
   configHtml: any = codemirrorHtml;
   configTs: any = codemirrorTs;
 
@@ -55,31 +56,62 @@ export class DescriptionCustomComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Description custom');
 
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"
-    [currentImageConfig]="{description: customDescription}"></ks-modal-gallery>`;
+      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
 
-    this.codeTypescript =
-      `  images: Image[]; // init this value with your images
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
 
-  customDescription: Description = {
-    strategy: DescriptionStrategy.ALWAYS_VISIBLE,
-    imageText: 'Look this image ',
-    numberSeparator: ' of ',
-    beforeTextDescription: ' => '
-  };`;
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          description: {
+            strategy: DescriptionStrategy.ALWAYS_VISIBLE,
+            imageText: 'Look this image ',
+            numberSeparator: ' of ',
+            beforeTextDescription: ' => '
+          }
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          description: {
+            strategy: DescriptionStrategy.ALWAYS_VISIBLE,
+            imageText: 'Look this image ',
+            numberSeparator: ' of ',
+            beforeTextDescription: ' => '
+          } as Description
+        } as CurrentImageConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo description custom'
-    });
+    } as Metadata);
   }
 }

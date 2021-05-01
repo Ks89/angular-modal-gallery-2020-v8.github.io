@@ -25,9 +25,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import { Image, ModalGalleryConfig, ModalGalleryRef, ModalGalleryService } from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -48,19 +48,14 @@ export class AddImageArrayComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              // private scrollService: PageScrollService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
 
     this.titleService.titleEvent.emit('Examples - Add image array');
 
-    // scroll to the top of the documrent
-    // const pageScrollInstance: PageScollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
-
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"></ks-modal-gallery>
-<button class="btn btn-danger btn-sm" (click)="addRandomImage()">
-<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add image</button>
+      `<button (click)="openModal(1, 0)">Click to open modal gallery id=1 at index=0</button>
+<button (click)="addRandomImage()">Add random image</button>
   `;
 
     this.codeTypescript =
@@ -70,23 +65,39 @@ export class AddImageArrayComponent implements OnInit {
     const imageToCopy: Image = this.images[Math.floor(Math.random() * this.images.length)];
     const newImage: Image = new Image(this.images.length - 1 + 1, imageToCopy.modal, imageToCopy.plain);
     this.images = [...this.images, newImage]; // this is really important (you MUST create a new copy of the input array)
-  }`;
-
   }
 
-  addRandomImage() {
-    const imageToCopy: Image = this.images[Math.floor(Math.random() * this.images.length)];
-    const newImage: Image = new Image(this.images.length - 1 + 1, imageToCopy.modal, imageToCopy.plain);
-    this.images = [...this.images, newImage];
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex]
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+  `;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  addRandomImage(): void {
+    const imageToCopy: Image = this.images[Math.floor(Math.random() * this.images.length)];
+    const newImage: Image = new Image(this.images.length - 1 + 1, imageToCopy.modal, imageToCopy.plain);
+    this.images = [...this.images, newImage];
+  }
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex]
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo add image'
-    });
+    } as Metadata);
   }
 }

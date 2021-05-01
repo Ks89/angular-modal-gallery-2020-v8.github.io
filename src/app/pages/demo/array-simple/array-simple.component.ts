@@ -25,9 +25,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import { Image, ModalGalleryConfig, ModalGalleryRef, ModalGalleryService } from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -47,26 +47,43 @@ export class ArraySimpleComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              // private scrollService: PageScrollService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
-
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
 
     this.titleService.titleEvent.emit('Examples - Array simple');
 
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"></ks-modal-gallery>`;
+      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
+
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id: id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex]
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo simple'
-    });
+    } as Metadata);
   }
 }

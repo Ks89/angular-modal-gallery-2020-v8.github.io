@@ -1,0 +1,43 @@
+<h2 id="Image" class="link clickable">
+  <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">Image</a>
+</h2>
+<p>The main object that represents an Image with both modal, thumbnail, description and so on.
+  The first thing to do is creating an array of <code>Image</code> instances (using the new keyword). Every element represents a single image.</p>
+<br>
+<table class="table table-hover table-sm">
+  <tbody>
+  <tr>
+    <td><small><code>id</code></small></td>
+    <td>
+      <div>
+        <i>Type: </i><code>number</code>
+      </div>
+      <div>
+        <p>Mandatory <b>UNIQUE</b> id to identify the image.</p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><small><code>modal</code></small></td>
+    <td>
+      <div>
+        <i>Type: </i><code>ModalImage</code>
+      </div>
+      <div>
+        <p>Mandatory interface to configure the modal image.</p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><small><code>plain</code></small></td>
+    <td>
+      <div>
+        <i>Type: </i><a [routerLink]="['/features/plain-gallery']"><code>PlainImage</code></a><span class="badge badge-pill badge-secondary float-right">optional</span>
+      </div>
+      <div>
+        <p>Optional interface to configure the thumbnail (or 'plain image').</p>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

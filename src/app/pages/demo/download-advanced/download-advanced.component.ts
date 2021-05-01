@@ -25,9 +25,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { ButtonsConfig, ButtonsStrategy, Image } from '@ks89/angular-modal-gallery';
+import {
+  ButtonsConfig,
+  ButtonsStrategy,
+  CurrentImageConfig,
+  Image, LibConfig, ModalGalleryConfig,
+  ModalGalleryRef,
+  ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -39,11 +46,6 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
 export class DownloadAdvancedComponent implements OnInit {
   images: Image[] = [...IMAGES_ARRAY];
 
-  buttonsConfigSimple: ButtonsConfig = {
-    visible: true,
-    strategy: ButtonsStrategy.SIMPLE
-  };
-
   configHtml: any = codemirrorHtml;
   configTs: any = codemirrorTs;
 
@@ -52,30 +54,60 @@ export class DownloadAdvancedComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Download advanced');
 
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"
-    [currentImageConfig]="{downloadable: true}"
-    [buttonsConfig]="buttonsConfigSimple"></ks-modal-gallery>`;
+      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
 
-    this.codeTypescript =
-      `  images: Image[]; // init this value with your images
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
 
-  buttonsConfigSimple: ButtonsConfig = {
-    visible: true,
-    strategy: ButtonsStrategy.SIMPLE
-  };`;
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id: id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          downloadable: true
+        },
+        buttonsConfig: {
+          visible: true,
+          strategy: ButtonsStrategy.SIMPLE
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          downloadable: true
+        } as CurrentImageConfig,
+        buttonsConfig: {
+          visible: true,
+          strategy: ButtonsStrategy.SIMPLE
+        } as ButtonsConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo download advanced'
-    });
+    } as Metadata);
   }
 }

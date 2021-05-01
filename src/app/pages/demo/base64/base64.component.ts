@@ -100,12 +100,12 @@ export class Base64Component implements OnInit {
   constructor(private uiService: UiService,
               private sanitizer: DomSanitizer,
               private titleService: TitleService,
-              private scrollService: PageScrollService,
+              // private scrollService: PageScrollService,
               @Inject(DOCUMENT) private document: any) {
 
     // scroll to the top of the document
-    const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    this.scrollService.start(pageScrollInstance);
+    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
+    // this.scrollService.start(pageScrollInstance);
 
     this.titleService.titleEvent.emit('Examples - Base64');
 
@@ -177,8 +177,8 @@ export class Base64Component implements OnInit {
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo base64'
-    });
+    } as Metadata);
   }
 }

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // to support ngModel
+import { FormsModule } from '@angular/forms';
+
 import { routing } from './demo.routing';
 
-import { FEATURES_COMPONENTS } from './components';
+import { DEMO_COMPONENTS } from './components';
 import { SharedModule } from '../../shared/shared.module';
 
 import { CodemirrorModule } from '@ks89/ngx-codemirror';
@@ -12,7 +13,6 @@ import { CodemirrorModule } from '@ks89/ngx-codemirror';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
 // **************************************************************************
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -20,10 +20,10 @@ import { GalleryModule } from '@ks89/angular-modal-gallery';
     SharedModule,
     FormsModule,
     CodemirrorModule,
-    GalleryModule // no for root here
+    GalleryModule
   ],
   declarations: [
-    FEATURES_COMPONENTS
+    DEMO_COMPONENTS
   ]
 })
 export class DemoModule {

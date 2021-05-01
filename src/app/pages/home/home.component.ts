@@ -25,7 +25,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import {
+  Image,
+  ModalGalleryRef,
+  ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
 import { Metadata, UiService } from '../../core/services/ui.service';
 import { environment } from '../../../environments/environment';
@@ -74,14 +78,24 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(private uiService: UiService,
-              @Inject(DOCUMENT) private document: any) {}
+              private modalGalleryService: ModalGalleryService,
+              @Inject(DOCUMENT) private document: any) {
+  }
 
   ngOnInit() {
     this.metaData();
   }
 
+  onShow(id: number, index: number, images: Image[] = this.images): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images,
+      currentImage: images[index]
+    }) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData(<Metadata> {
       title: 'Home'
     });
   }

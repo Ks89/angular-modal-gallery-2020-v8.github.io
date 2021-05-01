@@ -1,6 +1,6 @@
 import { Image } from '@ks89/angular-modal-gallery';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 const PATH = environment.imgPath;
 

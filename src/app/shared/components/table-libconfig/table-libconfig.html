@@ -1,0 +1,188 @@
+<h2 id="LibConfig" class="link clickable">
+  <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">LibConfig</a>
+</h2>
+<p>The main object to configure modal gallery, plain gallery and carousel.</p>
+<br>
+<div class="table-responsive">
+  <table class="table table-hover table-sm">
+    <tbody>
+      <tr *ngIf="showModalGallery">
+        <td><small><code>slideConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>SlideConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#SlideConfig">SlideConfig</a></code> to manage sliding features of modal-gallery and ....</p>
+            <p>Interface to enable infinite-sliding (you won't be able to navigate before both the first and after the last images) and to configure both side-previews and autoPlay.
+              By default, infinite sliding is disabled, side-previews are visible with <code>width: 100px</code> and <code>height: auto</code> and autoPlay is disabled.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery || showPlainGallery || showCarousel">
+        <td><small><code>accessibilityConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>AccessibilityConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#AccessibilityConfig">AccessibilityConfig</a></code>.</p>
+            <p>Interface to customize accessibility features, like alt, titles, aria-labels and so on. Modal Gallery applies a default value with english texts.
+              This default config object is exported as KS_DEFAULT_ACCESSIBILITY_CONFIG.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery || showCarousel">
+        <td><small><code>previewConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>PreviewConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#PreviewConfig">PreviewConfig</a></code>.</p>
+            <p>Interface to configure previews, for instance to choose either the number, visibility, arrows, sizes.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery">
+        <td><small><code>buttonsConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>ButtonsConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#ButtonsConfig">ButtonsConfig</a></code>.</p>
+            <p>Interface to choose which buttons to show and handle their behaviour.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery">
+        <td><small><code>dotsConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>DotsConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#DotsConfig">DotsConfig</a></code>.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showPlainGallery">
+        <td><small><code>plainGalleryConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>PlainGalleryConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#PlainGalleryConfig">PlainGalleryConfig</a></code>.</p>
+            <p>Interface to configure thumbnails, for instance to change the layout. Furthermore, it's useful to write full custom layouts (for more info see official demos).</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery">
+        <td><small><code>currentImageConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>CurrentImageConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#CurrentImageConfig">CurrentImageConfig</a></code>.</p>
+            <p>Interface to configure current image in modal-gallery. For instance you can either disable navigation when you click on the current image (enabled by default),
+              or change descriptions, loading spinners or enable download features.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery">
+        <td><small><code>keyboardConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>KeyboardConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#KeyboardConfig">KeyboardConfig</a></code>.</p>
+            <p>Interface to configure keyboard's buttons. All properties are optional and with default values. Check KeyboardConfig for more information.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showCarousel">
+        <td><small><code>carouselConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>CarouselConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#CarouselConfig">CarouselConfig</a></code>. Used only by carousel.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showCarousel">
+        <td><small><code>carouselImageConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>CarouselImageConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#CarouselImageConfig">CarouselImageConfig</a></code>. Used only by carousel.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showCarousel">
+        <td><small><code>carouselPreviewsConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>CarouselPreviewConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#CarouselPreviewConfig">CarouselPreviewConfig</a></code>. Used only by carousel.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showCarousel">
+        <td><small><code>carouselPlayConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>PlayConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#PlayConfig">PlayConfig</a></code>. Used only by carousel.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showCarousel">
+        <td><small><code>carouselDotsConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>DotsConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#DotsConfig">DotsConfig</a></code>. Used only by carousel.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery">
+        <td><small><code>keyboardServiceConfig</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>KeyboardServiceConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional object used to configure <code><a href="#KeyboardServiceConfig">KeyboardServiceConfig</a></code>. Used to pass custom configuration to mousetrap to download images with keyboard shortcut, and also to disable
+              SSR in case you want to use SystemJS.</p>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="showModalGallery">
+        <td><small><code>enableCloseOutside</code></small></td>
+        <td>
+          <div>
+            <i>Type: </i><code>boolean</code><span class="badge badge-pill badge-secondary float-right">optional</span>
+          </div>
+          <div>
+            <p>Optional property to close modal-gallery clicking on the semi-transparent background.</p>
+            <p>If true, you can click on the semi-transparent background of modal images to close it. <code>true</code> by default.</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

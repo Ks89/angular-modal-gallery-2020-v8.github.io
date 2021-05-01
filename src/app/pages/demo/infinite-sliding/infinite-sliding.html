@@ -1,16 +1,14 @@
 <div class="container">
 
   <h2 class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery/tree/master/projects/ks89/angular-modal-gallery/angular-modal-gallery">Infinite sliding enabled</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">Infinite sliding enabled</a>
   </h2>
   <p>Modal gallery example with <b>infinite sliding enabled</b>, but without side-previews</p>
   <br>
 
   <h3>Live Demo</h3>
   <br>
-  <ks-modal-gallery [id]="0" [modalImages]="images"
-                    [slideConfig]="{infinite: true, sidePreviews: {show: false}}">
-  </ks-modal-gallery>
+  <button class="btn btn-primary btn-sm" (click)="openModal(1, 0)">Click to open modal gallery id=1 at index=0</button>
   <br><br>
 
   <section>
@@ -19,18 +17,22 @@
     <h4>Template</h4>
     <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
     </codemirror>
+    <br>
+    <h4>Typescript</h4>
+    <codemirror [(ngModel)]="codeTypescript" [config]="configTs">
+    </codemirror>
   </section>
 
   <br><br>
 
   <section>
-    <h3>Details</h3>
+    <h3>Service inputs</h3>
     <br>
     <table class="table table-hover table-sm">
       <thead>
       <tr>
-        <th>Input (.html)</th>
-        <th>Value (.ts)</th>
+        <th>Input</th>
+        <th>Value</th>
       </tr>
       </thead>
       <tbody>
@@ -42,89 +44,46 @@
           </td>
         </tr>
         <tr>
-          <td><code>modalImages</code></td>
+          <td><code>images</code></td>
           <td>
             <div><i>Value: </i><code>Image[]</code></div>
             <div><b class="text-success">Array of <code>Image</code> objects</b></div>
           </td>
         </tr>
         <tr>
-          <td><code>currentImageConfig</code></td>
+          <td><code>currentImage</code></td>
           <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>No downloadable at all, default loading spinner, clickable current image and with default description (always visible)</div>
+            <div><i>Value: </i><code>Image</code></div>
+            <div><b class="text-success"><code>Image</code> object to show</b></div>
           </td>
         </tr>
         <tr>
-          <td><code>buttonsConfig</code></td>
+          <td><code>libConfig</code></td>
           <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>It will show only the close button</div>
+            <div><i>Value: </i><code>LibConfig</code></div>
+            <div><b class="text-success"><code>LibConfig</code> object to config the library. See below.</b></div>
           </td>
         </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h4>LibConfig</h4>
+    <br>
+    <table class="table table-hover table-sm">
+      <thead>
         <tr>
-          <td><code>enableCloseOutside</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>Clicking on the semi-transparent background, modal-gallery will close</div>
-          </td>
+          <th>Input</th>
+          <th>Value</th>
         </tr>
-        <tr>
-          <td><code>dotsConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>It will show dots below the current modal image</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>previewConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>It will show 3 clickable previews (default size) with arrows</div>
-          </td>
-        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td><code>slideConfig</code></td>
           <td>
             <div><i>Value: </i><code>&#123;infinite: true, sidePreviews: &#123;show: false &#125;&#125;</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
             <div>Infinite sliding is enabled and side previews are disabled</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>accessibilityConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div><small>(an object with all default english accessibility values by default)</small></div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>keyboardConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>plainGalleryConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>Row plain gallery with default layout</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>slideConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>&#123; infinite: true, sidePreviews: &#123; show: false &#125; &#125;</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>Infinite sliding and autoPlay are disabled and side previews are enabled with default sizes</div>
           </td>
         </tr>
       </tbody>

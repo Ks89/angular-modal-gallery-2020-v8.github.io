@@ -25,13 +25,19 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import {
+  CurrentImageConfig,
+  Image,
+  LibConfig, LoadingType,
+  ModalGalleryConfig,
+  ModalGalleryRef,
+  ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
-
 
 @Component({
   selector: 'app-loading-spinner-type-page',
@@ -48,48 +54,80 @@ export class LoadingSpinnerTypeComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Loading spinner types');
 
     this.codeHtml =
-      `<p>1. Type STANDARD</p>
-  <ks-modal-gallery [id]="0" [modalImages]="images"
-                    [currentImageConfig]="{loadingConfig: {enable: true, type: 1}}"></ks-modal-gallery>
+      `
+  <p>1. Type STANDARD</p>
+  <button (click)="openModal(1, 0, 1)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>2. Type CIRCULAR</p>
-  <ks-modal-gallery [id]="1" [modalImages]="images"
-                    [currentImageConfig]="{loadingConfig: {enable: true, type: 2}}"></ks-modal-gallery>
+  <button (click)="openModal(2, 0, 2)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>3. Type BARS</p>
-  <ks-modal-gallery [id]="2" [modalImages]="images"
-                    [currentImageConfig]="{loadingConfig: {enable: true, type: 3}}"></ks-modal-gallery>
+  <button (click)="openModal(3, 0, 3)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>4. Type DOTS</p>
-  <ks-modal-gallery [id]="3" [modalImages]="images"
-                    [currentImageConfig]="{loadingConfig: {enable: true, type: 4}}"></ks-modal-gallery>
+  <button (click)="openModal(4, 0, 4)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>5. Type CUBE_FLIPPING</p>
-  <ks-modal-gallery [id]="4" [modalImages]="images"
-                    [currentImageConfig]="{loadingConfig: {enable: true, type: 5}}"></ks-modal-gallery>
+  <button (click)="openModal(5, 0, 5)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>6. Type CIRCLES</p>
-  <ks-modal-gallery [id]="5" [modalImages]="images"
-                    [currentImageConfig]="{loadingConfig: {enable: true, type: 6}}"></ks-modal-gallery>
+  <button (click)="openModal(6, 0, 6)">Open modal gallery id=1 at index=0</button>
   <br>
-  <p>7. Type EXPLOSING_SQUARES</p>
-  <ks-modal-gallery [id]="6" [modalImages]="images"
-                    [currentImageConfig]="{loadingConfig: {enable: true, type: 7}}"></ks-modal-gallery>
+  <p>7. Type EXPLODING_SQUARES</p>
+  <button (click)="openModal(7, 0, 7)">Open modal gallery id=1 at index=0</button>
   <br>
   `;
+
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
+
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  openModal(id: number, imageIndex: number, loadingType: LoadingType): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id: id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          loadingConfig: {
+            enable: true,
+            type: loadingType
+          }
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number, loadingType: LoadingType): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          loadingConfig: {
+            enable: true,
+            type: loadingType
+          }
+        } as CurrentImageConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo spinner type'
-    });
+    } as Metadata);
   }
 }

@@ -25,8 +25,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { Image } from '@ks89/angular-modal-gallery';
+
 import { TitleService } from '../../../core/services/title.service';
 import { Metadata, UiService } from '../../../core/services/ui.service';
+import { IMAGES_ARRAY } from '../../../shared/images';
+import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 
 @Component({
   selector: 'app-modal-gallery-page',
@@ -34,20 +38,52 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
   styleUrls: ['modal-gallery.scss']
 })
 export class ModalGalleryComponent implements OnInit {
+  images: Image[] = [...IMAGES_ARRAY];
+
+  configHtml: any = codemirrorHtml;
+  configTs: any = codemirrorTs;
+
+  codeHtml: string;
+  codeTypescript: string;
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
               @Inject(DOCUMENT) private document: any) {
-    this.titleService.titleEvent.emit('Features - ModalGallery');
+    this.titleService.titleEvent.emit('Features - Modal Gallery');
+
+    this.codeHtml = `<button (click)="openModal(400, images, 0)">Open modal gallery at index=0</button>`;
+
+    this.codeTypescript =
+      `  openModal(id: number, imagesArray: Image[], imageIndex: number, libConfig?: LibConfig) {
+    const imageToShow: Image = imagesArray[imageIndex];
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: imagesArray,
+      currentImage: imageToShow,
+      libConfig
+    } as ModalGalleryConfig);
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  // openModal(id: number, imagesArray: Image[], imageIndex: number, libConfig?: LibConfig) {
+  //   const imageToShow: Image = imagesArray[imageIndex];
+  //   const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+  //     config: {
+  //       id,
+  //       images: imagesArray,
+  //       currentImage: imageToShow,
+  //       libConfig
+  //     }
+  //   } as ModalGalleryConfig);
+  // }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Modal gallery'
-    });
+    } as Metadata);
   }
 }

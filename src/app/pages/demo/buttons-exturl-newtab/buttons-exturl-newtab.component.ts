@@ -25,12 +25,20 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Action, ButtonEvent, ButtonsConfig, ButtonsStrategy, ButtonType, Image, ImageModalEvent } from '@ks89/angular-modal-gallery';
+import {
+  ButtonsConfig,
+  ButtonsStrategy,
+  ButtonType,
+  Image,
+  LibConfig, ModalGalleryConfig, ModalGalleryRef,
+  ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
+import { ButtonConfig } from '@ks89/angular-modal-gallery/lib/model/buttons-config.interface';
 
 @Component({
   selector: 'app-buttons-exturl-newtab-page',
@@ -45,41 +53,37 @@ export class ButtonsExturlNewtabComponent implements OnInit {
   codeHtml: string;
   codeTypescript: string;
 
-  customButtonsConfigExtUrlNewTab: ButtonsConfig = {
-    visible: true,
-    strategy: ButtonsStrategy.CUSTOM,
-    buttons: [
-      {
-        className: 'ext-url-image',
-        type: ButtonType.EXTURL,
-        extUrlInNewTab: true
-      }
-    ]
-  };
-
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Exturl button in a new tab');
 
     this.codeHtml =
-      `  <ks-modal-gallery [id]="0" [modalImages]="images"
-    [currentImageConfig]="{downloadable: true}"
-    [buttonsConfig]="customButtonsConfigExtUrlNewTab"></ks-modal-gallery>`;
+      `  <button (click)="openModal(1, 0)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
 
-  customButtonsConfigExtUrlNewTab: ButtonsConfig = {
-    visible: true,
-    strategy: ButtonsStrategy.CUSTOM,
-    buttons: [
-      {
-        className: 'ext-url-image',
-        type: ButtonType.EXTURL,
-        extUrlInNewTab: true
-      }
-    ]
+  openModal(id: number, imageIndex: number, buttonsConfig: ButtonsConfig): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        buttonsConfig: {
+          visible: true,
+          strategy: ButtonsStrategy.CUSTOM,
+          buttons: [
+            {
+              className: 'ext-url-image',
+              type: ButtonType.EXTURL,
+              extUrlInNewTab: true
+            }
+          ]
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
   }`;
   }
 
@@ -87,9 +91,30 @@ export class ButtonsExturlNewtabComponent implements OnInit {
     this.metaData();
   }
 
-  metaData() {
-    this.uiService.setMetaData(<Metadata>{
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        buttonsConfig: {
+          visible: true,
+          strategy: ButtonsStrategy.CUSTOM,
+          buttons: [
+            {
+              className: 'ext-url-image',
+              type: ButtonType.EXTURL,
+              extUrlInNewTab: true
+            } as ButtonConfig
+          ]
+        } as ButtonsConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
+    metaData() {
+    this.uiService.setMetaData({
       title: 'Demo buttons exturl newtab'
-    });
+    } as Metadata);
   }
 }

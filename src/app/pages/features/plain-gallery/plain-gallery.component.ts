@@ -27,6 +27,9 @@ import { DOCUMENT } from '@angular/common';
 
 import { TitleService } from '../../../core/services/title.service';
 import { Metadata, UiService } from '../../../core/services/ui.service';
+import { Image } from '@ks89/angular-modal-gallery';
+import { IMAGES_ARRAY } from '../../../shared/images';
+import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 
 @Component({
   selector: 'app-plain-gallery-page',
@@ -34,11 +37,28 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
   styleUrls: ['plain-gallery.scss']
 })
 export class PlainGalleryComponent implements OnInit {
+  images: Image[] = [...IMAGES_ARRAY];
+
+  configHtml: any = codemirrorHtml;
+  configTs: any = codemirrorTs;
+
+  codeHtml: string;
+  codeTypescript: string;
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
               @Inject(DOCUMENT) private document: any) {
-    this.titleService.titleEvent.emit('Features - PlainGallery');
+    this.titleService.titleEvent.emit('Features - Plain Gallery');
+
+    this.codeHtml =
+      `  <ks-plain-gallery [id]="100" [images]="images"></ks-plain-gallery>`;
+
+    this.codeTypescript =
+      `  images: Image[] = [
+     new Image(0, {
+        img: '../assets/img1.jpg'
+      })
+  ];`;
   }
 
   ngOnInit() {
@@ -46,8 +66,8 @@ export class PlainGalleryComponent implements OnInit {
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Plain gallery'
-    });
+    } as Metadata);
   }
 }

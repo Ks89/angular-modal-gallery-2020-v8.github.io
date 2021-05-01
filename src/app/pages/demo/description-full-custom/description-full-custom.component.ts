@@ -25,9 +25,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Description, DescriptionStrategy, Image } from '@ks89/angular-modal-gallery';
+import {
+  CurrentImageConfig,
+  Description,
+  DescriptionStrategy,
+  Image, LibConfig, ModalGalleryConfig,
+  ModalGalleryRef,
+  ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -40,24 +47,6 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
 export class DescriptionFullCustomComponent implements OnInit {
   images: Image[] = [...IMAGES_ARRAY];
 
-  customFullDescription: Description = {
-    // ALWAYS_VISIBLE is mandatory to use customFullDescription
-    strategy: DescriptionStrategy.ALWAYS_VISIBLE,
-    customFullDescription: '<ol><li>Custom</li><li>description of the</li><li>current visible</li><li>image</li></ol>',
-    style: {
-      bgColor: 'rgba(255,0,0,.5)',
-      textColor: 'blue',
-      marginTop: '3px',
-      marginBottom: '0px',
-      marginLeft: '5px',
-      marginRight: '5px',
-      position: 'absolute',
-      top: '0px',
-      height: '125px'
-      // be careful to use width, in particular with % values
-    }
-  };
-
   configHtml: any = codemirrorHtml;
   configTs: any = codemirrorTs;
 
@@ -66,41 +55,73 @@ export class DescriptionFullCustomComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Description full custom');
 
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"
-    [currentImageConfig]="{description: customFullCustomDescription}"></ks-modal-gallery>`;
+      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
 
-    this.codeTypescript =
-      `  images: Image[]; // init this value with your images
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
 
-  customFullDescription: Description = {
-    // ALWAYS_VISIBLE is mandatory to use customFullDescription
-    strategy: DescriptionStrategy.ALWAYS_VISIBLE,
-    customFullDescription: '<ol><li>Custom</li><li>description of the</li><li>current visible</li><li>image</li></ol>',
-    style: {
-      bgColor: 'rgba(255,0,0,.5)',
-      textColor: 'blue',
-      marginTop: '3px',
-      marginBottom: '0px',
-      marginLeft: '5px',
-      marginRight: '5px',
-      position: 'absolute',
-      top: '0px',
-      height: '125px'
-    }
-  };`;
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          description: {
+            strategy: DescriptionStrategy.ALWAYS_VISIBLE,
+            imageText: 'Look this image ',
+            numberSeparator: ' of ',
+            beforeTextDescription: ' => '
+          }
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          description: {
+            // ALWAYS_VISIBLE is mandatory to use customFullDescription
+            strategy: DescriptionStrategy.ALWAYS_VISIBLE,
+            customFullDescription: '<ol><li>Custom</li><li>description of the</li><li>current visible</li><li>image</li></ol>',
+            style: {
+              bgColor: 'rgba(255,0,0,.5)',
+              textColor: 'blue',
+              marginTop: '3px',
+              marginBottom: '0px',
+              marginLeft: '5px',
+              marginRight: '5px',
+              position: 'absolute',
+              top: '0px',
+              height: '125px'
+              // be careful to use width, in particular with % values
+            }
+          } as Description
+        } as CurrentImageConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo description full'
-    });
+    } as Metadata);
   }
 }

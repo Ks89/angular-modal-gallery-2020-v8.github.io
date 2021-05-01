@@ -1,25 +1,6 @@
 <nav class="container menu-primary">
   <h4>Examples</h4>
   <div class="menu-secondary">
-    <div class="menu-title" (click)="onCarouselClick()">
-      <img src="./assets/up-chevron.svg" width="14" height="auto" [style.transform]="getCarouselClick()">
-      <h5>Carousel</h5>
-    </div>
-    <ng-container *ngIf="showCarousel">
-      <h6 [routerLink]="['/demo/carousel']">Carousel minimal</h6>
-      <h6 [routerLink]="['/demo/carousel-content-projection']">Carousel content projection</h6>
-      <h6 [routerLink]="['/demo/carousel-features-disable']">Carousel features disable</h6>
-      <h6 [routerLink]="['/demo/carousel-noautoplay']">Carousel no autoplay</h6>
-      <h6 [routerLink]="['/demo/carousel-noinfinite']">Carousel no infinite</h6>
-      <h6 [routerLink]="['/demo/carousel-custom-autoplay']">Carousel custom autoplay</h6>
-      <h6 [routerLink]="['/demo/carousel-custom-previews']">Carousel custom previews</h6>
-      <h6 [routerLink]="['/demo/carousel-fixed']">Carousel fixed width</h6>
-      <h6 [routerLink]="['/demo/carousel-with-description']">Carousel with description</h6>
-      <h6 [routerLink]="['/demo/carousel-outputs']">Carousel outputs</h6>
-      <h6 [routerLink]="['/demo/carousel-breakpoints']">Carousel breakpoints</h6>
-    </ng-container>
-  </div>
-  <div class="menu-secondary">
     <div class="menu-title" (click)="onModalClick()">
       <img src="./assets/up-chevron.svg" width="14" height="auto" [style.transform]="getModalClick()">
       <h5>Modal</h5>
@@ -32,7 +13,6 @@
       <h6 [routerLink]="['/demo/no-dots-and-previews']">Current image + buttons</h6>
       <h6 [routerLink]="['/demo/side-previews-hidden']">Hidden side-previews</h6>
       <h6 [routerLink]="['/demo/only-current-img']">Only current image</h6>
-      <h6 [routerLink]="['/demo/preview-custom-size']">Custom preview size</h6>
 
       <h6 [routerLink]="['/demo/close-outside']">No close outside</h6>
       <h6 [routerLink]="['/demo/download-simple']">Download simple</h6>
@@ -52,6 +32,7 @@
       <h6 [routerLink]="['/demo/description-strategy']">Description strategies</h6>
       <h6 [routerLink]="['/demo/description-full-custom']">Description full custom</h6>
 
+      <h6 [routerLink]="['/demo/preview-custom-size']">Custom preview size</h6>
       <h6 [routerLink]="['/demo/previews-length']">Previews with 1 image</h6>
       <h6 [routerLink]="['/demo/previews-no-arrows']">Previews no arrows</h6>
       <h6 [routerLink]="['/demo/previews-not-clickable']">Previews not clickable</h6>
@@ -79,6 +60,25 @@
       <h6 [routerLink]="['/demo/plain-atags']">Plain &lt;a&gt; tags</h6>
       <h6 [routerLink]="['/demo/plain-image-pointer']">Plain image pointer</h6>
       <h6 [routerLink]="['/demo/plain-custom-desc']">Plain custom with description</h6>
+    </ng-container>
+  </div>
+  <div class="menu-secondary">
+    <div class="menu-title" (click)="onCarouselClick()">
+      <img src="./assets/up-chevron.svg" width="14" height="auto" [style.transform]="getCarouselClick()">
+      <h5>Carousel</h5>
+    </div>
+    <ng-container *ngIf="showCarousel">
+      <h6 [routerLink]="['/demo/carousel']">Carousel minimal</h6>
+      <h6 [routerLink]="['/demo/carousel-content-projection']">Carousel content projection</h6>
+      <h6 [routerLink]="['/demo/carousel-features-disable']">Carousel features disable</h6>
+      <h6 [routerLink]="['/demo/carousel-noautoplay']">Carousel no autoplay</h6>
+      <h6 [routerLink]="['/demo/carousel-noinfinite']">Carousel no infinite</h6>
+      <h6 [routerLink]="['/demo/carousel-custom-autoplay']">Carousel custom autoplay</h6>
+      <h6 [routerLink]="['/demo/carousel-custom-previews']">Carousel custom previews</h6>
+      <h6 [routerLink]="['/demo/carousel-fixed']">Carousel fixed width</h6>
+      <h6 [routerLink]="['/demo/carousel-with-description']">Carousel with description</h6>
+      <h6 [routerLink]="['/demo/carousel-outputs']">Carousel outputs</h6>
+      <h6 [routerLink]="['/demo/carousel-breakpoints']">Carousel breakpoints</h6>
     </ng-container>
   </div>
 </nav>

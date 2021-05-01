@@ -22,21 +22,31 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { ButtonEvent, ButtonsConfig, ButtonsStrategy, ButtonType, Image } from '@ks89/angular-modal-gallery';
+import {
+  ButtonEvent,
+  ButtonsConfig,
+  ButtonsStrategy,
+  ButtonType,
+  Image,
+  LibConfig,
+  ModalGalleryConfig,
+  ModalGalleryRef, ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
-import { IMAGES_ARRAY } from '../images';
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-buttons-custom-fa-page',
   templateUrl: 'buttons-custom-fa.html'
 })
-export class ButtonsCustomFaComponent implements OnInit {
+export class ButtonsCustomFaComponent implements OnInit, OnDestroy {
   images: Image[] = [...IMAGES_ARRAY];
 
   configHtml: any = codemirrorHtml;
@@ -80,17 +90,18 @@ export class ButtonsCustomFaComponent implements OnInit {
     ]
   };
 
+  // subscriptions to receive events from the gallery
+  // REMEMBER TO call unsubscribe(); in ngOnDestroy (see below)
+  private buttonBeforeHookSubscription: Subscription | undefined;
+
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Custom buttons with Font Awesome 5');
 
     this.codeHtml =
-      `  <ks-modal-gallery [id]="0" [modalImages]="images"
-    [currentImageConfig]="{downloadable: true}"
-    [buttonsConfig]="customButtonsConfig"
-    (buttonBeforeHook)="onCustomButtonBeforeHook($event)"
-    (buttonAfterHook)="onCustomButtonAfterHook($event)"></ks-modal-gallery>`;
+      `  <button (click)="openModal(1, 0, customButtonsConfig)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
@@ -130,47 +141,87 @@ export class ButtonsCustomFaComponent implements OnInit {
     ]
   };
 
-  onCustomButtonBeforeHook(event: ButtonEvent) {
-    // use before hook to get click on buttons
-    // for custom buttons, you have to check event with your logic
-    console.log('onCustomButtonBeforeHook ', event);
-    if (!event || !event.button) {
-      return;
-    }
-    // Invoked after a click on a button, but before that the related
-    // action is applied.
+  openModal(id: number, imageIndex: number, buttonsConfig: ButtonsConfig): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        buttonsConfig: buttonsConfig,
+        // 'downloadable: true' is required to enable download button (if visible)
+        currentImageConfig: {
+          downloadable: true
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+
+    // required to enable ADD button
+    this.buttonBeforeHookSubscription = dialogRef.buttonBeforeHook$.subscribe((event: ButtonEvent) => {
+      if (!event || !event.button) {
+        return;
+      }
+      // Invoked after a click on a button, but before that the related
+      // action is applied.
+
+      if (event.button.type === ButtonType.CUSTOM) {
+        console.log('adding a new random image at the end');
+
+        // add to images array
+        const imageToCopy: Image = this.images[Math.floor(Math.random() * this.images.length)];
+        const newImage: Image = new Image(this.images.length - 1 + 1, imageToCopy.modal, imageToCopy.plain);
+        this.images = [...this.images, newImage];
+
+        setTimeout(() => {
+          this.modalGalleryService.updateModalImages(this.images);
+        }, 0);
+      }
+    });
   }
 
-  onCustomButtonAfterHook(event: ButtonEvent) {
-    // use after hook to get click on buttons
-    // for custom buttons, you have to check event with your logic
-    console.log('onCustomButtonAfterHook ', event);
-    if (!event || !event.button) {
-      return;
+  ngOnDestroy(): void {
+    // release resources to prevent memory leaks and unexpected behaviours
+    if (this.buttonBeforeHookSubscription) {
+      this.buttonBeforeHookSubscription.unsubscribe();
     }
-    // Invoked after both a click on a button and its related action.
-  }`;
+  }
+  `;
   }
 
-  onCustomButtonBeforeHook(event: ButtonEvent) {
-    // use before hook to get click on buttons
-    // for custom buttons, you have to check event with your logic
-    console.log('onCustomButtonBeforeHook ', event);
-    if (!event || !event.button) {
-      return;
-    }
-    // Invoked after a click on a button, but before that the related
-    // action is applied.
-  }
+  openModal(id: number, imageIndex: number, buttonsConfig: ButtonsConfig): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        buttonsConfig,
+        // 'downloadable: true' is required to enable download button (if visible)
+        currentImageConfig: {
+          downloadable: true
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
 
-  onCustomButtonAfterHook(event: ButtonEvent) {
-    // use after hook to get click on buttons
-    // for custom buttons, you have to check event with your logic
-    console.log('onCustomButtonAfterHook ', event);
-    if (!event || !event.button) {
-      return;
-    }
-    // Invoked after both a click on a button and its related action.
+    // required to enable ADD button
+    this.buttonBeforeHookSubscription = dialogRef.buttonBeforeHook$.subscribe((event: ButtonEvent) => {
+      if (!event || !event.button) {
+        return;
+      }
+      // Invoked after a click on a button, but before that the related
+      // action is applied.
+
+      if (event.button.type === ButtonType.CUSTOM) {
+        console.log('adding a new random image at the end');
+
+        // add to images array
+        const imageToCopy: Image = this.images[Math.floor(Math.random() * this.images.length)];
+        const newImage: Image = new Image(this.images.length - 1 + 1, imageToCopy.modal, imageToCopy.plain);
+        this.images = [...this.images, newImage];
+
+        setTimeout(() => {
+          this.modalGalleryService.updateModalImages(this.images);
+        }, 0);
+      }
+    });
   }
 
   ngOnInit() {
@@ -178,8 +229,15 @@ export class ButtonsCustomFaComponent implements OnInit {
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo buttons custom fa'
-    });
+    } as Metadata);
+  }
+
+  ngOnDestroy(): void {
+    // release resources to prevent memory leaks and unexpected behaviours
+    if (this.buttonBeforeHookSubscription) {
+      this.buttonBeforeHookSubscription.unsubscribe();
+    }
   }
 }

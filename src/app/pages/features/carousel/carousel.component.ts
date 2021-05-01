@@ -25,8 +25,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { Image } from '@ks89/angular-modal-gallery';
+
 import { TitleService } from '../../../core/services/title.service';
 import { Metadata, UiService } from '../../../core/services/ui.service';
+import { IMAGES_RECT_ARRAY } from '../../../shared/images';
+import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 
 @Component({
   selector: 'app-carousel-page',
@@ -34,11 +38,28 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
   styleUrls: ['carousel.scss']
 })
 export class CarouselComponent implements OnInit {
+  images: Image[] = [...IMAGES_RECT_ARRAY];
+
+  configHtml: any = codemirrorHtml;
+  configTs: any = codemirrorTs;
+
+  codeHtml: string;
+  codeTypescript: string;
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Features - Carousel');
+
+    this.codeHtml =
+      `  <ks-carousel [id]="100" [images]="images"></ks-carousel>`;
+
+    this.codeTypescript =
+`  images: Image[] = [
+     new Image(0, {
+        img: '../assets/img1.jpg'
+      })
+  ];`;
   }
 
   ngOnInit() {
@@ -46,8 +67,8 @@ export class CarouselComponent implements OnInit {
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Carousel'
-    });
+    } as Metadata);
   }
 }

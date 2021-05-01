@@ -22,12 +22,21 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Action, ButtonEvent, ButtonsConfig, ButtonsStrategy, ButtonType, Image, ImageModalEvent } from '@ks89/angular-modal-gallery';
+import { Subscription } from 'rxjs';
 
-import { IMAGES_ARRAY } from '../images';
+import {
+  ButtonEvent,
+  ButtonsConfig,
+  ButtonsStrategy, ButtonType,
+  Image,
+  LibConfig, ModalGalleryConfig, ModalGalleryRef,
+  ModalGalleryService
+} from '@ks89/angular-modal-gallery';
+
+import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -36,7 +45,7 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
   selector: 'app-buttons-strategies-page',
   templateUrl: 'buttons-strategies.html'
 })
-export class ButtonsStrategiesComponent implements OnInit {
+export class ButtonsStrategiesComponent implements OnInit, OnDestroy {
   images: Image[] = [...IMAGES_ARRAY];
 
   configHtml: any = codemirrorHtml;
@@ -62,30 +71,29 @@ export class ButtonsStrategiesComponent implements OnInit {
     strategy: ButtonsStrategy.FULL
   };
 
+  // subscriptions to receive events from the gallery
+  // REMEMBER TO call unsubscribe(); in ngOnDestroy (see below)
+  private buttonAfterHookSubscription: Subscription | undefined;
+
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Button strategies');
 
     this.codeHtml =
-      `  <p>1. Strategy DEFAULT</p>
-  <ks-modal-gallery [id]="0" [modalImages]="images"
-                    [buttonsConfig]="buttonsConfigDefault"></ks-modal-gallery>
+      `
+  <p>1. Strategy DEFAULT</p>
+  <button (click)="openModal(1, 0, buttonsConfigDefault)">Click to open modal gallery id=1 at index=0</button>
   <br>
   <p>2. Strategy SIMPLE</p>
-  <ks-modal-gallery [id]="1" [modalImages]="images"
-                    [buttonsConfig]="buttonsConfigSimple"></ks-modal-gallery>
+  <button (click)="openModal(2, 0, buttonsConfigSimple)">Click to open modal gallery id=1 at index=0</button>
   <br>
   <p>3. Strategy ADVANCED</p>
-  <ks-modal-gallery [id]="2" [modalImages]="images"
-                    [buttonsConfig]="buttonsConfigAdvanced"></ks-modal-gallery>
+  <button (click)="openModal(3, 0, buttonsConfigAdvanced)">Click to open modal gallery id=1 at index=0</button>
   <br>
   <p>4. Strategy FULL</p>
-  <ks-modal-gallery [id]="3" [modalImages]="images"
-                    [buttonsConfig]="buttonsConfigFull"
-                    (show)="onVisibleIndex($event)"
-                    (buttonBeforeHook)="onButtonBeforeHook($event)"
-                    (buttonAfterHook)="onButtonAfterHook($event)"></ks-modal-gallery>`;
+  <button (click)="openModal(4, 0, buttonsConfigFull)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
@@ -106,86 +114,93 @@ export class ButtonsStrategiesComponent implements OnInit {
     visible: true,
     strategy: ButtonsStrategy.FULL
   };
-  onButtonBeforeHook(event: ButtonEvent) {
-    if (!event || !event.button) {
-      return;
-    }
-    // Invoked after a click on a button, but before that the related
-    // action is applied.
-    // For instance: this method will be invoked after a click
-    // of 'close' button, but before that the modal gallery
-    // will be really closed.
-    if (event.button.type === ButtonType.DELETE) {
-      // remove the current image and reassign all other to the array of images
-      // You must think in a functional way! So, re-assign the array instead of modifying it.
-      this.images = this.images.filter((val: Image) => event.image && val.id !== event.image.id);
-    }
+
+  openModal(id: number, imageIndex: number, buttonsConfig: ButtonsConfig): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        buttonsConfig: buttonsConfig,
+        // 'downloadable: true' is required to enable download button (if visible)
+        currentImageConfig: {
+          downloadable: true
+        },
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+
+    // required to enable DELETE button
+    this.buttonAfterHookSubscription = dialogRef.buttonAfterHook$.subscribe((event: ButtonEvent) => {
+      console.log('OUTPUT - buttonAfterHook$:', event);
+      if (!event || !event.button) {
+        return;
+      }
+      if (event.button.type === ButtonType.DELETE) {
+        // remove the current image and reassign all other to the array of images
+        this.images = this.images.filter((val: Image) => event.image && val.id !== event.image.id);
+        this.modalGalleryService.updateModalImages(this.images);
+      }
+      // Invoked after both a click on a button and its related action.
+      // For instance: this method will be invoked after a click
+      // of 'close' button, but before that the modal gallery
+      // will be really closed.
+    });
   }
 
-  onButtonAfterHook(event: ButtonEvent) {
-    if (!event || !event.button) {
-      return;
+  ngOnDestroy(): void {
+    // release resources to prevent memory leaks and unexpected behaviours
+    if (this.buttonAfterHookSubscription) {
+      this.buttonAfterHookSubscription.unsubscribe();
     }
-    // Invoked after both a click on a button and its related action.
-    // For instance: this method will be invoked after a click
-    // of 'close' button, but before that the modal gallery
-    // will be really closed.
-  }
-
-  onVisibleIndex(event: ImageModalEvent) {
-    console.log('onVisibleIndex action: ' + Action[event.action]);
-    console.log('onVisibleIndex result:' + event.result);
   }`;
-  }
-
-  onButtonBeforeHook(event: ButtonEvent) {
-    console.log('onButtonBeforeHook ', event);
-
-    if (!event || !event.button) {
-      return;
-    }
-
-    // Invoked after a click on a button, but before that the related
-    // action is applied.
-    // For instance: this method will be invoked after a click
-    // of 'close' button, but before that the modal gallery
-    // will be really closed.
-
-    if (event.button.type === ButtonType.DELETE) {
-      // remove the current image and reassign all other to the array of images
-
-      console.log('delete in app with images count ' + this.images.length);
-
-      // You must think in a functional way! So, re-assign the array instead of modifying it.
-      this.images = this.images.filter((val: Image) => event.image && val.id !== event.image.id);
-    }
-  }
-
-  onButtonAfterHook(event: ButtonEvent) {
-    console.log('onButtonAfterHook ', event);
-
-    if (!event || !event.button) {
-      return;
-    }
-
-    // Invoked after both a click on a button and its related action.
-    // For instance: this method will be invoked after a click
-    // of 'close' button, but before that the modal gallery
-    // will be really closed.
-  }
-
-  onVisibleIndex(event: ImageModalEvent) {
-    console.log('onVisibleIndex action: ' + Action[event.action]);
-    console.log('onVisibleIndex result:' + event.result);
   }
 
   ngOnInit() {
     this.metaData();
   }
 
-  metaData() {
-    this.uiService.setMetaData(<Metadata>{
-      title: 'Demo buttons strategies'
+  openModal(id: number, imageIndex: number, buttonsConfig: ButtonsConfig): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        buttonsConfig,
+        // 'downloadable: true' is required to enable download button (if visible)
+        currentImageConfig: {
+          downloadable: true
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+
+    // required to enable DELETE button
+    this.buttonAfterHookSubscription = dialogRef.buttonAfterHook$.subscribe((event: ButtonEvent) => {
+      console.log('OUTPUT - buttonAfterHook$:', event);
+      if (!event || !event.button) {
+        return;
+      }
+      if (event.button.type === ButtonType.DELETE) {
+        // remove the current image and reassign all other to the array of images
+        this.images = this.images.filter((val: Image) => event.image && val.id !== event.image.id);
+        this.modalGalleryService.updateModalImages(this.images);
+      }
+      // Invoked after both a click on a button and its related action.
+      // For instance: this method will be invoked after a click
+      // of 'close' button, but before that the modal gallery
+      // will be really closed.
     });
+  }
+
+  metaData() {
+    this.uiService.setMetaData({
+      title: 'Demo buttons strategies'
+    } as Metadata);
+  }
+
+  ngOnDestroy(): void {
+    // release resources to prevent memory leaks and unexpected behaviours
+    if (this.buttonAfterHookSubscription) {
+      this.buttonAfterHookSubscription.unsubscribe();
+    }
   }
 }
