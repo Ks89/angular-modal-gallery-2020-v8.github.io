@@ -25,7 +25,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { AccessibilityConfig, Image } from '@ks89/angular-modal-gallery';
+import {
+  AccessibilityConfig,
+  Image, LibConfig, ModalGalleryConfig,
+  ModalGalleryRef, ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
 import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
@@ -92,21 +96,18 @@ export class AccessibilityComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              // private scrollService: PageScrollService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
 
     this.titleService.titleEvent.emit('Examples - Custom accessibility');
 
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
-
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"
-    [accessibilityConfig]="accessibilityConfig"></ks-modal-gallery>`;
+      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
 
-    this.codeTypescript =
-      `  images: Image[]; // init this value with your images
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
+
+  constructor(private modalGalleryService: ModalGalleryService) {}
 
   accessibilityConfig: AccessibilityConfig = {
     backgroundAriaLabel: 'CUSTOM Modal gallery full screen background',
@@ -151,16 +152,38 @@ export class AccessibilityComponent implements OnInit {
     carouselPreviewScrollPrevTitle: 'Scroll previous previews',
     carouselPreviewScrollNextAriaLabel: 'Scroll next previews',
     carouselPreviewScrollNextTitle: 'Scroll next previews'
-  };`;
+  };
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id: id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        accessibilityConfig: this.accessibilityConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        accessibilityConfig: this.accessibilityConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Demo accessibility'
-    });
+    } as Metadata);
   }
 }

@@ -20,7 +20,7 @@ import { LoadingSpinnerTypeComponent } from './loading-spinner-type/loading-spin
 import { PreviewsLengthComponent } from './previews-length/previews-length.component';
 import { PreviewsNotClickableComponent } from './previews-not-clickable/previews-not-clickable.component';
 import { PreviewsNoArrowsComponent } from './previews-no-arrows/previews-no-arrows.component';
-// import { AccessibilityComponent } from './accessibility/accessibility.component';
+import { AccessibilityComponent } from './accessibility/accessibility.component';
 import { ButtonsCustomFaComponent } from './buttons-custom-fa/buttons-custom-fa.component';
 import { ButtonsStrategiesComponent } from './buttons-strategies/buttons-strategies.component';
 import { ButtonsExturlNewtabComponent } from './buttons-exturl-newtab/buttons-exturl-newtab.component';
@@ -28,8 +28,8 @@ import { ButtonsExturlNewtabComponent } from './buttons-exturl-newtab/buttons-ex
 // import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
 // import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
 // import { PlainGalleryCustomWithDescComponent } from './plain-gallery-custom-with-desc/plain-gallery-custom-with-desc.component';
-// import { GalleryServiceComponent } from './gallery-service/gallery-service.component';
-// import { Base64Component } from './base64/base64.component';
+import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/auto-close-and-auto-update.component';
+import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
 // import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
 // import { CarouselMinimalComponent } from './carousel-minimal/carousel-minimal.component';
@@ -76,7 +76,7 @@ export const routes: Routes = [
       {path: 'description-strategy', component: DescriptionCustomComponent},
       {path: 'description-full-custom', component: DescriptionFullCustomComponent},
 
-      {path: 'preview-custom-size', component: PreviewsCustomSizeComponent},
+      {path: 'previews-custom-size', component: PreviewsCustomSizeComponent},
       {path: 'previews-length', component: PreviewsLengthComponent},
       {path: 'previews-no-arrows', component: PreviewsNoArrowsComponent},
       {path: 'previews-not-clickable', component: PreviewsNotClickableComponent},
@@ -90,9 +90,9 @@ export const routes: Routes = [
       // {path: 'plain-image-pointer', component: PlainGalleryImagePointerComponent},
       // {path: 'plain-custom-desc', component: PlainGalleryCustomWithDescComponent},
       //
-      // {path: 'accessibility', component: AccessibilityComponent},
-      // {path: 'gallery-service', component: GalleryServiceComponent},
-      // {path: 'base64', component: Base64Component},
+      {path: 'accessibility', component: AccessibilityComponent},
+      {path: 'auto-close-and-auto-update', component: AutoCloseAndAutoUpdateComponent},
+      {path: 'base64', component: Base64Component},
       // {path: 'invert-swipe', component: InvertSwipeComponent},
       // {path: 'same-images', component: SameImagesComponent},
       //

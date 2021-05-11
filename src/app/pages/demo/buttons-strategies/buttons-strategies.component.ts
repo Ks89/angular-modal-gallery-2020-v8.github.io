@@ -98,6 +98,8 @@ export class ButtonsStrategiesComponent implements OnInit, OnDestroy {
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
 
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
   buttonsConfigDefault: ButtonsConfig = {
     visible: true,
     strategy: ButtonsStrategy.DEFAULT

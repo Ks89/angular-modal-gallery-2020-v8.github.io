@@ -106,6 +106,8 @@ export class ButtonsCustomFaComponent implements OnInit, OnDestroy {
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
 
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
   customButtonsConfig: ButtonsConfig = {
     visible: true,
     strategy: ButtonsStrategy.CUSTOM,

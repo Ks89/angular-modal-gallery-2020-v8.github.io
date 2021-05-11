@@ -18,7 +18,7 @@ import { LoadingSpinnerTypeComponent } from './loading-spinner-type/loading-spin
 import { PreviewsLengthComponent } from './previews-length/previews-length.component';
 import { PreviewsNoArrowsComponent } from './previews-no-arrows/previews-no-arrows.component';
 import { PreviewsNotClickableComponent } from './previews-not-clickable/previews-not-clickable.component';
-// import { AccessibilityComponent } from './accessibility/accessibility.component';
+import { AccessibilityComponent } from './accessibility/accessibility.component';
 import { ButtonsStrategiesComponent } from './buttons-strategies/buttons-strategies.component';
 import { ButtonsExturlNewtabComponent } from './buttons-exturl-newtab/buttons-exturl-newtab.component';
 import { ButtonsCustomFaComponent } from './buttons-custom-fa/buttons-custom-fa.component';
@@ -26,9 +26,9 @@ import { ButtonsCustomFaComponent } from './buttons-custom-fa/buttons-custom-fa.
 // import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
 // import { PlainGalleryLayoutsComponent } from './plain-gallery-layouts/plain-gallery-layouts.component';
 // import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
-// import { GalleryServiceComponent } from './gallery-service/gallery-service.component';
-//
-// import { Base64Component } from './base64/base64.component';
+import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/auto-close-and-auto-update.component';
+
+import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
 // import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
 //
@@ -70,7 +70,7 @@ export const DEMO_COMPONENTS = [
   PreviewsLengthComponent,
   PreviewsNoArrowsComponent,
   PreviewsNotClickableComponent,
-  // AccessibilityComponent,
+  AccessibilityComponent,
   ButtonsStrategiesComponent,
   ButtonsExturlNewtabComponent,
   ButtonsCustomFaComponent,
@@ -78,8 +78,8 @@ export const DEMO_COMPONENTS = [
   // PlainGalleryImagePointerComponent,
   // PlainGalleryLayoutsComponent,
   // PlainGalleryAtagsComponent,
-  // GalleryServiceComponent,
-  // Base64Component,
+  AutoCloseAndAutoUpdateComponent,
+  Base64Component,
   DownloadCustomFilenameComponent,
   // InvertSwipeComponent,
   // SameImagesComponent,

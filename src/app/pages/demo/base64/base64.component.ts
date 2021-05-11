@@ -26,7 +26,15 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import {
+  ButtonsConfig,
+  ButtonsStrategy,
+  CurrentImageConfig,
+  Image,
+  LibConfig,
+  ModalGalleryConfig,
+  ModalGalleryRef, ModalGalleryService
+} from '@ks89/angular-modal-gallery';
 
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
@@ -100,17 +108,16 @@ export class Base64Component implements OnInit {
   constructor(private uiService: UiService,
               private sanitizer: DomSanitizer,
               private titleService: TitleService,
-              // private scrollService: PageScrollService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
-
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
 
     this.titleService.titleEvent.emit('Examples - Base64');
 
+    this.codeHtml =
+      `  <button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+
     this.codeTypescript =
-      `import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+      `  import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
   // inside the component class:
 
@@ -166,14 +173,38 @@ export class Base64Component implements OnInit {
     )
   ];
 
-  constructor(private sanitizer: DomSanitizer) {}`;
+  constructor(private modalGalleryService: ModalGalleryService,
+      private sanitizer: DomSanitizer) {}
 
-    this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"></ks-modal-gallery>`;
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex]
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
+
   }
 
   ngOnInit() {
     this.metaData();
+  }
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        currentImageConfig: {
+          downloadable: true
+        } as CurrentImageConfig,
+        buttonsConfig: {
+          visible: true,
+          strategy: ButtonsStrategy.SIMPLE
+        } as ButtonsConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
   }
 
   metaData() {

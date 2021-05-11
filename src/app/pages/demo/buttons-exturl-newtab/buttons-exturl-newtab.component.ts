@@ -65,6 +65,8 @@ export class ButtonsExturlNewtabComponent implements OnInit {
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
 
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
   openModal(id: number, imageIndex: number, buttonsConfig: ButtonsConfig): void {
     const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
       id,

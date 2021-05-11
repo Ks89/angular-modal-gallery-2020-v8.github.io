@@ -1,14 +1,20 @@
 <div class="container">
 
   <h2 class="link clickable">
-    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">Not clickable previews</a>
+    <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">Gallery service example</a>
   </h2>
-  <p>Modal gallery example with previews, but not clickable.</p>
+  <p>Minimal example of Modal gallery service with <code>close</code> and <code>updateModalImages</code> methods.</p>
   <br>
 
-  <h3>Live   <button class="btn btn-primary btn-sm" (click)="openModal(1, 0)">Click to open modal gallery id=1 at index=0</button>
-    Demo</h3>
+  <h3>Live Demos</h3>
   <br>
+  <br>
+  <h4>1) Example of <code>close</code> method</h4>
+  <p>Modal gallery (with id=1) <b>will close automatically after 3 seconds.</b></p>
+  <br>
+  <button class="btn btn-primary btn-sm" (click)="openModalWithAutoClose(1, images, 2)">Click to open modal gallery id=1 at index=2 (third image)</button>
+  <br><br>
+
   <br><br>
 
   <section>
@@ -25,14 +31,35 @@
 
   <br><br>
 
+  <h4>2) Example of <code>updateModalImages</code> method</h4>
+  <p>Modal gallery (with id=2) <b>will update second image automatically after 4 seconds.</b></p>
+  <br>
+  <button class="btn btn-primary btn-sm" (click)="openModalWithAutoUpdate(2, images, 2)">Click to open modal gallery id=1 at index=2 (third image)</button>
+  <br><br>
+
+  <section>
+    <h3>Code</h3>
+    <br>
+    <h4>Template</h4>
+    <codemirror [(ngModel)]="codeHtml2" [config]="configHtml">
+    </codemirror>
+    <br>
+    <h4>Typescript</h4>
+    <codemirror [(ngModel)]="codeTypescript2" [config]="configTs">
+    </codemirror>
+  </section>
+
+  <br><br>
+
+
   <section>
     <h3>Service inputs</h3>
     <br>
     <table class="table table-hover table-sm">
       <thead>
         <tr>
-          <th>Input (.html)</th>
-          <th>Value (.ts)</th>
+          <th>Input</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>
@@ -55,35 +82,6 @@
           <td>
             <div><i>Value: </i><code>Image</code></div>
             <div><b class="text-success"><code>Image</code> object to show</b></div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>libConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>LibConfig</code></div>
-            <div><b class="text-success"><code>LibConfig</code> object to config the library. See below.</b></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section>
-    <h4>LibConfig</h4>
-    <br>
-    <table class="table table-hover table-sm">
-      <thead>
-        <tr>
-          <th>Input</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>previewConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>&#123; visible: true, clickable: false &#125;</code></div>
-            <div>It will show 3 NOT clickable previews.</div>
           </td>
         </tr>
       </tbody>

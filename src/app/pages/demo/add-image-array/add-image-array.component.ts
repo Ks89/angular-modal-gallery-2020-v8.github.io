@@ -61,6 +61,8 @@ export class AddImageArrayComponent implements OnInit {
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
 
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
   addRandomImage() {
     const imageToCopy: Image = this.images[Math.floor(Math.random() * this.images.length)];
     const newImage: Image = new Image(this.images.length - 1 + 1, imageToCopy.modal, imageToCopy.plain);
