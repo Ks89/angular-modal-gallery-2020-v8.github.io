@@ -30,7 +30,7 @@ import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/au
 
 import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
-// import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
+import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
 //
 // import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
 // import { ModalAutoplayPlayButtonComponent } from './modal-autoplay-playbutton/modal-autoplay-playbutton.component';
@@ -47,7 +47,7 @@ import { DownloadCustomFilenameComponent } from './download-custom-filename/down
 // import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
 // import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
 // import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
-// import { SameImagesComponent } from './same-images/same-images.component';
+import { SameImagesComponent } from './same-images/same-images.component';
 
 export const DEMO_COMPONENTS = [
   DemoComponent,
@@ -81,8 +81,8 @@ export const DEMO_COMPONENTS = [
   AutoCloseAndAutoUpdateComponent,
   Base64Component,
   DownloadCustomFilenameComponent,
-  // InvertSwipeComponent,
-  // SameImagesComponent,
+  InvertSwipeComponent,
+  SameImagesComponent,
   // ModalAutoplayMinimalComponent,
   // ModalAutoplayCustomComponent,
   // ModalAutoplayPlayButtonComponent,

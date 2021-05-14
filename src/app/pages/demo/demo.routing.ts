@@ -31,7 +31,7 @@ import { ButtonsExturlNewtabComponent } from './buttons-exturl-newtab/buttons-ex
 import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/auto-close-and-auto-update.component';
 import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
-// import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
+import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
 // import { CarouselMinimalComponent } from './carousel-minimal/carousel-minimal.component';
 // import { CarouselFixedComponent } from './carousel-fixed/carousel-fixed.component';
 // import { CarouselContentProjectionComponent } from './carousel-content-projection/carousel-content-projection.component';
@@ -43,7 +43,7 @@ import { DownloadCustomFilenameComponent } from './download-custom-filename/down
 // import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
 // import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
 // import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
-// import { SameImagesComponent } from './same-images/same-images.component';
+import { SameImagesComponent } from './same-images/same-images.component';
 // import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
 // import { ModalAutoplayPlayButtonComponent } from './modal-autoplay-playbutton/modal-autoplay-playbutton.component';
 // import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
@@ -93,9 +93,9 @@ export const routes: Routes = [
       {path: 'accessibility', component: AccessibilityComponent},
       {path: 'auto-close-and-auto-update', component: AutoCloseAndAutoUpdateComponent},
       {path: 'base64', component: Base64Component},
-      // {path: 'invert-swipe', component: InvertSwipeComponent},
-      // {path: 'same-images', component: SameImagesComponent},
-      //
+      {path: 'invert-swipe', component: InvertSwipeComponent},
+      {path: 'same-images', component: SameImagesComponent},
+
       // {path: 'autoplay-minimal', component: ModalAutoplayMinimalComponent},
       // {path: 'autoplay-custom', component: ModalAutoplayCustomComponent},
       // {path: 'autoplay-playbutton', component: ModalAutoplayPlayButtonComponent},
