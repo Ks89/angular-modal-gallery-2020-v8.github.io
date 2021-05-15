@@ -31,11 +31,10 @@ import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/au
 import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
 import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
-//
-// import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
-// import { ModalAutoplayPlayButtonComponent } from './modal-autoplay-playbutton/modal-autoplay-playbutton.component';
-// import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
-//
+
+import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
+import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
+
 // import { CarouselMinimalComponent } from './carousel-minimal/carousel-minimal.component';
 // import { CarouselFixedComponent } from './carousel-fixed/carousel-fixed.component';
 // import { CarouselContentProjectionComponent } from './carousel-content-projection/carousel-content-projection.component';
@@ -83,9 +82,8 @@ export const DEMO_COMPONENTS = [
   DownloadCustomFilenameComponent,
   InvertSwipeComponent,
   SameImagesComponent,
-  // ModalAutoplayMinimalComponent,
-  // ModalAutoplayCustomComponent,
-  // ModalAutoplayPlayButtonComponent,
+  ModalAutoplayMinimalComponent,
+  ModalAutoplayCustomComponent,
   // CarouselMinimalComponent,
   // CarouselFixedComponent,
   // CarouselContentProjectionComponent,

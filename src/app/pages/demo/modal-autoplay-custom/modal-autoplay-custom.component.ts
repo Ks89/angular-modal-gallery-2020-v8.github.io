@@ -25,12 +25,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import { Image, LibConfig, ModalGalleryConfig, ModalGalleryRef, ModalGalleryService, PlayConfig } from '@ks89/angular-modal-gallery';
 
 import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 import { Metadata, UiService } from '../../../core/services/ui.service';
+import { SlideConfig } from '@ks89/angular-modal-gallery/lib/model/slide-config.interface';
 
 @Component({
   selector: 'app-modal-autoplay-minimal-page',
@@ -47,21 +48,60 @@ export class ModalAutoplayCustomComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService,
               @Inject(DOCUMENT) private document: any) {
     this.titleService.titleEvent.emit('Examples - Autoplay custom');
 
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"
-  [slideConfig]="{playConfig: {autoPlay: true, interval: 2000, pauseOnHover: false}}"></ks-modal-gallery>`;
+      `  <button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+
+    this.codeTypescript = `
+  images: Image[]; // init this value with your images
+
+  constructor(private modal GalleryService: ModalGalleryService) {}
+
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id: id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        slideConfig: {
+          playConfig: {
+            autoPlay: true,
+            interval: 2000,
+            pauseOnHover: false
+          }
+        }
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit() {
     this.metaData();
   }
 
+  openModal(id: number, imageIndex: number): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[imageIndex],
+      libConfig: {
+        slideConfig: {
+          playConfig: {
+            autoPlay: true,
+            interval: 2000,
+            pauseOnHover: false
+          } as PlayConfig
+        } as SlideConfig
+      } as LibConfig
+    } as ModalGalleryConfig) as ModalGalleryRef;
+  }
+
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Autoplay custom'
-    });
+    } as Metadata);
   }
 }

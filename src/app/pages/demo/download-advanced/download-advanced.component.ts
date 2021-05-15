@@ -64,7 +64,7 @@ export class DownloadAdvancedComponent implements OnInit {
     this.codeTypescript = `
   images: Image[]; // init this value with your images
 
-  constructor(private modalGalleryService: ModalGalleryService) {}
+  constructor(private modal GalleryService: ModalGalleryService) {}
 
   openModal(id: number, imageIndex: number): void {
     const dialogRef: ModalGalleryRef = this.modalGalleryService.open({

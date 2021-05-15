@@ -44,9 +44,8 @@ import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
 // import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
 // import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
 import { SameImagesComponent } from './same-images/same-images.component';
-// import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
-// import { ModalAutoplayPlayButtonComponent } from './modal-autoplay-playbutton/modal-autoplay-playbutton.component';
-// import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
+import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
+import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
 
 export const routes: Routes = [
   {
@@ -96,10 +95,9 @@ export const routes: Routes = [
       {path: 'invert-swipe', component: InvertSwipeComponent},
       {path: 'same-images', component: SameImagesComponent},
 
-      // {path: 'autoplay-minimal', component: ModalAutoplayMinimalComponent},
-      // {path: 'autoplay-custom', component: ModalAutoplayCustomComponent},
-      // {path: 'autoplay-playbutton', component: ModalAutoplayPlayButtonComponent},
-      //
+      {path: 'autoplay-minimal', component: ModalAutoplayMinimalComponent},
+      {path: 'autoplay-custom', component: ModalAutoplayCustomComponent},
+
       // {path: 'carousel', component: CarouselMinimalComponent},
       // {path: 'carousel-fixed', component: CarouselFixedComponent},
       // {path: 'carousel-content-projection', component: CarouselContentProjectionComponent},
