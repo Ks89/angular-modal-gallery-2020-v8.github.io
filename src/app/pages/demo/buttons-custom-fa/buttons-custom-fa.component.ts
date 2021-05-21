@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import {
   ButtonEvent,
@@ -96,8 +95,7 @@ export class ButtonsCustomFaComponent implements OnInit, OnDestroy {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              private modalGalleryService: ModalGalleryService,
-              @Inject(DOCUMENT) private document: any) {
+              private modalGalleryService: ModalGalleryService) {
     this.titleService.titleEvent.emit('Examples - Custom buttons with Font Awesome 5');
 
     this.codeHtml =

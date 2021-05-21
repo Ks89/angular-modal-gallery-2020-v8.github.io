@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { Metadata, UiService } from '../../core/services/ui.service';
@@ -37,9 +37,7 @@ export class GettingStartedComponent implements OnInit {
 
   constructor(private uiService: UiService,
               private router: Router,
-              private viewPortScroller: ViewportScroller,
-              @Inject(DOCUMENT) private document: any) {
-  }
+              private viewPortScroller: ViewportScroller) {}
 
   ngOnInit() {
     this.metaData();
@@ -54,8 +52,8 @@ export class GettingStartedComponent implements OnInit {
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Getting started'
-    });
+    } as Metadata);
   }
 }

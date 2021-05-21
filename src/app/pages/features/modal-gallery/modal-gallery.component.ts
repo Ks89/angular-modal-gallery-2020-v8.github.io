@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import { Image } from '@ks89/angular-modal-gallery';
 
@@ -47,8 +46,7 @@ export class ModalGalleryComponent implements OnInit {
   codeTypescript: string;
 
   constructor(private uiService: UiService,
-              private titleService: TitleService,
-              @Inject(DOCUMENT) private document: any) {
+              private titleService: TitleService) {
     this.titleService.titleEvent.emit('Features - Modal Gallery');
 
     this.codeHtml = `<button (click)="openModal(400, images, 0)">Open modal gallery at index=0</button>`;

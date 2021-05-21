@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,13 +22,11 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
 import {
-  Action,
   ButtonEvent, ButtonType,
   Image,
   ImageModalEvent,
@@ -76,13 +74,7 @@ export class OutputEventsComponent implements OnInit, OnDestroy {
 
   constructor(private uiService: UiService,
               private titleService: TitleService,
-              private modalGalleryService: ModalGalleryService,
-              // private scrollService: PageScrollService,
-              @Inject(DOCUMENT) private document: any) {
-
-    // scroll to the top of the document
-    // const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, 'div#demo');
-    // this.scrollService.start(pageScrollInstance);
+              private modalGalleryService: ModalGalleryService) {
 
     this.titleService.titleEvent.emit('Examples - Output events');
 

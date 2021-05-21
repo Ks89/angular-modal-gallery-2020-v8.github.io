@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import {
   Image,
@@ -78,9 +77,7 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(private uiService: UiService,
-              private modalGalleryService: ModalGalleryService,
-              @Inject(DOCUMENT) private document: any) {
-  }
+              private modalGalleryService: ModalGalleryService) {}
 
   ngOnInit() {
     this.metaData();
@@ -95,8 +92,8 @@ export class HomeComponent implements OnInit {
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata> {
+    this.uiService.setMetaData( {
       title: 'Home'
-    });
+    } as Metadata);
   }
 }

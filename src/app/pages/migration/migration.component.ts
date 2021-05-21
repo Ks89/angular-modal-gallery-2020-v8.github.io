@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import { Metadata, UiService } from '../../core/services/ui.service';
 
@@ -33,16 +32,15 @@ import { Metadata, UiService } from '../../core/services/ui.service';
   styleUrls: ['migration.scss']
 })
 export class MigrationComponent implements OnInit {
-  constructor(private uiService: UiService,
-              @Inject(DOCUMENT) private document: any) {}
+  constructor(private uiService: UiService) {}
 
   ngOnInit() {
     this.metaData();
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Migration'
-    });
+    } as Metadata);
   }
 }

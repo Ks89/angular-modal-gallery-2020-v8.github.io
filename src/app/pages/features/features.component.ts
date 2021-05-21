@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-import { Component, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component } from '@angular/core';
 
 import { TitleService } from '../../core/services/title.service';
 
@@ -35,8 +34,7 @@ export class FeaturesComponent {
 
   title = 'Features';
 
-  constructor(private titleService: TitleService,
-              @Inject(DOCUMENT) private document: any) {
+  constructor(private titleService: TitleService) {
     this.titleService.titleEvent.subscribe((val: string) => {
       this.onUpdateTitle(val);
     });

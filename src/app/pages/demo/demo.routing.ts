@@ -32,13 +32,13 @@ import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/au
 import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
 import { InvertSwipeComponent } from './invert-swipe/invert-swipe.component';
-// import { CarouselMinimalComponent } from './carousel-minimal/carousel-minimal.component';
-// import { CarouselFixedComponent } from './carousel-fixed/carousel-fixed.component';
-// import { CarouselContentProjectionComponent } from './carousel-content-projection/carousel-content-projection.component';
-// import { CarouselFeaturesDisablesComponent } from './carousel-features-disables/carousel-features-disables.component';
-// import { CarouselNoAutoplayComponent } from './carousel-no-autoplay/carousel-no-autoplay.component';
-// import { CarouselNoInfiniteComponent } from './carousel-no-infinite/carousel-no-infinite.component';
-// import { CarouselCustomAutoplayComponent } from './carousel-custom-autoplay/carousel-custom-autoplay.component';
+import { CarouselMinimalComponent } from './carousel-minimal/carousel-minimal.component';
+import { CarouselFixedComponent } from './carousel-fixed/carousel-fixed.component';
+import { CarouselContentProjectionComponent } from './carousel-content-projection/carousel-content-projection.component';
+import { CarouselFeaturesDisablesComponent } from './carousel-features-disables/carousel-features-disables.component';
+import { CarouselNoAutoplayComponent } from './carousel-no-autoplay/carousel-no-autoplay.component';
+import { CarouselNoInfiniteComponent } from './carousel-no-infinite/carousel-no-infinite.component';
+import { CarouselCustomAutoplayComponent } from './carousel-custom-autoplay/carousel-custom-autoplay.component';
 // import { CarouselCustomPreviewsComponent } from './carousel-custom-previews/carousel-custom-previews.component';
 // import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
 // import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
@@ -98,13 +98,13 @@ export const routes: Routes = [
       {path: 'autoplay-minimal', component: ModalAutoplayMinimalComponent},
       {path: 'autoplay-custom', component: ModalAutoplayCustomComponent},
 
-      // {path: 'carousel', component: CarouselMinimalComponent},
-      // {path: 'carousel-fixed', component: CarouselFixedComponent},
-      // {path: 'carousel-content-projection', component: CarouselContentProjectionComponent},
-      // {path: 'carousel-features-disable', component: CarouselFeaturesDisablesComponent},
-      // {path: 'carousel-noautoplay', component: CarouselNoAutoplayComponent},
-      // {path: 'carousel-noinfinite', component: CarouselNoInfiniteComponent},
-      // {path: 'carousel-custom-autoplay', component: CarouselCustomAutoplayComponent},
+      {path: 'carousel', component: CarouselMinimalComponent},
+      {path: 'carousel-fixed', component: CarouselFixedComponent},
+      {path: 'carousel-content-projection', component: CarouselContentProjectionComponent},
+      {path: 'carousel-features-disable', component: CarouselFeaturesDisablesComponent},
+      {path: 'carousel-noautoplay', component: CarouselNoAutoplayComponent},
+      {path: 'carousel-noinfinite', component: CarouselNoInfiniteComponent},
+      {path: 'carousel-custom-autoplay', component: CarouselCustomAutoplayComponent},
       // {path: 'carousel-custom-previews', component: CarouselCustomPreviewsComponent},
       // {path: 'carousel-with-description', component: CarouselWithDescriptionComponent},
       // {path: 'carousel-outputs', component: CarouselOutputsComponent},

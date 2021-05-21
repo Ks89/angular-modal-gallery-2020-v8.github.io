@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017-2020 Stefano Cappa
+ * Copyright (c) 2017-2021 Stefano Cappa
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import { IMAGES_RECT_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
@@ -49,8 +48,7 @@ export class CarouselFeaturesDisablesComponent implements OnInit {
   showDots = true;
 
   constructor(private uiService: UiService,
-              private titleService: TitleService,
-              @Inject(DOCUMENT) private document: any) {
+              private titleService: TitleService) {
     this.titleService.titleEvent.emit('Examples - Carousel disable features');
 
     this.codeHtml =
@@ -71,10 +69,9 @@ export class CarouselFeaturesDisablesComponent implements OnInit {
     </p>
     <br>
     <ks-carousel [id]="108" [images]="imagesRect"
-  [previewConfig]="{visible: false}"
   [playConfig]="{autoPlay: autoPlay, interval: 3000, pauseOnHover: true}"
   [carouselConfig]="{maxWidth: '100%', maxHeight: '400px', showArrows: showArrows,
-                     objectFit: 'cover', keyboardEnable: true, modalGalleryEnable: false}"
+                     objectFit: 'cover', keyboardEnable: true, modalGalleryEnable: false, legacyIE11Mode: false}"
   [dotsConfig]="{visible: showDots}"></ks-carousel>`;
 
     this.codeTypescript =
@@ -98,8 +95,8 @@ export class CarouselFeaturesDisablesComponent implements OnInit {
   }
 
   metaData() {
-    this.uiService.setMetaData(<Metadata>{
+    this.uiService.setMetaData({
       title: 'Carousel disable features'
-    });
+    } as Metadata);
   }
 }
