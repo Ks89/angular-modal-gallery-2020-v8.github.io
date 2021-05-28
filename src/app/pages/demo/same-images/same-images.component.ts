@@ -81,7 +81,7 @@ export class SameImagesComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

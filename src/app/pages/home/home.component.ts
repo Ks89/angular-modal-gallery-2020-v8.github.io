@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
   constructor(private uiService: UiService,
               private modalGalleryService: ModalGalleryService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

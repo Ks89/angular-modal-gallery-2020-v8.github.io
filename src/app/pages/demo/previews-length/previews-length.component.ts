@@ -80,7 +80,7 @@ export class PreviewsLengthComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

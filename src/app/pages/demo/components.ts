@@ -22,10 +22,10 @@ import { AccessibilityComponent } from './accessibility/accessibility.component'
 import { ButtonsStrategiesComponent } from './buttons-strategies/buttons-strategies.component';
 import { ButtonsExturlNewtabComponent } from './buttons-exturl-newtab/buttons-exturl-newtab.component';
 import { ButtonsCustomFaComponent } from './buttons-custom-fa/buttons-custom-fa.component';
-// import { PlainGalleryCustomWithDescComponent } from './plain-gallery-custom-with-desc/plain-gallery-custom-with-desc.component';
-// import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
-// import { PlainGalleryLayoutsComponent } from './plain-gallery-layouts/plain-gallery-layouts.component';
-// import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
+import { PlainGalleryCustomWithDescComponent } from './plain-gallery-custom-with-desc/plain-gallery-custom-with-desc.component';
+import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
+import { PlainGalleryLayoutsComponent } from './plain-gallery-layouts/plain-gallery-layouts.component';
+import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
 import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/auto-close-and-auto-update.component';
 
 import { Base64Component } from './base64/base64.component';
@@ -42,10 +42,10 @@ import { CarouselFeaturesDisablesComponent } from './carousel-features-disables/
 import { CarouselNoAutoplayComponent } from './carousel-no-autoplay/carousel-no-autoplay.component';
 import { CarouselNoInfiniteComponent } from './carousel-no-infinite/carousel-no-infinite.component';
 import { CarouselCustomAutoplayComponent } from './carousel-custom-autoplay/carousel-custom-autoplay.component';
-// import { CarouselCustomPreviewsComponent } from './carousel-custom-previews/carousel-custom-previews.component';
-// import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
-// import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
-// import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
+import { CarouselCustomPreviewsComponent } from './carousel-custom-previews/carousel-custom-previews.component';
+import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
+import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
+import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
 import { SameImagesComponent } from './same-images/same-images.component';
 
 export const DEMO_COMPONENTS = [
@@ -73,10 +73,10 @@ export const DEMO_COMPONENTS = [
   ButtonsStrategiesComponent,
   ButtonsExturlNewtabComponent,
   ButtonsCustomFaComponent,
-  // PlainGalleryCustomWithDescComponent,
-  // PlainGalleryImagePointerComponent,
-  // PlainGalleryLayoutsComponent,
-  // PlainGalleryAtagsComponent,
+  PlainGalleryCustomWithDescComponent,
+  PlainGalleryImagePointerComponent,
+  PlainGalleryLayoutsComponent,
+  PlainGalleryAtagsComponent,
   AutoCloseAndAutoUpdateComponent,
   Base64Component,
   DownloadCustomFilenameComponent,
@@ -91,8 +91,8 @@ export const DEMO_COMPONENTS = [
   CarouselNoAutoplayComponent,
   CarouselNoInfiniteComponent,
   CarouselCustomAutoplayComponent,
-  // CarouselCustomPreviewsComponent,
-  // CarouselWithDescriptionComponent,
-  // CarouselOutputsComponent,
-  // CarouselBreakpointsComponent
+  CarouselCustomPreviewsComponent,
+  CarouselWithDescriptionComponent,
+  CarouselOutputsComponent,
+  CarouselBreakpointsComponent
 ];

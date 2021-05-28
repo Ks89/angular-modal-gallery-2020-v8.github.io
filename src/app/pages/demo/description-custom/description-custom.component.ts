@@ -85,7 +85,7 @@ export class DescriptionCustomComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

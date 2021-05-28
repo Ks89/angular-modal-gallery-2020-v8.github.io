@@ -76,7 +76,7 @@ export class PreviewsNotClickableComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

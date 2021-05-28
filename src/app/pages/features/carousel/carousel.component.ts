@@ -60,7 +60,7 @@ export class CarouselComponent implements OnInit {
   ];`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

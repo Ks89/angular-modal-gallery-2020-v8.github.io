@@ -199,7 +199,7 @@ export class AutoCloseAndAutoUpdateComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

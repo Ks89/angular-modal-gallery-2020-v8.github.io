@@ -35,7 +35,7 @@ export class AboutComponent implements OnInit {
 
   constructor(private uiService: UiService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

@@ -39,7 +39,7 @@ export class PreviewsComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Previews');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

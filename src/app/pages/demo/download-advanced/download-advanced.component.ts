@@ -82,7 +82,7 @@ export class DownloadAdvancedComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

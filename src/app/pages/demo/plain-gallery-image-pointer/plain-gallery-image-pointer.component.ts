@@ -24,7 +24,14 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { AdvancedLayout, Image, PlainGalleryConfig, PlainGalleryStrategy } from '@ks89/angular-modal-gallery';
+import {
+  AdvancedLayout,
+  Image, LibConfig,
+  ModalGalleryRef,
+  ModalGalleryService,
+  PlainGalleryConfig,
+  PlainGalleryStrategy
+} from '@ks89/angular-modal-gallery';
 
 import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
@@ -52,42 +59,52 @@ export class PlainGalleryImagePointerComponent implements OnInit {
   };
 
   constructor(private uiService: UiService,
+              private modalGalleryService: ModalGalleryService,
               private titleService: TitleService) {
 
     this.titleService.titleEvent.emit('Examples - Plain gallery with image pointer');
 
     this.codeHtml =
       `<div class="my-app-custom-plain-container-row">
-    <ng-container *ngFor="let img of images; let i = index">
-      <div *ngIf="i <= 2">
-        <a class="more" *ngIf="i==2" (click)="openImageModalRow(img)"> +{{images.length - 2 - 1}} more </a>
-        <img *ngIf="img.plain && img.plain.img; else noThumb"
-             class="my-app-custom-image-row"
-             [src]="img.plain.img"
-             (click)="openImageModalRow(img)"
+  <ng-container *ngFor="let img of images; let i = index">
+    <div *ngIf="i <= 2">
+      <a class="more" *ngIf="i==2" (click)="openImageModalRow(211, img)"> +{{images.length - 2 - 1}} more </a>
+      <img *ngIf="img.plain && img.plain.img; else noThumb"
+           class="my-app-custom-image-row"
+           [src]="img.plain.img"
+           (click)="openImageModalRow(211, img)"
+           [alt]="img.modal.description"/>
+
+      <ng-template #noThumb>
+        <img class="my-app-custom-image-row"
+             [src]="img.modal.img"
+             (click)="openImageModalRow(211, img)"
              [alt]="img.modal.description"/>
+      </ng-template>
+    </div>
+  </ng-container>
+</div>`;
 
-        <ng-template #noThumb>
-          <img class="my-app-custom-image-row"
-               [src]="img.modal.img"
-               (click)="openImageModalRow(img)"
-               [alt]="img.modal.description"/>
-        </ng-template>
-      </div>
-    </ng-container>
-  </div>
-  <ks-modal-gallery [id]="0" [modalImages]="images"
-                    [plainGalleryConfig]="customPlainGalleryRowConfig"></ks-modal-gallery>`;
+    this.codeTypescript = `
+constructor(private modalGalleryService: ModalGalleryService) {}
 
-    this.codeTypescript = `customPlainGalleryRowConfig: PlainGalleryConfig = {
+customPlainGalleryRowConfig: PlainGalleryConfig = {
   strategy: PlainGalleryStrategy.CUSTOM,
   layout: new AdvancedLayout(-1, true)
 };
 
-openImageModalRow(image: Image) {
+openImageModalRow(id: number, image: Image): void {
   console.log('Opening modal gallery from custom plain gallery row, with image: ', image);
   const index: number = this.getCurrentIndexCustomLayout(image, this.images);
-  this.customPlainGalleryRowConfig = Object.assign({}, this.customPlainGalleryRowConfig, {layout: new AdvancedLayout(index, true)});
+  this.customPlainGalleryRowConfig = Object.assign({}, this.customPlainGalleryRowConfig, { layout: new AdvancedLayout(index, true) });
+  const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+    id,
+    images: this.images,
+    currentImage: this.images[index],
+    libConfig: {
+    plainGalleryConfig: this.customPlainGalleryRowConfig
+  }
+  }) as ModalGalleryRef;
 }
 
 private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
@@ -135,23 +152,31 @@ private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
 
   }
 
-  openImageModalRow(image: Image) {
+  openImageModalRow(id: number, image: Image): void {
     console.log('Opening modal gallery from custom plain gallery row, with image: ', image);
     const index: number = this.getCurrentIndexCustomLayout(image, this.images);
-    this.customPlainGalleryRowConfig = Object.assign({}, this.customPlainGalleryRowConfig, {layout: new AdvancedLayout(index, true)});
+    this.customPlainGalleryRowConfig = Object.assign({}, this.customPlainGalleryRowConfig, { layout: new AdvancedLayout(index, true) });
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[index],
+      libConfig: {
+      plainGalleryConfig: this.customPlainGalleryRowConfig
+    }
+    }) as ModalGalleryRef;
   }
 
-  private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
-    return image ? images.indexOf(image) : -1;
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 
   metaData() {
     this.uiService.setMetaData({
       title: 'Demo plain pointer'
-    } as Medadata);
+    } as Metadata);
+  }
+
+  private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
+    return image ? images.indexOf(image) : -1;
   }
 }

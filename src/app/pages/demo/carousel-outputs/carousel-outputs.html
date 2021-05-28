@@ -9,7 +9,7 @@
   <h3>Live Demo</h3>
   <br>
   <ks-carousel [id]="114" [images]="images"
-    (show)="onShow($event)"
+    (showImage)="onShowImage($event)"
     (firstImage)="onFirstImage($event)"
     (lastImage)="onLastImage($event)"></ks-carousel>
   <br><br>
@@ -53,63 +53,6 @@
             <div><b class="text-success">Array of <code>Image</code> objects</b></div>
           </td>
         </tr>
-        <tr>
-          <td><code>carouselConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>Default full width carousel with height 400px, image cover, arrows, keyboard navigation,
-              but without modal gallery</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>playConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>Both autoPlay and pauseOnHover are enabled with 5000ms of delay</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>carouselImageConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>No description, and swipe not inverted</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>dotsConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>It will show dots inside the current image</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>previewConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>It will show 4 clickable previews (default size) with arrows</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>infinite</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div>Infinite sliding is enabled by default</div>
-          </td>
-        </tr>
-        <tr>
-          <td><code>accessibilityConfig</code></td>
-          <td>
-            <div><i>Value: </i><code>undefined</code></div>
-            <div><a [routerLink]="['/features/defaultValues']">default value</a></div>
-            <div><small>(an object with all default english accessibility values by default)</small></div>
-          </td>
-        </tr>
       </tbody>
     </table>
 
@@ -118,13 +61,13 @@
     <table class="table table-hover table-sm">
       <thead>
       <tr>
-        <th>Output (.html)</th>
-        <th>Return (.ts)</th>
+        <th>Output</th>
+        <th>Return</th>
       </tr>
       </thead>
       <tbody>
         <tr>
-          <td><code>(show)</code></td>
+          <td><code>(showImage)</code></td>
           <td>
             <div><i>Type: </i><code>ImageEvent</code></div>
             <div><b class="text-success">Open the console of your browser to see the result</b></div>

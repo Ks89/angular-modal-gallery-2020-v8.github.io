@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, private accordionService: AccordionService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     // at every refresh of this app, remove the accordion state from local storage
     this.accordionService.resetAccordion();
     this.accordionService.initAccordion();
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // this.subscription.unsubscribe();
   }
 }

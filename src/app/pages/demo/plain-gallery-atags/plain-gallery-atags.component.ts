@@ -24,7 +24,14 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { Image, LineLayout, PlainGalleryConfig, PlainGalleryStrategy } from '@ks89/angular-modal-gallery';
+import {
+  Image, LibConfig,
+  LineLayout,
+  ModalGalleryRef,
+  ModalGalleryService,
+  PlainGalleryConfig,
+  PlainGalleryStrategy
+} from '@ks89/angular-modal-gallery';
 
 import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
@@ -44,31 +51,55 @@ export class PlainGalleryAtagsComponent implements OnInit {
   codeHtml: string;
   codeTypescript: string;
 
-  plainGalleryRowATags: PlainGalleryConfig = {
-    strategy: PlainGalleryStrategy.ROW,
-    layout: new LineLayout({width: '50px', height: '50px'}, {length: 4, wrap: true}, 'flex-start'),
-    advanced: {aTags: true, additionalBackground: '50% 50%/cover'}
+  libConfigPlainGalleryRowATags: LibConfig = {
+    plainGalleryConfig: {
+      strategy: PlainGalleryStrategy.ROW,
+      layout: new LineLayout({width: '50px', height: '50px'}, {length: 4, wrap: true}, 'flex-start'),
+      advanced: {aTags: true, additionalBackground: '50% 50%/cover'}
+    } as PlainGalleryConfig
   };
 
   constructor(private uiService: UiService,
+              private modalGalleryService: ModalGalleryService,
               private titleService: TitleService) {
 
     this.titleService.titleEvent.emit(`Examples - Plain gallery with <a> tags`);
 
     this.codeHtml =
-      `<ks-modal-gallery [id]="0" [modalImages]="images"
-    [plainGalleryConfig]="plainGalleryRowATags"></ks-modal-gallery>`;
+      `<ks-plain-gallery [id]="200" [images]="images" [showGallery]="true"
+                    [config]="libConfigPlainGalleryRowATags"
+                    (showImage)="onShow(200, $event)"></ks-plain-gallery>`;
 
     this.codeTypescript = `
-  plainGalleryRowATags: PlainGalleryConfig = {
-    strategy: PlainGalleryStrategy.ROW,
-    layout: new LineLayout({ width: '50px', height: '50px' }, { length: 4, wrap: true }, 'flex-start'),
-    advanced: { aTags: true, additionalBackground: '50% 50%/cover' }
-  };`;
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  libConfigPlainGalleryRowATags: LibConfig = {
+    plainGalleryConfig: {
+      strategy: PlainGalleryStrategy.ROW,
+      layout: new LineLayout({width: '50px', height: '50px'}, {length: 4, wrap: true}, 'flex-start'),
+      advanced: {aTags: true, additionalBackground: '50% 50%/cover'}
+    } as PlainGalleryConfig
+  };
+
+  onShow(id: number, index: number, images: Image[] = this.images): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images,
+      currentImage: images[index]
+    }) as ModalGalleryRef;
+  }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
+  }
+
+  onShow(id: number, index: number, images: Image[] = this.images): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images,
+      currentImage: images[index]
+    }) as ModalGalleryRef;
   }
 
   metaData() {

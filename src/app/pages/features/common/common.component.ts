@@ -39,7 +39,7 @@ export class CommonComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Common');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

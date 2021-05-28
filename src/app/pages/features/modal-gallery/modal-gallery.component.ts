@@ -63,7 +63,7 @@ export class ModalGalleryComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

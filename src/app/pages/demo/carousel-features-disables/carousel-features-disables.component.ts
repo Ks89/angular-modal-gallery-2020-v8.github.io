@@ -90,7 +90,7 @@ export class CarouselFeaturesDisablesComponent implements OnInit {
     this.showDots = !this.showDots;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

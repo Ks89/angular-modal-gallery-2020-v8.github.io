@@ -55,7 +55,7 @@ export class CarouselMinimalComponent implements OnInit {
       `  images: Image[]; // init this value with your images`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

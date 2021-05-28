@@ -185,7 +185,7 @@ export class Base64Component implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

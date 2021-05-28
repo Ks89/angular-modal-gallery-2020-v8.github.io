@@ -77,7 +77,7 @@ export class DownloadSimpleComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

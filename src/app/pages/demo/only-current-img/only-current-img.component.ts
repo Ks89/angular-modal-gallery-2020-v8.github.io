@@ -96,7 +96,7 @@ export class OnlyCurrentImgComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

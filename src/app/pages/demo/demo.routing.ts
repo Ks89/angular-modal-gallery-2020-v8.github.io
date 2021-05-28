@@ -24,10 +24,10 @@ import { AccessibilityComponent } from './accessibility/accessibility.component'
 import { ButtonsCustomFaComponent } from './buttons-custom-fa/buttons-custom-fa.component';
 import { ButtonsStrategiesComponent } from './buttons-strategies/buttons-strategies.component';
 import { ButtonsExturlNewtabComponent } from './buttons-exturl-newtab/buttons-exturl-newtab.component';
-// import { PlainGalleryLayoutsComponent } from './plain-gallery-layouts/plain-gallery-layouts.component';
-// import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
-// import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
-// import { PlainGalleryCustomWithDescComponent } from './plain-gallery-custom-with-desc/plain-gallery-custom-with-desc.component';
+import { PlainGalleryLayoutsComponent } from './plain-gallery-layouts/plain-gallery-layouts.component';
+import { PlainGalleryAtagsComponent } from './plain-gallery-atags/plain-gallery-atags.component';
+import { PlainGalleryImagePointerComponent } from './plain-gallery-image-pointer/plain-gallery-image-pointer.component';
+import { PlainGalleryCustomWithDescComponent } from './plain-gallery-custom-with-desc/plain-gallery-custom-with-desc.component';
 import { AutoCloseAndAutoUpdateComponent } from './auto-close-and-auto-update/auto-close-and-auto-update.component';
 import { Base64Component } from './base64/base64.component';
 import { DownloadCustomFilenameComponent } from './download-custom-filename/download-custom-filename.component';
@@ -39,10 +39,10 @@ import { CarouselFeaturesDisablesComponent } from './carousel-features-disables/
 import { CarouselNoAutoplayComponent } from './carousel-no-autoplay/carousel-no-autoplay.component';
 import { CarouselNoInfiniteComponent } from './carousel-no-infinite/carousel-no-infinite.component';
 import { CarouselCustomAutoplayComponent } from './carousel-custom-autoplay/carousel-custom-autoplay.component';
-// import { CarouselCustomPreviewsComponent } from './carousel-custom-previews/carousel-custom-previews.component';
-// import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
-// import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
-// import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
+import { CarouselCustomPreviewsComponent } from './carousel-custom-previews/carousel-custom-previews.component';
+import { CarouselWithDescriptionComponent } from './carousel-with-description/carousel-with-description.component';
+import { CarouselOutputsComponent } from './carousel-outputs/carousel-outputs.component';
+import { CarouselBreakpointsComponent } from './carousel-breakpoints/carousel-breakpoints.component';
 import { SameImagesComponent } from './same-images/same-images.component';
 import { ModalAutoplayMinimalComponent } from './modal-autoplay-minimal/modal-autoplay-minimal.component';
 import { ModalAutoplayCustomComponent } from './modal-autoplay-custom/modal-autoplay-custom.component';
@@ -84,11 +84,11 @@ export const routes: Routes = [
       {path: 'buttons-exturl-newtab', component: ButtonsExturlNewtabComponent},
       {path: 'buttons-custom-fa', component: ButtonsCustomFaComponent},
 
-      // {path: 'plain-layouts', component: PlainGalleryLayoutsComponent},
-      // {path: 'plain-atags', component: PlainGalleryAtagsComponent},
-      // {path: 'plain-image-pointer', component: PlainGalleryImagePointerComponent},
-      // {path: 'plain-custom-desc', component: PlainGalleryCustomWithDescComponent},
-      //
+      {path: 'plain-layouts', component: PlainGalleryLayoutsComponent},
+      {path: 'plain-atags', component: PlainGalleryAtagsComponent},
+      {path: 'plain-image-pointer', component: PlainGalleryImagePointerComponent},
+      {path: 'plain-custom-desc', component: PlainGalleryCustomWithDescComponent},
+
       {path: 'accessibility', component: AccessibilityComponent},
       {path: 'auto-close-and-auto-update', component: AutoCloseAndAutoUpdateComponent},
       {path: 'base64', component: Base64Component},
@@ -105,10 +105,10 @@ export const routes: Routes = [
       {path: 'carousel-noautoplay', component: CarouselNoAutoplayComponent},
       {path: 'carousel-noinfinite', component: CarouselNoInfiniteComponent},
       {path: 'carousel-custom-autoplay', component: CarouselCustomAutoplayComponent},
-      // {path: 'carousel-custom-previews', component: CarouselCustomPreviewsComponent},
-      // {path: 'carousel-with-description', component: CarouselWithDescriptionComponent},
-      // {path: 'carousel-outputs', component: CarouselOutputsComponent},
-      // {path: 'carousel-breakpoints', component: CarouselBreakpointsComponent}
+      {path: 'carousel-custom-previews', component: CarouselCustomPreviewsComponent},
+      {path: 'carousel-with-description', component: CarouselWithDescriptionComponent},
+      {path: 'carousel-outputs', component: CarouselOutputsComponent},
+      {path: 'carousel-breakpoints', component: CarouselBreakpointsComponent}
     ]
   }
 ];

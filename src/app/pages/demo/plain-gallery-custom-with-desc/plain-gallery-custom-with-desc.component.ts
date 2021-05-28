@@ -24,7 +24,14 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { AdvancedLayout, Image, PlainGalleryConfig, PlainGalleryStrategy } from '@ks89/angular-modal-gallery';
+import {
+  AdvancedLayout,
+  Image,
+  LibConfig,
+  ModalGalleryRef, ModalGalleryService,
+  PlainGalleryConfig,
+  PlainGalleryStrategy
+} from '@ks89/angular-modal-gallery';
 
 import { IMAGES_ARRAY } from '../../../shared/images';
 import { TitleService } from '../../../core/services/title.service';
@@ -52,6 +59,7 @@ export class PlainGalleryCustomWithDescComponent implements OnInit {
   };
 
   constructor(private uiService: UiService,
+              private modalGalleryService: ModalGalleryService,
               private titleService: TitleService) {
     this.titleService.titleEvent.emit('Examples - Plain gallery custom with description');
 
@@ -60,25 +68,35 @@ export class PlainGalleryCustomWithDescComponent implements OnInit {
     <ng-container *ngFor="let img of images">
       <figure class="my-app-custom-image-with-desc">
         <img [src]="img.modal.img"
-             (click)="openImageModalRowDescription(img)"/>
+             (click)="openImageModalRowDescription(213, img)"/>
         <figcaption class="description">{{img.modal.description ? img.modal.description : 'No description available'}}
         </figcaption>
       </figure>
     </ng-container>
   </div>
-  <ks-modal-gallery [id]="0" [modalImages]="images"
-                    [plainGalleryConfig]="customPlainGalleryRowDescConfig"></ks-modal-gallery>
 `;
 
-    this.codeTypescript = `customPlainGalleryRowDescConfig: PlainGalleryConfig = {
+    this.codeTypescript = `
+  constructor(private modalGalleryService: ModalGalleryService) {}
+
+  customPlainGalleryRowDescConfig: PlainGalleryConfig = {
     strategy: PlainGalleryStrategy.CUSTOM,
     layout: new AdvancedLayout(-1, true)
   };
 
-  openImageModalRowDescription(image: Image) {
+  openImageModalRowDescription(id: number, image: Image): void {
     console.log('Opening modal gallery from custom plain gallery row and description, with image: ', image);
     const index: number = this.getCurrentIndexCustomLayout(image, this.images);
-    this.customPlainGalleryRowDescConfig = Object.assign({}, this.customPlainGalleryRowDescConfig, { layout: new AdvancedLayout(index, true) });
+    this.customPlainGalleryRowDescConfig = Object.assign({}, this.customPlainGalleryRowDescConfig,
+      { layout: new AdvancedLayout(index, true) });
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[index],
+      libConfig: {
+        plainGalleryConfig: this.customPlainGalleryRowDescConfig
+      }
+    }) as ModalGalleryRef;
   }
 
   private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
@@ -129,23 +147,32 @@ export class PlainGalleryCustomWithDescComponent implements OnInit {
 }`;
   }
 
-  openImageModalRowDescription(image: Image) {
+  ngOnInit(): void {
+    this.metaData();
+  }
+
+  openImageModalRowDescription(id: number, image: Image): void {
     console.log('Opening modal gallery from custom plain gallery row and description, with image: ', image);
     const index: number = this.getCurrentIndexCustomLayout(image, this.images);
-    this.customPlainGalleryRowDescConfig = Object.assign({}, this.customPlainGalleryRowDescConfig, {layout: new AdvancedLayout(index, true)});
-  }
-
-  private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
-    return image ? images.indexOf(image) : -1;
-  }
-
-  ngOnInit() {
-    this.metaData();
+    this.customPlainGalleryRowDescConfig = Object.assign({}, this.customPlainGalleryRowDescConfig,
+      { layout: new AdvancedLayout(index, true) });
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: this.images[index],
+      libConfig: {
+        plainGalleryConfig: this.customPlainGalleryRowDescConfig
+      }
+    }) as ModalGalleryRef;
   }
 
   metaData() {
     this.uiService.setMetaData({
       title: 'Demo plain custom desc'
     } as Metadata);
+  }
+
+  private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
+    return image ? images.indexOf(image) : -1;
   }
 }

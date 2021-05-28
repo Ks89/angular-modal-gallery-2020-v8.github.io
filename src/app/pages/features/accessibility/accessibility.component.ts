@@ -39,7 +39,7 @@ export class AccessibilityComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Accessibility');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

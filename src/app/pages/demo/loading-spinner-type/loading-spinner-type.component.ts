@@ -103,7 +103,7 @@ export class LoadingSpinnerTypeComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

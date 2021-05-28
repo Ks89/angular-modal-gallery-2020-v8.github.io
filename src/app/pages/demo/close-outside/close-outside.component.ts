@@ -76,7 +76,7 @@ export class CloseOusideComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

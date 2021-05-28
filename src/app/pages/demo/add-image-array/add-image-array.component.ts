@@ -77,7 +77,7 @@ export class AddImageArrayComponent implements OnInit {
   `;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

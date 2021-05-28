@@ -84,7 +84,7 @@ export class LoadingSpinnerDisableComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

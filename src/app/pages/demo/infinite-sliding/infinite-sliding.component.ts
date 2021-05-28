@@ -83,7 +83,7 @@ export class InfiniteSlidingComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

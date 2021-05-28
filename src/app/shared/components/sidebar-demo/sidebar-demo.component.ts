@@ -38,7 +38,7 @@ export class SidebarDemoComponent implements OnInit {
   constructor(private accordionService: AccordionService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     const accordion: Accordion = this.accordionService.getAccordion();
     this.showCarousel = accordion.carouselOpen;
     this.showModal = accordion.modalOpen;

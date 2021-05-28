@@ -38,7 +38,7 @@ export class UpperButtonsComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - UpperButtons');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

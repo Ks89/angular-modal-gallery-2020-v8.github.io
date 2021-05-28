@@ -37,7 +37,7 @@ export class KeyboardConfigComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Keyboard configuration');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

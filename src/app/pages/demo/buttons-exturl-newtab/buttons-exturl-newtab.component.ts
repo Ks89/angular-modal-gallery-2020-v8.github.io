@@ -87,7 +87,7 @@ export class ButtonsExturlNewtabComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

@@ -39,7 +39,7 @@ export class LibConfigComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Default input values');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

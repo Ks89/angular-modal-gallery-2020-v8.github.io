@@ -45,7 +45,7 @@ export class OverviewComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Overview');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

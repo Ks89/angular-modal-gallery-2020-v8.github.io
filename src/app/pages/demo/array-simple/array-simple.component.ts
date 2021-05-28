@@ -67,7 +67,7 @@ export class ArraySimpleComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

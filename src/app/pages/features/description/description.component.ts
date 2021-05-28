@@ -39,7 +39,7 @@ export class DescriptionComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Description');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

@@ -34,7 +34,7 @@ import { Metadata, UiService } from '../../core/services/ui.service';
 export class MigrationComponent implements OnInit {
   constructor(private uiService: UiService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

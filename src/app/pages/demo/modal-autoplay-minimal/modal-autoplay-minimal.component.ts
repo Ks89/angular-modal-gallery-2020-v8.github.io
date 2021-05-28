@@ -82,7 +82,7 @@ export class ModalAutoplayMinimalComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

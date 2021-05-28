@@ -80,7 +80,7 @@ export class PreviewsNoArrowsComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

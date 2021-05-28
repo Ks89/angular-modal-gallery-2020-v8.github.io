@@ -39,7 +39,7 @@ export class GettingStartedComponent implements OnInit {
               private router: Router,
               private viewPortScroller: ViewportScroller) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

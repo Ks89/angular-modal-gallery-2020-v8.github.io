@@ -76,7 +76,7 @@ export class SidePreviewsHiddenComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

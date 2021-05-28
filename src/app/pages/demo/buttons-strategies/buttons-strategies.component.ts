@@ -155,7 +155,7 @@ export class ButtonsStrategiesComponent implements OnInit, OnDestroy {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

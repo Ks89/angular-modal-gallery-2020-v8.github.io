@@ -59,7 +59,7 @@ export class PlainGalleryComponent implements OnInit {
   ];`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

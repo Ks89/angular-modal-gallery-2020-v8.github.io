@@ -78,7 +78,7 @@ export class InvertSwipeComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

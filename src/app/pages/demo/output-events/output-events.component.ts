@@ -192,7 +192,7 @@ export class OutputEventsComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

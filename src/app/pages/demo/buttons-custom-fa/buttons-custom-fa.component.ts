@@ -224,7 +224,7 @@ export class ButtonsCustomFaComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 

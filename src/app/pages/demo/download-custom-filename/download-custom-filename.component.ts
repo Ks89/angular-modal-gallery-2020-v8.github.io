@@ -87,7 +87,7 @@ export class DownloadCustomFilenameComponent implements OnInit {
   }`;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.metaData();
   }
 
