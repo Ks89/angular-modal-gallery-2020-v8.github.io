@@ -55,7 +55,7 @@ export class SameImagesComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - Same images');
 
     this.codeHtml =
-      `  <button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+      `  <button (click)="openModal(338, 0)">Open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
       `  images: Image[] = [

@@ -59,7 +59,7 @@ export class InfiniteSlidingComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - Infinite sliding');
 
     this.codeHtml =
-      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+      `<button (click)="openModal(318, 0)">Open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript = `
   images: Image[]; // init this value with your images

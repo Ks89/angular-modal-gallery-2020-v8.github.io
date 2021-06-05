@@ -58,7 +58,7 @@ export class PreviewsNoArrowsComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - Previews no arrows');
 
     this.codeHtml =
-      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+      `<button (click)="openModal(336, 0)">Open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript = `
   images: Image[]; // init this value with your images

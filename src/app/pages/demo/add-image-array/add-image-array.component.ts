@@ -52,7 +52,7 @@ export class AddImageArrayComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - Add image array');
 
     this.codeHtml =
-      `<button (click)="openModal(1, 0)">Click to open modal gallery id=1 at index=0</button>
+      `<button (click)="openModal(301, 0)">Click to open modal gallery id=1 at index=0</button>
 <button (click)="addRandomImage()">Add random image</button>
   `;
 

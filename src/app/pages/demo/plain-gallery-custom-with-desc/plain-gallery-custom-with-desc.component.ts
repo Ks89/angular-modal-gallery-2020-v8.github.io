@@ -68,7 +68,7 @@ export class PlainGalleryCustomWithDescComponent implements OnInit {
     <ng-container *ngFor="let img of images">
       <figure class="my-app-custom-image-with-desc">
         <img [src]="img.modal.img"
-             (click)="openImageModalRowDescription(213, img)"/>
+             (click)="openImageModalRowDescription(206, img)"/>
         <figcaption class="description">{{img.modal.description ? img.modal.description : 'No description available'}}
         </figcaption>
       </figure>

@@ -58,7 +58,7 @@ export class DescriptionFullCustomComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - Description full custom');
 
     this.codeHtml =
-      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+      `<button (click)="openModal(314, 0)">Open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript = `
   images: Image[]; // init this value with your images

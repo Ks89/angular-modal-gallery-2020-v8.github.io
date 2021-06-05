@@ -68,17 +68,17 @@ export class PlainGalleryImagePointerComponent implements OnInit {
       `<div class="my-app-custom-plain-container-row">
   <ng-container *ngFor="let img of images; let i = index">
     <div *ngIf="i <= 2">
-      <a class="more" *ngIf="i==2" (click)="openImageModalRow(211, img)"> +{{images.length - 2 - 1}} more </a>
+      <a class="more" *ngIf="i==2" (click)="openImageModalRow(205, img)"> +{{images.length - 2 - 1}} more </a>
       <img *ngIf="img.plain && img.plain.img; else noThumb"
            class="my-app-custom-image-row"
            [src]="img.plain.img"
-           (click)="openImageModalRow(211, img)"
+           (click)="openImageModalRow(205, img)"
            [alt]="img.modal.description"/>
 
       <ng-template #noThumb>
         <img class="my-app-custom-image-row"
              [src]="img.modal.img"
-             (click)="openImageModalRow(211, img)"
+             (click)="openImageModalRow(205, img)"
              [alt]="img.modal.description"/>
       </ng-template>
     </div>
@@ -102,8 +102,8 @@ openImageModalRow(id: number, image: Image): void {
     images: this.images,
     currentImage: this.images[index],
     libConfig: {
-    plainGalleryConfig: this.customPlainGalleryRowConfig
-  }
+      plainGalleryConfig: this.customPlainGalleryRowConfig
+    }
   }) as ModalGalleryRef;
 }
 

@@ -59,25 +59,25 @@ export class LoadingSpinnerTypeComponent implements OnInit {
     this.codeHtml =
       `
   <p>1. Type STANDARD</p>
-  <button (click)="openModal(1, 0, 1)">Open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(322, 0, 1)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>2. Type CIRCULAR</p>
-  <button (click)="openModal(2, 0, 2)">Open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(323, 0, 2)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>3. Type BARS</p>
-  <button (click)="openModal(3, 0, 3)">Open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(324, 0, 3)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>4. Type DOTS</p>
-  <button (click)="openModal(4, 0, 4)">Open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(325, 0, 4)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>5. Type CUBE_FLIPPING</p>
-  <button (click)="openModal(5, 0, 5)">Open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(326, 0, 5)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>6. Type CIRCLES</p>
-  <button (click)="openModal(6, 0, 6)">Open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(327, 0, 6)">Open modal gallery id=1 at index=0</button>
   <br>
   <p>7. Type EXPLODING_SQUARES</p>
-  <button (click)="openModal(7, 0, 7)">Open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(328, 0, 7)">Open modal gallery id=1 at index=0</button>
   <br>
   `;
 

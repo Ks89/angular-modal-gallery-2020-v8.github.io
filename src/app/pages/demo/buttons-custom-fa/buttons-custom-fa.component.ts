@@ -99,7 +99,7 @@ export class ButtonsCustomFaComponent implements OnInit, OnDestroy {
     this.titleService.titleEvent.emit('Examples - Custom buttons with Font Awesome 5');
 
     this.codeHtml =
-      `  <button (click)="openModal(1, 0, customButtonsConfig)">Click to open modal gallery id=1 at index=0</button>`;
+      `  <button (click)="openModal(306, 0, customButtonsConfig)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
       `  images: Image[]; // init this value with your images

@@ -79,7 +79,7 @@ export class OutputEventsComponent implements OnInit, OnDestroy {
     this.titleService.titleEvent.emit('Examples - Output events');
 
     this.codeHtml =
-      `<button class="btn-modal" (click)="openModal(1, 0)">Click to open modal gallery id=1 at index=0</button>`;
+      `<button class="btn-modal" (click)="openModal(333, 0)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript = `
   images: Image[]; // init this value with your images

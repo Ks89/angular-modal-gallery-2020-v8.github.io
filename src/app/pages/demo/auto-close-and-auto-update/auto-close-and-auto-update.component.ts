@@ -71,10 +71,10 @@ export class AutoCloseAndAutoUpdateComponent implements OnInit, OnDestroy {
     this.titleService.titleEvent.emit('Examples - Gallery service');
 
     this.codeHtml =
-      `  <button (click)="openModalWithAutoClose(1, images, 2)">Click to open modal gallery id=1 at index=2 (third image)</button>`;
+      `  <button (click)="openModalWithAutoClose(303, images, 2)">Click to open modal gallery id=1 at index=2 (third image)</button>`;
 
     this.codeHtml2 =
-      `  <button (click)="openModalWithAutoUpdate(2, images, 2)">Click to open modal gallery id=1 at index=2 (third image)</button>`;
+      `  <button (click)="openModalWithAutoUpdate(304, images, 2)">Click to open modal gallery id=1 at index=2 (third image)</button>`;
 
     this.codeTypescript =
       `  private timeout: any;

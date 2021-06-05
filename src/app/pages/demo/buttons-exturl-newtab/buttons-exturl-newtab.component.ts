@@ -58,7 +58,7 @@ export class ButtonsExturlNewtabComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - Exturl button in a new tab');
 
     this.codeHtml =
-      `  <button (click)="openModal(1, 0)">Click to open modal gallery id=1 at index=0</button>`;
+      `  <button (click)="openModal(307, 0)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
       `  images: Image[]; // init this value with your images

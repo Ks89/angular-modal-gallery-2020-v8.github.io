@@ -57,7 +57,7 @@ export class CloseOusideComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - No close outside');
 
     this.codeHtml =
-      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+      `<button (click)="openModal(312, 0)">Open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript = `
   images: Image[]; // init this value with your images

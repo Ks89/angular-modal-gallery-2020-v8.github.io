@@ -62,7 +62,7 @@ export class OnlyCurrentImgComponent implements OnInit {
     this.titleService.titleEvent.emit('Examples - Only current image');
 
     this.codeHtml =
-      `<button (click)="openModal(1, 0)">Open modal gallery id=1 at index=0</button>`;
+      `<button (click)="openModal(332, 0)">Open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript = `
   images: Image[]; // init this value with your images

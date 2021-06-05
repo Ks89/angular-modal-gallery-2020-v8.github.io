@@ -82,16 +82,16 @@ export class ButtonsStrategiesComponent implements OnInit, OnDestroy {
     this.codeHtml =
       `
   <p>1. Strategy DEFAULT</p>
-  <button (click)="openModal(1, 0, buttonsConfigDefault)">Click to open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(308, 0, buttonsConfigDefault)">Click to open modal gallery id=1 at index=0</button>
   <br>
   <p>2. Strategy SIMPLE</p>
-  <button (click)="openModal(2, 0, buttonsConfigSimple)">Click to open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(309, 0, buttonsConfigSimple)">Click to open modal gallery id=1 at index=0</button>
   <br>
   <p>3. Strategy ADVANCED</p>
-  <button (click)="openModal(3, 0, buttonsConfigAdvanced)">Click to open modal gallery id=1 at index=0</button>
+  <button (click)="openModal(310, 0, buttonsConfigAdvanced)">Click to open modal gallery id=1 at index=0</button>
   <br>
   <p>4. Strategy FULL</p>
-  <button (click)="openModal(4, 0, buttonsConfigFull)">Click to open modal gallery id=1 at index=0</button>`;
+  <button (click)="openModal(311, 0, buttonsConfigFull)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
       `  images: Image[]; // init this value with your images
