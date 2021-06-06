@@ -81,13 +81,11 @@
           </td>
           <td>
             <div>
-              <i>Type: </i><code><a href="#CarouselConfig">CarouselConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
-<!--              <i>Type: </i><code><a pageScroll href="#CarouselConfig">CarouselConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+              <i>Type: </i><code>CarouselConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
             </div>
             <div>
               <p>Interface to configure the carousel, like to change sizes, hide some features and so on.</p>
-              <p>For more information, please see the <a href="#CarouselConfig">CarouselConfig</a>'s section</p>
-<!--              <p>For more information, please see the <a pageScroll href="#CarouselConfig">CarouselConfig</a>'s section</p>-->
+              <p>For more information, please see the CarouselConfig's section</p>
             </div>
           </td>
         </tr>
@@ -115,13 +113,11 @@
           </td>
           <td>
             <div>
-              <i>Type: </i><code><a href="#CarouselImageConfig">CarouselImageConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
-<!--              <i>Type: </i><code><a pageScroll href="#CarouselImageConfig">CarouselImageConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>-->
+              <i>Type: </i><code>CarouselImageConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
             </div>
             <div>
               <p>Interface to change current image of the carousel, like description or to invert the swipe direction.</p>
-              <p>For more information, please see the <a href="#CarouselImageConfig">CarouselImageConfig</a>'s section</p>
-<!--              <p>For more information, please see the <a pageScroll href="#CarouselImageConfig">CarouselImageConfig</a>'s section</p>-->
+              <p>For more information, please see the CarouselImageConfig's section</p>
             </div>
           </td>
         </tr>
@@ -218,11 +214,9 @@
         <tr>
           <td><small><code>show</code></small></td>
           <td>
-            <p>An <code><a href="#ImageEvent">ImageEvent</a></code> right <b>after</b> the current image is changed.</p>
-<!--            <p>An <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> right <b>after</b> the current image is changed.</p>-->
+            <p>An <code>ImageEvent</code> right <b>after</b> the current image is changed.</p>
             <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number).</p>
-            <p>Everytime the current image changes, a new <code><a href="#ImageEvent">ImageEvent</a></code> will be emitted.</p>
-<!--            <p>Everytime the current image changes, a new <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> will be emitted.</p>-->
+            <p>Everytime the current image changes, a new <code>ImageEvent</code> will be emitted.</p>
             <ul>
               <li>action: either <code><a [routerLink]="['/features/common']">Action.NORMAL</a></code>, <code><a [routerLink]="['/features/common']">Action.CLICK</a></code>, <code><a [routerLink]="['/features/common']">Action.KEYBOARD</a></code> or <code><a [routerLink]="['/features/common']">Action.SWIPE</a></code></li>
               <li>result: <code>number</code> (index of an image. Not the index of the array, but incremented by 1)</li>
@@ -232,8 +226,7 @@
         <tr>
           <td><small><code>firstImage</code></small></td>
           <td>
-            <p>An <code><a href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the FIRST image in
-<!--            <p>An <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the FIRST image in-->
+            <p>An <code>ImageEvent</code> right <b>after</b> that the FIRST image in
               <code>images</code> is visible.</p>
             <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
             <ul>
@@ -245,8 +238,7 @@
         <tr>
           <td><small><code>lastImage</code></small></td>
           <td>
-            <p>An <code><a href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the LAST image in
-<!--            <p>An <code><a pageScroll href="#ImageEvent">ImageEvent</a></code> right <b>after</b> that the LAST image in-->
+            <p>An <code>ImageEvent</code> right <b>after</b> that the LAST image in
               <code>images</code> is visible.</p>
             <p>It contains an <code><a [routerLink]="['/features/common']">Action</a></code> enum and a result (boolean or number)</p>
             <ul>

@@ -9,21 +9,22 @@
   <br>
 
   <h2>Live demo</h2>
-<!--  <ks-plain-gallery [id]="0" [modalImages]="images"</ks-plain-gallery>-->
+  <ks-plain-gallery [id]="0" [images]="images" [showGallery]="true"
+                    (showImage)="onShow(0, $event)"></ks-plain-gallery>
   <br>
   <br>
 
   <h2>API</h2>
 
   <p>To add plain gallery in your application, you must add <code>&lt;ks-plain-gallery&gt;&lt;/ks-plain-gallery&gt;</code> in your component template file
-    and pass the two mandatory inputs id and images.</p>
+    and pass the mandatory inputs <code>id</code>, <code>images</code> and <code>showGallery</code>.</p>
   <p>The minimal plain gallery in your HTML file is:</p>
 
   <codemirror [(ngModel)]="codeHtml" [config]="configHtml">
   </codemirror>
   <br>
 
-  <p>Then, in your Typescript component you have to init the images array with Image class instances. For instance</p>
+  <p>Then, in your Typescript component you have to init the images array with Image class instances and write the method to open modal gallery.</p>
 
   <codemirror [(ngModel)]="codeTypescript" [config]="configTs">
   </codemirror>
@@ -86,7 +87,7 @@
         </td>
         <td>
           <div>
-            <i>Type: </i><code><a [routerLink]="['/features/common']">LibConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
+            <i>Type: </i><code><a [routerLink]="['/features/lib-config']">LibConfig</a></code><span class="badge badge-pill badge-secondary float-right">optional</span>
           </div>
           <div>
             <p>Interface to configure plain gallery.</p>
@@ -202,8 +203,7 @@
           <i>Type: </i><code>PlainGalleryStrategy</code>
         </div>
         <div>
-          <p>Enum that represents the strategy used to show thumbnails. <code><a href="#PlainGalleryStrategy">PlainGalleryStrategy.ROW</a></code> by default.</p>
-<!--          <p>Enum that represents the strategy used to show thumbnails. <code><a pageScroll href="#PlainGalleryStrategy">PlainGalleryStrategy.ROW</a></code> by default.</p>-->
+          <p>Enum that represents the strategy used to show thumbnails. <code>PlainGalleryStrategy.ROW</code> by default.</p>
         </div>
       </td>
     </tr>
@@ -214,13 +214,9 @@
           <i>Type: </i><code>PlainGalleryLayout</code>
         </div>
         <div>
-          <p>It can be either <code><a href="#LineLayout">LineLayout</a></code>,
-            <code><a href="#GridLayout">GridLayout</a></code> or <code><a href="#AdvancedLayout">AdvancedLayout</a></code> to configure the thumbnail's layout.</p>
+          <p>It can be either <code>LineLayout</code>,
+            <code>GridLayout</code> or <code>AdvancedLayout</code> to configure the thumbnail's layout.</p>
         </div>
-<!--        <div>-->
-<!--          <p>It can be either <code><a pageScroll href="#LineLayout">LineLayout</a></code>,-->
-<!--            <code><a pageScroll href="#GridLayout">GridLayout</a></code> or <code><a pageScroll href="#AdvancedLayout">AdvancedLayout</a></code> to configure the thumbnail's layout.</p>-->
-<!--        </div>-->
       </td>
     </tr>
     <tr>
@@ -230,13 +226,9 @@
           <i>Type: </i><code>AdvancedConfig</code><span class="badge badge-pill badge-secondary float-right">optional</span>
         </div>
         <div>
-          <p>Optional object used to configure <code><a href="#AdvancedLayout">AdvancedLayout</a></code>.
-            It will be ignored with both <code><a href="#LineLayout">LineLayout</a></code> and <code><a href="#GridLayout">GridLayout</a></code>.</p>
+          <p>Optional object used to configure <code>AdvancedLayout</code>.
+            It will be ignored with both <code>LineLayout</code> and <code>GridLayout</code>.</p>
         </div>
-<!--        <div>-->
-<!--          <p>Optional object used to configure <code><a pageScroll href="#AdvancedLayout">AdvancedLayout</a></code>.-->
-<!--            It will be ignored with both <code><a pageScroll href="#LineLayout">LineLayout</a></code> and <code><a pageScroll href="#GridLayout">GridLayout</a></code>.</p>-->
-<!--        </div>-->
       </td>
     </tr>
     </tbody>
@@ -247,11 +239,8 @@
   <h2 id="PlainGalleryLayout" class="link clickable">
     <a class="link-title" href="https://github.com/Ks89/angular-modal-gallery">PlainGalleryLayout</a>
   </h2>
-  <p>Empty interface implemented by both <code><a href="#LineLayout">LineLayout</a></code>,
-    <code><a href="#GridLayout">GridLayout</a></code>, <code><a href="#AdvancedLayout">AdvancedLayout</a></code>.</p>
-<!--  <p>Empty interface implemented by both <code><a pageScroll href="#LineLayout">LineLayout</a></code>,-->
-<!--    <code><a pageScroll href="#GridLayout">GridLayout</a></code>, <code><a pageScroll href="#AdvancedLayout">AdvancedLayout</a></code>.</p>-->
-
+  <p>Empty interface implemented by both <code>LineLayout</code>,
+    <code>GridLayout</code>, <code>AdvancedLayout</code>.</p>
   <br>
 
   <h2 id="LineLayout" class="link clickable">

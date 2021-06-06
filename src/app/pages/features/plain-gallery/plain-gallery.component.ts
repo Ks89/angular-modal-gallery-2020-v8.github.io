@@ -26,7 +26,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TitleService } from '../../../core/services/title.service';
 import { Metadata, UiService } from '../../../core/services/ui.service';
-import { Image } from '@ks89/angular-modal-gallery';
+import { Image, ModalGalleryRef, ModalGalleryService } from '@ks89/angular-modal-gallery';
 import { IMAGES_ARRAY } from '../../../shared/images';
 import { codemirrorHtml, codemirrorTs } from '../../codemirror.config';
 
@@ -45,22 +45,42 @@ export class PlainGalleryComponent implements OnInit {
   codeTypescript: string;
 
   constructor(private uiService: UiService,
+              private modalGalleryService: ModalGalleryService,
               private titleService: TitleService) {
     this.titleService.titleEvent.emit('Features - Plain Gallery');
 
     this.codeHtml =
-      `  <ks-plain-gallery [id]="100" [images]="images"></ks-plain-gallery>`;
+      `  <ks-plain-gallery [id]="0" [images]="images" [showGallery]="true"
+                    (showImage)="onShow(0, $event)"></ks-plain-gallery>`;
 
     this.codeTypescript =
-      `  images: Image[] = [
+      `  constructor(private modalGalleryService: ModalGalleryService){}
+
+  images: Image[] = [
      new Image(0, {
         img: '../assets/img1.jpg'
       })
-  ];`;
+  ];
+
+  onShow(id: number, index: number, images: Image[] = this.images): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images,
+      currentImage: images[index]
+    }) as ModalGalleryRef;
+  }`;
   }
 
   ngOnInit(): void {
     this.metaData();
+  }
+
+  onShow(id: number, index: number, images: Image[] = this.images): void {
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images,
+      currentImage: images[index]
+    }) as ModalGalleryRef;
   }
 
   metaData() {

@@ -24,7 +24,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { Image } from '@ks89/angular-modal-gallery';
+import { Image, LibConfig, ModalGalleryConfig, ModalGalleryRef, ModalGalleryService } from '@ks89/angular-modal-gallery';
 
 import { TitleService } from '../../../core/services/title.service';
 import { Metadata, UiService } from '../../../core/services/ui.service';
@@ -46,17 +46,22 @@ export class ModalGalleryComponent implements OnInit {
   codeTypescript: string;
 
   constructor(private uiService: UiService,
-              private titleService: TitleService) {
+              private titleService: TitleService,
+              private modalGalleryService: ModalGalleryService) {
     this.titleService.titleEvent.emit('Features - Modal Gallery');
 
-    this.codeHtml = `<button (click)="openModal(400, images, 0)">Open modal gallery at index=0</button>`;
+    this.codeHtml = `<button (click)="openModal(500, 0)">Click to open modal gallery id=1 at index=0</button>`;
 
     this.codeTypescript =
-      `  openModal(id: number, imagesArray: Image[], imageIndex: number, libConfig?: LibConfig) {
-    const imageToShow: Image = imagesArray[imageIndex];
+      `    constructor(private modalGalleryService: ModalGalleryService) {}
+
+    images: Image[]; // your images array
+
+    openModal(id: number, imageIndex: number, libConfig?: LibConfig): void {
+    const imageToShow: Image = this.images[imageIndex];
     const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
       id,
-      images: imagesArray,
+      images: this.images,
       currentImage: imageToShow,
       libConfig
     } as ModalGalleryConfig);
@@ -67,17 +72,15 @@ export class ModalGalleryComponent implements OnInit {
     this.metaData();
   }
 
-  // openModal(id: number, imagesArray: Image[], imageIndex: number, libConfig?: LibConfig) {
-  //   const imageToShow: Image = imagesArray[imageIndex];
-  //   const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
-  //     config: {
-  //       id,
-  //       images: imagesArray,
-  //       currentImage: imageToShow,
-  //       libConfig
-  //     }
-  //   } as ModalGalleryConfig);
-  // }
+  openModal(id: number, imageIndex: number, libConfig?: LibConfig): void {
+    const imageToShow: Image = this.images[imageIndex];
+    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+      id,
+      images: this.images,
+      currentImage: imageToShow,
+      libConfig
+    } as ModalGalleryConfig);
+  }
 
   metaData() {
     this.uiService.setMetaData({
