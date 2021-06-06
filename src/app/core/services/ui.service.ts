@@ -23,7 +23,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
 
 export interface Metadata {
   title: string;
@@ -57,7 +57,7 @@ export class UiService {
 
     this.title.setTitle(title);
 
-    const tags = [
+    const tags: MetaDefinition[] = [
       {name: 'description', content: description},
       {name: 'theme-color', content: this.appColor},
       {name: 'twitter:card', content: 'summary'},
@@ -82,6 +82,6 @@ export class UiService {
       {property: 'og:image:height', content: '630'}
     ];
 
-    tags.forEach(tag => this.meta.updateTag(tag));
+    tags.forEach((tag: MetaDefinition) => this.meta.updateTag(tag));
   }
 }

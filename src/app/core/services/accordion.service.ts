@@ -41,9 +41,9 @@ export class AccordionService {
     this.setAccordionByStates(false, false, false);
   }
 
-  getAccordion(): Accordion {
+  getAccordion(): Accordion | undefined {
     try {
-      return <Accordion>JSON.parse(getToken());
+      return <Accordion>JSON.parse(getToken() as string);
     } catch {
       return undefined;
     }

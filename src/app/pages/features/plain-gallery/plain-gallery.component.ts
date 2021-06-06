@@ -50,8 +50,8 @@ export class PlainGalleryComponent implements OnInit {
     this.titleService.titleEvent.emit('Features - Plain Gallery');
 
     this.codeHtml =
-      `  <ks-plain-gallery [id]="0" [images]="images" [showGallery]="true"
-                    (showImage)="onShow(0, $event)"></ks-plain-gallery>`;
+      `  <ks-plain-gallery [id]="600" [images]="images" [showGallery]="true"
+                    (showImage)="onShow(600, $event)"></ks-plain-gallery>`;
 
     this.codeTypescript =
       `  constructor(private modalGalleryService: ModalGalleryService){}

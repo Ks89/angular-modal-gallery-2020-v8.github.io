@@ -48,13 +48,13 @@ import { Metadata, UiService } from '../../../core/services/ui.service';
 export class OutputEventsComponent implements OnInit, OnDestroy {
   images: Image[] = [...IMAGES_ARRAY];
 
-  imageLoaded: ImageModalEvent;
-  visibleIndex: ImageModalEvent;
-  isFirstImage: ImageModalEvent;
-  isLastImage: ImageModalEvent;
-  closeImageModal: ImageModalEvent;
-  buttonBeforeHook: ButtonEvent;
-  buttonAfterHook: ButtonEvent;
+  imageLoaded: ImageModalEvent | undefined;
+  visibleIndex: ImageModalEvent | undefined;
+  isFirstImage: ImageModalEvent | undefined;
+  isLastImage: ImageModalEvent | undefined;
+  closeImageModal: ImageModalEvent | undefined;
+  buttonBeforeHook: ButtonEvent | undefined;
+  buttonAfterHook: ButtonEvent | undefined;
 
   configHtml: any = codemirrorHtml;
   configTs: any = codemirrorTs;

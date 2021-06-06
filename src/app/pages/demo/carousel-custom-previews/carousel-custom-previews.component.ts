@@ -50,7 +50,7 @@ export class CarouselCustomPreviewsComponent implements OnInit {
 
     this.codeHtml =
       `  <ks-carousel [id]="107" [images]="images"
-  [previewConfig]="{visible: true, number: 7, size: {width: 'auto', height: '100px'}}">
+  [previewConfig]="{visible: true, number: 7, width: 'auto', maxHeight: '100px'}">
   </ks-carousel>`;
 
     this.codeTypescript =

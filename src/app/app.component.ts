@@ -23,21 +23,16 @@
  */
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
-import { filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 import { AccordionService } from './core/services/services';
-
-// declare let ga: Function;
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   title = 'app';
-  private subscription: Subscription;
 
   constructor(private router: Router, private accordionService: AccordionService) {}
 
@@ -45,16 +40,5 @@ export class AppComponent implements OnInit, OnDestroy {
     // at every refresh of this app, remove the accordion state from local storage
     this.accordionService.resetAccordion();
     this.accordionService.initAccordion();
-
-    // this.subscription = this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe((event: NavigationEnd) => {
-    //   ga('set', 'page', event.urlAfterRedirects);
-    //   ga('send', 'pageview');
-    // });
-  }
-
-  ngOnDestroy(): void {
-    // this.subscription.unsubscribe();
   }
 }

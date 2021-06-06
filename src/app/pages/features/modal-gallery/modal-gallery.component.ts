@@ -74,7 +74,7 @@ export class ModalGalleryComponent implements OnInit {
 
   openModal(id: number, imageIndex: number, libConfig?: LibConfig): void {
     const imageToShow: Image = this.images[imageIndex];
-    const dialogRef: ModalGalleryRef = this.modalGalleryService.open({
+    const dialogRef: ModalGalleryRef | undefined = this.modalGalleryService.open({
       id,
       images: this.images,
       currentImage: imageToShow,

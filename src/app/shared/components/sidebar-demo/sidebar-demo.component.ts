@@ -39,10 +39,12 @@ export class SidebarDemoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const accordion: Accordion = this.accordionService.getAccordion();
-    this.showCarousel = accordion.carouselOpen;
-    this.showModal = accordion.modalOpen;
-    this.showPlain = accordion.plainOpen;
+    const accordion: Accordion | undefined = this.accordionService.getAccordion();
+    if (accordion) {
+      this.showCarousel = accordion.carouselOpen;
+      this.showModal = accordion.modalOpen;
+      this.showPlain = accordion.plainOpen;
+    }
   }
 
   onCarouselClick() {
