@@ -47,10 +47,6 @@ export class GettingStartedComponent implements OnInit {
     this.viewPortScroller.scrollToAnchor(tag);
   }
 
-  onNavigateTo(path: string) {
-    this.router.navigate([path]);
-  }
-
   metaData() {
     this.uiService.setMetaData({
       title: 'Getting started'

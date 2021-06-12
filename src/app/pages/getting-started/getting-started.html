@@ -71,7 +71,7 @@
 
         <br>
         <p><b>If you are already using @ks89/angular-modal-gallery and you want to migrate to the latest release,
-          check the <a href="#" (click)="onNavigateTo('/migration')">official guide</a>.</b></p>
+          check the <a [routerLink]="['/migration']">official guide</a>.</b></p>
       </section>
       <br>
 
@@ -207,7 +207,6 @@
         &#125;);
       </pre>
         <p><b><code>disableSsrWorkaround:true</code> will prevent errors at runtime with SystemJS.</b></p>
-        <p>For more information, you should check the <a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">official SystemJS example</a>.</p>
 
       </section>
       <br>
@@ -216,9 +215,7 @@
         <h2>Official examples</h2>
         <ul>
           <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-12">angular-cli 12 (recommended)</a></li>
-          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-11">angular-cli 11 (legacy support)</a></li>
           <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/angular-cli-material">angular-cli with material</a></li>
-          <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/systemjs">SystemJs</a></li>
           <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/universal">angular-universal</a></li>
           <li><a href="https://github.com/Ks89/angular-modal-gallery/tree/master/examples/stackblitz">live examples on stackblitz.com</a></li>
         </ul>
